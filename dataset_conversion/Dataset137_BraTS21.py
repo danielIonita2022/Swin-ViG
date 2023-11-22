@@ -1,4 +1,5 @@
 import multiprocessing
+import re
 import shutil
 from multiprocessing import Pool
 
@@ -56,8 +57,21 @@ def convert_folder_with_preds_back_to_BraTS_labeling_convention(input_folder: st
         p.starmap(load_convert_labels_back_to_BraTS, zip(nii, [input_folder] * len(nii), [output_folder] * len(nii)))
 
 
+def rename_files_in_directory(directory):
+    date_pattern = re.compile(r'_\d{4}\.\d{2}\.\d{2}')
+
+    for filename in os.listdir(directory):
+        if date_pattern.search(filename):
+            new_filename = date_pattern.sub('', filename)
+            old_file = os.path.join(directory, filename)
+            new_file = os.path.join(directory, new_filename)
+            os.rename(old_file, new_file)
+            print(f"Renamed '{filename}' to '{new_filename}'")
+
+
 if __name__ == '__main__':
-    brats_data_dir = '/home/isensee/drives/E132-Rohdaten/BraTS_2021/training'
+    brats_train_dir = '/mnt/hdd1/home/danielionita/data/BraTS/train'
+    brats_test_dir = '/mnt/hdd1/home/danielionita/data/BraTS/test'
 
     task_id = 137
     task_name = "BraTS2021"
@@ -71,19 +85,37 @@ if __name__ == '__main__':
     maybe_mkdir_p(imagestr)
     maybe_mkdir_p(labelstr)
 
-    case_ids = subdirs(brats_data_dir, prefix='BraTS', join=False)
+    imagests = join(out_base, "imagesTs")
+    labelsts = join(out_base, "labelsTs")
+    maybe_mkdir_p(imagests)
+    maybe_mkdir_p(labelsts)
+
+    case_ids = subdirs(brats_train_dir, prefix='TCGA', join=False)
 
     for c in case_ids:
-        shutil.copy(join(brats_data_dir, c, c + "_t1.nii.gz"), join(imagestr, c + '_0000.nii.gz'))
-        shutil.copy(join(brats_data_dir, c, c + "_t1ce.nii.gz"), join(imagestr, c + '_0001.nii.gz'))
-        shutil.copy(join(brats_data_dir, c, c + "_t2.nii.gz"), join(imagestr, c + '_0002.nii.gz'))
-        shutil.copy(join(brats_data_dir, c, c + "_flair.nii.gz"), join(imagestr, c + '_0003.nii.gz'))
+        rename_files_in_directory(join(brats_train_dir, c))
+        shutil.copy(join(brats_train_dir, c, c + "_t1.nii.gz"), join(imagestr, c + '_0000.nii.gz'))
+        shutil.copy(join(brats_train_dir, c, c + "_t1Gd.nii.gz"), join(imagestr, c + '_0001.nii.gz'))
+        shutil.copy(join(brats_train_dir, c, c + "_t2.nii.gz"), join(imagestr, c + '_0002.nii.gz'))
+        shutil.copy(join(brats_train_dir, c, c + "_flair.nii.gz"), join(imagestr, c + '_0003.nii.gz'))
 
-        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(join(brats_data_dir, c, c + "_seg.nii.gz"),
+        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(join(brats_train_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
                                                              join(labelstr, c + '.nii.gz'))
 
+    case_ids = subdirs(brats_test_dir, prefix='TCGA', join=False)
+    for c in case_ids:
+        rename_files_in_directory(join(brats_test_dir, c))
+        shutil.copy(join(brats_test_dir, c, c + "_t1.nii.gz"), join(imagests, c + '_0000.nii.gz'))
+        shutil.copy(join(brats_test_dir, c, c + "_t1Gd.nii.gz"), join(imagests, c + '_0001.nii.gz'))
+        shutil.copy(join(brats_test_dir, c, c + "_t2.nii.gz"), join(imagests, c + '_0002.nii.gz'))
+        shutil.copy(join(brats_test_dir, c, c + "_flair.nii.gz"), join(imagests, c + '_0003.nii.gz'))
+
+        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(join(brats_test_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
+                                                             join(labelsts, c + '.nii.gz'))
+
+
     generate_dataset_json(out_base,
-                          channel_names={0: 'T1', 1: 'T1ce', 2: 'T2', 3: 'Flair'},
+                          channel_names={0: 'T1', 1: 'T1Gd', 2: 'T2', 3: 'Flair'},
                           labels={
                               'background': 0,
                               'whole tumor': (1, 2, 3),
