@@ -252,12 +252,12 @@ def evaluate_simple_entry_point():
 
 
 if __name__ == '__main__':
-    folder_ref = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset217_AMOS2022_postChallenge_task1/labelsTr'
-    folder_pred = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset500_RetinaVesselSegmentation/nnUNetTrainer__nnUNetPlans__2d/fold_0/validation'
-    output_file = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset500_RetinaVesselSegmentation/nnUNetTrainer__nnUNetPlans__2d/fold_0/validation/summary.json'
+    folder_ref = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset137_BraTS2021/labelsTs'
+    folder_pred = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset137_BraTS2021/imagesTs_predicted'
+    output_file = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset137_BraTS2021/nnUNetTrainer_NexToU_TI__nnUNetPlans__3d_fullres_nextou/fold_0/validation/summary.json'
     image_reader_writer = SimpleITKIO()
     file_ending = '.nii.gz'
-    regions = labels_to_list_of_regions([1, 2])
+    regions = labels_to_list_of_regions([1, 2, 3])
     ignore_label = None
     num_processes = 6
     compute_metrics_on_folder(folder_ref, folder_pred, output_file, image_reader_writer, file_ending, regions, ignore_label,

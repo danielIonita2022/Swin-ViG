@@ -565,11 +565,10 @@ if __name__ == '__main__':
 
     #my_utils.split_folder(original_folder, new_folder1, new_folder2, split)
 
-
     predict_from_raw_data(
         '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset137_BraTS2021/imagesTs',
         '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset137_BraTS2021/imagesTs_predicted',
-        '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset217_AMOS2022_postChallenge_task1/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__2d',
+        '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset137_BraTS2021/nnUNetTrainer_NexToU_TI__nnUNetPlans__3d_fullres_nextou',
         (0,),
         0.5,
         use_gaussian=True,
@@ -582,24 +581,26 @@ if __name__ == '__main__':
         num_processes_preprocessing=1,
         num_processes_segmentation_export=1)
 
-    print('___________________________________________')
-    print('FIRST 50 IMAGES PREDICTED, STARTING LAST 50')
-    print('___________________________________________')
+    print('PREDICTION DONE!')
 
-    predict_from_raw_data(
-        '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset217_AMOS2022_postChallenge_task1/imagesTs_second_split',
-        '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset217_AMOS2022_postChallenge_task1/imagesTs_predicted',
-        '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset217_AMOS2022_postChallenge_task1/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__2d',
-        (0,),
-        0.5,
-        use_gaussian=True,
-        use_mirroring=False,
-        perform_everything_on_gpu=True,
-        verbose=True,
-        save_probabilities=False,
-        overwrite=False,
-        checkpoint_name='checkpoint_best.pth',
-        num_processes_preprocessing=1,
-        num_processes_segmentation_export=1)
-
-    thread.join()
+    # print('___________________________________________')
+    # print('FIRST 50 IMAGES PREDICTED, STARTING LAST 50')
+    # print('___________________________________________')
+    #
+    # predict_from_raw_data(
+    #     '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset217_AMOS2022_postChallenge_task1/imagesTs_second_split',
+    #     '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset217_AMOS2022_postChallenge_task1/imagesTs_predicted',
+    #     '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset217_AMOS2022_postChallenge_task1/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__2d',
+    #     (0,),
+    #     0.5,
+    #     use_gaussian=True,
+    #     use_mirroring=False,
+    #     perform_everything_on_gpu=True,
+    #     verbose=True,
+    #     save_probabilities=False,
+    #     overwrite=False,
+    #     checkpoint_name='checkpoint_best.pth',
+    #     num_processes_preprocessing=1,
+    #     num_processes_segmentation_export=1)
+    #
+    # thread.join()
