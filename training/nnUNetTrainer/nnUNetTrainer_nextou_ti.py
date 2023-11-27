@@ -45,7 +45,7 @@ class nnUNetTrainer_NexToU_TI(nnUNetTrainer_NexToU):
             lambda_ti = 1e-4
 
         inclusion_list = []
-        exclusion_list = self.generate_combinations(4) # Generate all pairwise combinations for all foreground classes
+        exclusion_list = self.generate_combinations(3) # Generate all pairwise combinations for all foreground classes
         # exclusion_list = self.generate_combinations(max(self.dataset_json["labels"].values()))
 
         inclusion_list = self.make_tensors(inclusion_list, self.device)

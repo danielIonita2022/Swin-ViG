@@ -13,6 +13,6 @@ if __name__ == "__main__":
     plan_and_preprocess.plan_experiments(dataset_id)
     print('Finished planning experiments')
     print('Started preprocessing')
-    num_processes = 4
+    num_processes = [4]
     configs = ['3d_fullres']
     plan_and_preprocess.preprocess(dataset_id, configurations=configs, num_processes=num_processes)

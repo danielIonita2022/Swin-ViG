@@ -47,7 +47,8 @@ def load_convert_labels_back_to_BraTS(filename, input_folder, output_folder):
     sitk.WriteImage(d, join(output_folder, filename))
 
 
-def convert_folder_with_preds_back_to_BraTS_labeling_convention(input_folder: str, output_folder: str, num_processes: int = 12):
+def convert_folder_with_preds_back_to_BraTS_labeling_convention(input_folder: str, output_folder: str,
+                                                                num_processes: int = 12):
     """
     reads all prediction files (nifti) in the input folder, converts the labels back to BraTS convention and saves the
     """
@@ -99,8 +100,9 @@ if __name__ == '__main__':
         shutil.copy(join(brats_train_dir, c, c + "_t2.nii.gz"), join(imagestr, c + '_0002.nii.gz'))
         shutil.copy(join(brats_train_dir, c, c + "_flair.nii.gz"), join(imagestr, c + '_0003.nii.gz'))
 
-        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(join(brats_train_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
-                                                             join(labelstr, c + '.nii.gz'))
+        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(
+            join(brats_train_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
+            join(labelstr, c + '.nii.gz'))
 
     case_ids = subdirs(brats_test_dir, prefix='TCGA', join=False)
     for c in case_ids:
@@ -110,9 +112,9 @@ if __name__ == '__main__':
         shutil.copy(join(brats_test_dir, c, c + "_t2.nii.gz"), join(imagests, c + '_0002.nii.gz'))
         shutil.copy(join(brats_test_dir, c, c + "_flair.nii.gz"), join(imagests, c + '_0003.nii.gz'))
 
-        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(join(brats_test_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
-                                                             join(labelsts, c + '.nii.gz'))
-
+        copy_BraTS_segmentation_and_convert_labels_to_nnUNet(
+            join(brats_test_dir, c, c + "_GlistrBoost_ManuallyCorrected.nii.gz"),
+            join(labelsts, c + '.nii.gz'))
 
     generate_dataset_json(out_base,
                           channel_names={0: 'T1', 1: 'T1Gd', 2: 'T2', 3: 'Flair'},
@@ -120,7 +122,7 @@ if __name__ == '__main__':
                               'background': 0,
                               'whole tumor': (1, 2, 3),
                               'tumor core': (2, 3),
-                              'enhancing tumor': (3, )
+                              'enhancing tumor': (3,)
                           },
                           num_training_cases=len(case_ids),
                           file_ending='.nii.gz',

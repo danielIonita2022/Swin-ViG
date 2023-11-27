@@ -134,12 +134,12 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 1e-2
+        self.initial_lr = 1e-3  # modificat de la 1e-2
         self.weight_decay = 3e-5
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 20 # modificat de la 250
+        self.num_iterations_per_epoch = 21  # modificat de la 250
         self.num_val_iterations_per_epoch = 5
-        self.num_epochs = 1000
+        self.num_epochs = 300
         self.current_epoch = 0
 
         ### Dealing with labels/regions
@@ -830,7 +830,8 @@ class nnUNetTrainer(object):
         # lrs are the same for all workers so we don't need to gather them in case of DDP training
         self.logger.log('lrs', self.optimizer.param_groups[0]['lr'], self.current_epoch)
 
-        mlflow.log_metric('learning_rate', np.round(self.optimizer.param_groups[0]['lr'], decimals=5), step=self.current_epoch)
+        mlflow.log_metric('learning_rate', np.round(self.optimizer.param_groups[0]['lr'], decimals=5),
+                          step=self.current_epoch)
 
     def train_step(self, batch: dict) -> dict:
         data = batch['data']
@@ -969,8 +970,7 @@ class nnUNetTrainer(object):
         else:
             loss_here = np.mean(outputs_collated['loss'])
 
-        global_dc_per_class = [i for i in [2 * i / (2 * i + j + k) for i, j, k in
-                                           zip(tp, fp, fn)]]
+        global_dc_per_class = [2 * i / (2 * i + j + k) if (2 * i + j + k) != 0 else 0 for i, j, k in zip(tp, fp, fn)]
         mean_fg_dice = np.nanmean(global_dc_per_class)
         self.logger.log('mean_fg_dice', mean_fg_dice, self.current_epoch)
         self.logger.log('dice_per_class_or_region', global_dc_per_class, self.current_epoch)
@@ -987,7 +987,7 @@ class nnUNetTrainer(object):
         train_loss = np.round(self.logger.my_fantastic_logging['train_losses'][-1], decimals=4)
         val_loss = np.round(self.logger.my_fantastic_logging['val_losses'][-1], decimals=4)
         pseudo_dice = [np.round(i, decimals=4) for i in
-                                               self.logger.my_fantastic_logging['dice_per_class_or_region'][-1]]
+                       self.logger.my_fantastic_logging['dice_per_class_or_region'][-1]]
         epoch_time = np.round(self.logger.my_fantastic_logging['epoch_end_timestamps'][-1] -
                               self.logger.my_fantastic_logging['epoch_start_timestamps'][-1], decimals=2)
 
@@ -1208,7 +1208,8 @@ class nnUNetTrainer(object):
                                                 self.label_manager.foreground_labels,
                                                 self.label_manager.ignore_label, chill=True)
             self.print_to_log_file("Validation complete", also_print_to_console=True)
-            self.print_to_log_file("Mean Validation Dice: ", (metrics['foreground_mean']["Dice"]), also_print_to_console=True)
+            self.print_to_log_file("Mean Validation Dice: ", (metrics['foreground_mean']["Dice"]),
+                                   also_print_to_console=True)
 
         self.set_deep_supervision_enabled(True)
 
