@@ -36,7 +36,7 @@ def norm_layer(norm, nc, conv_op):
         if conv_op == nn.Conv2d:
             layer = nn.BatchNorm2d(nc, affine=True)
         elif conv_op == nn.Conv3d:
-            layer = nn.BatchNorm3d(nc, affine=True)
+            layer = nn.GroupNorm(6, nc, affine=True)
         else:
             raise NotImplementedError('conv operation [%s] is not found' % conv_op)
     elif norm == 'instance':
@@ -72,7 +72,7 @@ class BasicConv(Seq):
             self.instance_norm = nn.InstanceNorm2d
             self.groups_num = 4
         elif self.conv_op == nn.Conv3d:
-            self.batch_norm = nn.BatchNorm3d
+            self.batch_norm = nn.GroupNorm
             self.instance_norm = nn.InstanceNorm3d
             self.groups_num = 6 # modificat de la 6
         else:

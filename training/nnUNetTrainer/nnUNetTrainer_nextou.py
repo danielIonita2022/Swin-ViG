@@ -38,21 +38,21 @@ class nnUNetTrainer_NexToU(nnUNetTrainer):
         kwargs = {
             'PlainConvUNet': {
                 'conv_bias': True,
-                'norm_op': get_matching_batchnorm(conv_op),
+                'norm_op': nn.GroupNorm,
                 'norm_op_kwargs': {'eps': 1e-5, 'affine': True},
                 'dropout_op': None, 'dropout_op_kwargs': None,
                 'nonlin': nn.LeakyReLU, 'nonlin_kwargs': {'inplace': True},
             },
             'ResidualEncoderUNet': {
                 'conv_bias': True,
-                'norm_op': get_matching_batchnorm(conv_op),
+                'norm_op': nn.GroupNorm,
                 'norm_op_kwargs': {'eps': 1e-5, 'affine': True},
                 'dropout_op': None, 'dropout_op_kwargs': None,
                 'nonlin': nn.LeakyReLU, 'nonlin_kwargs': {'inplace': True},
             },
             'NexToU': {
                 'conv_bias': True,
-                'norm_op': get_matching_batchnorm(conv_op),
+                'norm_op': nn.GroupNorm,
                 'norm_op_kwargs': {'eps': 1e-5, 'affine': True},
                 'dropout_op': None, 'dropout_op_kwargs': None,
                 'nonlin': nn.LeakyReLU, 'nonlin_kwargs': {'inplace': True},

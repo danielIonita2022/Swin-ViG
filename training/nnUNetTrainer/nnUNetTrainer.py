@@ -134,12 +134,12 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 1e-3  # modificat de la 1e-2
-        self.weight_decay = 3e-5
+        self.initial_lr = 2e-3  # modificat de la 1e-2
+        self.weight_decay = 1e-4  # modificat de la 3e-5
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 21  # modificat de la 250
+        self.num_iterations_per_epoch = 20  # modificat de la 250
         self.num_val_iterations_per_epoch = 5
-        self.num_epochs = 300
+        self.num_epochs = 1500
         self.current_epoch = 0
 
         ### Dealing with labels/regions
@@ -446,8 +446,12 @@ class nnUNetTrainer(object):
             self.print_to_log_file('These are the global plan.json settings:\n', dct, '\n', add_timestamp=False)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-                                    momentum=0.99, nesterov=True)
+        # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
+        #                           momentum=0.99, nesterov=True)
+        optimizer = torch.optim.AdamW(self.network.parameters(),
+                                      lr=self.initial_lr,
+                                      weight_decay=self.weight_decay,
+                                      amsgrad=True)
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
         return optimizer, lr_scheduler
 
@@ -857,12 +861,25 @@ class nnUNetTrainer(object):
             self.grad_scaler.scale(l).backward()
             self.grad_scaler.unscale_(self.optimizer)
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
+
+            for name, param in self.network.named_parameters():
+                if param.requires_grad:
+                    # Flatten the gradients to a single array
+                    grad_values = param.grad.view(-1).cpu().detach().numpy()
+                    # Log the gradient statistics
+                    mlflow.log_metric(f"grad_mean_{name}", grad_values.mean())
+                    mlflow.log_metric(f"grad_std_{name}", grad_values.std())
+                    num_zeros = (grad_values == 0).sum()
+                    mlflow.log_metric(f"grad_zeros_{name}", num_zeros)
+                    # You can also log histograms or other statistics as needed
+
             self.grad_scaler.step(self.optimizer)
             self.grad_scaler.update()
         else:
             l.backward()
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
             self.optimizer.step()
+
         return {'loss': l.detach().cpu().numpy()}
 
     def on_train_epoch_end(self, train_outputs: List[dict]):
