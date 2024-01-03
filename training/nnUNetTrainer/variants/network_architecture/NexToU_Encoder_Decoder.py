@@ -372,12 +372,12 @@ class FFN(nn.Module):
         hidden_features = hidden_features or in_features
         self.fc1 = nn.Sequential(
             conv_op(in_features, hidden_features, 1, stride=1, padding=0),
-            norm_op(6, hidden_features, **norm_op_kwargs),
+            norm_op(hidden_features // 6, hidden_features, **norm_op_kwargs),
         )
         self.act = act_layer(act)
         self.fc2 = nn.Sequential(
             conv_op(hidden_features, out_features, 1, stride=1, padding=0),
-            norm_op(6, out_features, **norm_op_kwargs),
+            norm_op(out_features // 6, out_features, **norm_op_kwargs),
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
@@ -395,7 +395,7 @@ class MRConv(nn.Module):
     Max-Relative Graph Convolution (Paper: https://arxiv.org/abs/1904.03751) for dense data type
     """
 
-    def __init__(self, in_channels, out_channels, act='relu', norm=None, bias=True, conv_op=nn.Conv3d,
+    def __init__(self, in_channels, out_channels, act='relu', norm='group', bias=True, conv_op=nn.Conv3d,
                  dropout_op=nn.Dropout3d):
         super(MRConv, self).__init__()
         self.conv_op = conv_op
@@ -427,7 +427,7 @@ class GraphConv(nn.Module):
     Static graph convolution layer
     """
 
-    def __init__(self, in_channels, out_channels, conv='edge', act='relu', norm=None, bias=True, conv_op=nn.Conv3d,
+    def __init__(self, in_channels, out_channels, conv='edge', act='relu', norm='group', bias=True, conv_op=nn.Conv3d,
                  dropout_op=nn.Dropout3d):
         super(GraphConv, self).__init__()
         if conv == 'mr':
@@ -445,7 +445,7 @@ class DyGraphConv(GraphConv):
     """
 
     def __init__(self, in_channels, out_channels, kernel_size=9, dilation=1, conv='edge', act='relu',
-                 norm=None, bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
+                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
         super(DyGraphConv, self).__init__(in_channels, out_channels, conv, act, norm, bias, conv_op, dropout_op)
         self.k = kernel_size
         self.d = dilation
@@ -489,7 +489,7 @@ class PoolDyGraphConv(GraphConv):
     """
 
     def __init__(self, in_channels, out_channels, kernel_size=9, dilation=1, conv='edge', act='relu',
-                 norm=None, bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d,
+                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d,
                  img_shape=None, img_min_shape=None):
         super(PoolDyGraphConv, self).__init__(in_channels, out_channels, conv, act, norm, bias, conv_op, dropout_op)
         self.k = kernel_size
@@ -568,7 +568,7 @@ class Grapher(nn.Module):
     Grapher module with graph convolution and fc layers
     """
 
-    def __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
+    def __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm='group',
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
                  conv_op=nn.Conv3d, norm_op=nn.GroupNorm, dropout_op=nn.Dropout3d):
         super(Grapher, self).__init__()
@@ -578,13 +578,13 @@ class Grapher(nn.Module):
         self.conv_op = conv_op
         self.fc1 = nn.Sequential(
             conv_op(in_channels, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
         self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
                                       act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
         self.fc2 = nn.Sequential(
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.relative_pos = None
@@ -732,14 +732,14 @@ class SwinGrapher(nn.Module):
 
         self.fc1 = nn.Sequential(
             conv_op(in_channels, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
-        norm = 'batch'
+        norm = 'group'
         self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
                                       act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
         self.fc2 = nn.Sequential(
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
@@ -851,7 +851,7 @@ class PoolGrapher(nn.Module):
     PoolGrapher module with graph convolution and fc layers
     """
 
-    def __init__(self, in_channels, img_shape, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
+    def __init__(self, in_channels, img_shape, kernel_size=9, dilation=1, conv='edge', act='relu', norm='group',
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
                  conv_op=nn.Conv3d, norm_op=nn.GroupNorm, norm_op_kwargs=None, dropout_op=nn.Dropout3d,
                  img_min_shape=None):
@@ -864,14 +864,14 @@ class PoolGrapher(nn.Module):
 
         self.fc1 = nn.Sequential(
             conv_op(in_channels, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
         self.graph_conv = PoolDyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
                                           act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op,
                                           img_shape=img_shape, img_min_shape=img_min_shape)
         self.fc2 = nn.Sequential(
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
-            norm_op(6, in_channels),
+            norm_op(in_channels // 6, in_channels),
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 

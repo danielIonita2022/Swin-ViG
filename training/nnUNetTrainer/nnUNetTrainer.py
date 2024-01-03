@@ -134,12 +134,12 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 2e-3  # modificat de la 1e-2
-        self.weight_decay = 1e-4  # modificat de la 3e-5
+        self.initial_lr = 0.001  # modificat de la 1e-2
+        self.weight_decay = 5e-4  # modificat de la 3e-5
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 20  # modificat de la 250
         self.num_val_iterations_per_epoch = 5
-        self.num_epochs = 1500
+        self.num_epochs = 1700
         self.current_epoch = 0
 
         ### Dealing with labels/regions
@@ -452,6 +452,7 @@ class nnUNetTrainer(object):
                                       lr=self.initial_lr,
                                       weight_decay=self.weight_decay,
                                       amsgrad=True)
+        mlflow.log_param("optimizer", "AdamW")
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
         return optimizer, lr_scheduler
 
@@ -862,17 +863,6 @@ class nnUNetTrainer(object):
             self.grad_scaler.unscale_(self.optimizer)
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
 
-            for name, param in self.network.named_parameters():
-                if param.requires_grad:
-                    # Flatten the gradients to a single array
-                    grad_values = param.grad.view(-1).cpu().detach().numpy()
-                    # Log the gradient statistics
-                    mlflow.log_metric(f"grad_mean_{name}", grad_values.mean())
-                    mlflow.log_metric(f"grad_std_{name}", grad_values.std())
-                    num_zeros = (grad_values == 0).sum()
-                    mlflow.log_metric(f"grad_zeros_{name}", num_zeros)
-                    # You can also log histograms or other statistics as needed
-
             self.grad_scaler.step(self.optimizer)
             self.grad_scaler.update()
         else:
@@ -1014,9 +1004,9 @@ class nnUNetTrainer(object):
         self.print_to_log_file(
             f"Epoch time: {epoch_time} s")
 
-        mlflow.log_metric('train_loss', train_loss)
-        mlflow.log_metric('val_loss', val_loss)
-        mlflow.log_metric('epoch_time', epoch_time)
+        mlflow.log_metric('train_loss', train_loss, step=self.current_epoch)
+        mlflow.log_metric('val_loss', val_loss, step=self.current_epoch)
+        mlflow.log_metric('epoch_time', epoch_time, step=self.current_epoch)
 
         # handling periodic checkpointing
         current_epoch = self.current_epoch
@@ -1024,6 +1014,7 @@ class nnUNetTrainer(object):
             self.save_checkpoint(join(self.output_folder, 'checkpoint_latest.pth'))
 
         # handle 'best' checkpointing. ema_fg_dice is computed by the logger and can be accessed like this
+        mlflow.log_metric('EMA pseudo Dice', self.logger.my_fantastic_logging['ema_fg_dice'][-1], step=self.current_epoch)
         if self._best_ema is None or self.logger.my_fantastic_logging['ema_fg_dice'][-1] > self._best_ema:
             self._best_ema = self.logger.my_fantastic_logging['ema_fg_dice'][-1]
             self.print_to_log_file(f"Yayy! New best EMA pseudo Dice: {np.round(self._best_ema, decimals=4)}")

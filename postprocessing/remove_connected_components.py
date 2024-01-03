@@ -334,27 +334,27 @@ def entry_point_apply_postprocessing():
 
 
 if __name__ == '__main__':
-    trained_model_folder = '/home/fabian/results/nnUNet_remake/Dataset004_Hippocampus/nnUNetTrainer__nnUNetPlans__3d_fullres'
-    labelstr = join(nnUNet_raw, 'Dataset004_Hippocampus', 'labelsTr')
+    trained_model_folder = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres_nextou'
+    labelstr = '/mnt/hdd1/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/labelsTs'
     plans_manager = PlansManager(join(trained_model_folder, 'plans.json'))
     dataset_json = load_json(join(trained_model_folder, 'dataset.json'))
-    folds = (0, 1, 2, 3, 4)
+    folds = (0,1,2,3,4)
     label_manager = plans_manager.get_label_manager(dataset_json)
 
-    merged_output_folder = join(trained_model_folder, f'crossval_results_folds_{folds_tuple_to_string(folds)}')
-    accumulate_cv_results(trained_model_folder, merged_output_folder, folds, 8, False)
+    # merged_output_folder = join(trained_model_folder, f'crossval_results_folds_{folds_tuple_to_string(folds)}')
+    # accumulate_cv_results(trained_model_folder, merged_output_folder, folds, 8, False)
 
-    fns, kwargs = determine_postprocessing(merged_output_folder, labelstr, plans_manager.plans,
+    fns, kwargs = determine_postprocessing(trained_model_folder, labelstr, plans_manager.plans,
                                            dataset_json, 8, keep_postprocessed_files=True)
     save_pickle((fns, kwargs), join(trained_model_folder, 'postprocessing.pkl'))
     fns, kwargs = load_pickle(join(trained_model_folder, 'postprocessing.pkl'))
 
-    apply_postprocessing_to_folder(merged_output_folder, merged_output_folder + '_pp', fns, kwargs,
+    apply_postprocessing_to_folder(trained_model_folder, trained_model_folder + '_pp', fns, kwargs,
                                    plans_manager.plans, dataset_json,
                                    8)
     compute_metrics_on_folder(labelstr,
-                              merged_output_folder + '_pp',
-                              join(merged_output_folder + '_pp', 'summary.json'),
+                              trained_model_folder + '_pp',
+                              join(trained_model_folder + '_pp', 'summary.json'),
                               plans_manager.image_reader_writer_class(),
                               dataset_json['file_ending'],
                               label_manager.foreground_regions if label_manager.has_regions else label_manager.foreground_labels,
