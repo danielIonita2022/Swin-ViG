@@ -134,8 +134,8 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 0.001  # modificat de la 1e-2
-        self.weight_decay = 5e-4  # modificat de la 3e-5
+        self.initial_lr = 0.0001  # modificat de la 1e-2
+        self.weight_decay = 1e-3  # modificat de la 3e-5
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 20  # modificat de la 250
         self.num_val_iterations_per_epoch = 5
@@ -447,11 +447,11 @@ class nnUNetTrainer(object):
 
     def configure_optimizers(self):
         # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-        #                           momentum=0.99, nesterov=True)
+        #                              momentum=0.99, nesterov=True)
         optimizer = torch.optim.AdamW(self.network.parameters(),
                                       lr=self.initial_lr,
                                       weight_decay=self.weight_decay,
-                                      amsgrad=True)
+                                      amsgrad=False)
         mlflow.log_param("optimizer", "AdamW")
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
         return optimizer, lr_scheduler
@@ -1014,7 +1014,8 @@ class nnUNetTrainer(object):
             self.save_checkpoint(join(self.output_folder, 'checkpoint_latest.pth'))
 
         # handle 'best' checkpointing. ema_fg_dice is computed by the logger and can be accessed like this
-        mlflow.log_metric('EMA pseudo Dice', self.logger.my_fantastic_logging['ema_fg_dice'][-1], step=self.current_epoch)
+        mlflow.log_metric('EMA pseudo Dice', self.logger.my_fantastic_logging['ema_fg_dice'][-1],
+                          step=self.current_epoch)
         if self._best_ema is None or self.logger.my_fantastic_logging['ema_fg_dice'][-1] > self._best_ema:
             self._best_ema = self.logger.my_fantastic_logging['ema_fg_dice'][-1]
             self.print_to_log_file(f"Yayy! New best EMA pseudo Dice: {np.round(self._best_ema, decimals=4)}")

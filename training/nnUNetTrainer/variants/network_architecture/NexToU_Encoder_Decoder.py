@@ -9,7 +9,7 @@ from dynamic_network_architectures.building_blocks.helper import get_matching_co
     get_matching_pool_op
 
 from nnunetv2.training.nnUNetTrainer.variants.network_architecture.torch_nn import BasicConv, batched_index_select, \
-    act_layer
+    act_layer, Conv3d_WS
 from nnunetv2.training.nnUNetTrainer.variants.network_architecture.torch_edge import DenseDilatedKnnGraph
 from nnunetv2.training.nnUNetTrainer.variants.network_architecture.pos_embed import get_2d_relative_pos_embed, \
     get_3d_relative_pos_embed
@@ -91,7 +91,7 @@ class NexToU_Encoder(nn.Module):
                 img_shape_list.append((h, w))
                 n_size_list.append(h * w)
 
-        elif conv_op == nn.Conv3d:
+        elif conv_op == nn.Conv3d or conv_op == Conv3d_WS:
             h, w, d = patch_size[0], patch_size[1], patch_size[2]
             img_shape_list.append((h, w, d))
             n_size_list.append(h * w * d)
@@ -238,7 +238,7 @@ class NexToU_Decoder(nn.Module):
                 img_shape_list.append((h, w))
                 n_size_list.append(h * w)
 
-        elif encoder.conv_op == nn.Conv3d:
+        elif encoder.conv_op == nn.Conv3d or encoder.conv_op == Conv3d_WS:
             h, w, d = patch_size[0], patch_size[1], patch_size[2]
             img_shape_list.append((h, w, d))
             n_size_list.append(h * w * d)
@@ -300,7 +300,10 @@ class NexToU_Decoder(nn.Module):
             # we always build the deep supervision outputs so that we can always load parameters. If we don't do this
             # then a model trained with deep_supervision=True could not easily be loaded at inference time where
             # deep supervision is not needed. It's just a convenience thing
-            seg_layers.append(encoder.conv_op(input_features_skip, num_classes, 1, 1, 0, bias=True))
+            if encoder.conv_op == Conv3d_WS:
+                seg_layers.append(nn.Conv3d(input_features_skip, num_classes, 1, 1, 0, bias=True))
+            else:
+                seg_layers.append(encoder.conv_op(input_features_skip, num_classes, 1, 1, 0, bias=True))
 
         self.stages = nn.ModuleList(stages)
         self.transpconvs = nn.ModuleList(transpconvs)
@@ -366,7 +369,7 @@ class NexToU_Decoder(nn.Module):
 
 class FFN(nn.Module):
     def __init__(self, in_features, hidden_features=None, out_features=None, act='relu', drop_path=0.0,
-                 conv_op=nn.Conv3d, norm_op=nn.GroupNorm, norm_op_kwargs=None):
+                 conv_op=Conv3d_WS, norm_op=nn.GroupNorm, norm_op_kwargs=None):
         super().__init__()
         out_features = out_features or in_features
         hidden_features = hidden_features or in_features
@@ -395,7 +398,7 @@ class MRConv(nn.Module):
     Max-Relative Graph Convolution (Paper: https://arxiv.org/abs/1904.03751) for dense data type
     """
 
-    def __init__(self, in_channels, out_channels, act='relu', norm='group', bias=True, conv_op=nn.Conv3d,
+    def __init__(self, in_channels, out_channels, act='relu', norm='group', bias=True, conv_op=Conv3d_WS,
                  dropout_op=nn.Dropout3d):
         super(MRConv, self).__init__()
         self.conv_op = conv_op
@@ -414,7 +417,7 @@ class MRConv(nn.Module):
 
         if self.conv_op == nn.Conv2d:
             pass
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             x = torch.unsqueeze(x, dim=4)
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -427,7 +430,7 @@ class GraphConv(nn.Module):
     Static graph convolution layer
     """
 
-    def __init__(self, in_channels, out_channels, conv='edge', act='relu', norm='group', bias=True, conv_op=nn.Conv3d,
+    def __init__(self, in_channels, out_channels, conv='edge', act='relu', norm='group', bias=True, conv_op=Conv3d_WS,
                  dropout_op=nn.Dropout3d):
         super(GraphConv, self).__init__()
         if conv == 'mr':
@@ -445,7 +448,7 @@ class DyGraphConv(GraphConv):
     """
 
     def __init__(self, in_channels, out_channels, kernel_size=9, dilation=1, conv='edge', act='relu',
-                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
+                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=Conv3d_WS, dropout_op=nn.Dropout3d):
         super(DyGraphConv, self).__init__(in_channels, out_channels, conv, act, norm, bias, conv_op, dropout_op)
         self.k = kernel_size
         self.d = dilation
@@ -455,7 +458,7 @@ class DyGraphConv(GraphConv):
         self.dropout_op = dropout_op
         if self.conv_op == nn.Conv2d:
             self.avg_pool = F.avg_pool2d
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             self.avg_pool = F.avg_pool3d
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -463,7 +466,7 @@ class DyGraphConv(GraphConv):
     def forward(self, x, relative_pos=None):
         if self.conv_op == nn.Conv2d:
             B, C, H, W = x.shape
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B, C, H, W, D = x.shape
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -477,7 +480,7 @@ class DyGraphConv(GraphConv):
         x = super(DyGraphConv, self).forward(x, edge_index, y)
         if self.conv_op == nn.Conv2d:
             return x.reshape(B, -1, H, W).contiguous()
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             return x.reshape(B, -1, H, W, D).contiguous()
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -489,7 +492,7 @@ class PoolDyGraphConv(GraphConv):
     """
 
     def __init__(self, in_channels, out_channels, kernel_size=9, dilation=1, conv='edge', act='relu',
-                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d,
+                 norm='group', bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=Conv3d_WS, dropout_op=nn.Dropout3d,
                  img_shape=None, img_min_shape=None):
         super(PoolDyGraphConv, self).__init__(in_channels, out_channels, conv, act, norm, bias, conv_op, dropout_op)
         self.k = kernel_size
@@ -518,7 +521,7 @@ class PoolDyGraphConv(GraphConv):
             self.avg_pool = F.avg_pool2d
             self.max_pool_input = nn.MaxPool2d(pool_size, stride=pool_size, return_indices=True)
             self.max_unpool_output = nn.MaxUnpool2d(pool_size, stride=pool_size)
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             self.avg_pool = F.avg_pool3d
             self.max_pool_input = nn.MaxPool3d(pool_size, stride=pool_size, return_indices=True)
             self.max_unpool_output = nn.MaxUnpool3d(pool_size, stride=pool_size)
@@ -528,7 +531,7 @@ class PoolDyGraphConv(GraphConv):
     def forward(self, x, relative_pos=None):
         if self.conv_op == nn.Conv2d:
             B, C, H, W = x.shape
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B, C, S, H, W = x.shape
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -551,7 +554,7 @@ class PoolDyGraphConv(GraphConv):
             H_pool, W_pool = H // self.pool_size[0], W // self.pool_size[1]
             x = x.reshape(B, -1, H_pool, W_pool).contiguous()
             indices_cat = indices_cat.reshape(B, -1, H_pool, W_pool).contiguous()
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             S_pool, H_pool, W_pool = S // self.pool_size[0], H // self.pool_size[1], W // self.pool_size[2]
             x = x.reshape(B, -1, S_pool, H_pool, W_pool).contiguous()
             indices_cat = indices_cat.reshape(B, -1, S_pool, H_pool, W_pool).contiguous()
@@ -570,7 +573,7 @@ class Grapher(nn.Module):
 
     def __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm='group',
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
-                 conv_op=nn.Conv3d, norm_op=nn.GroupNorm, dropout_op=nn.Dropout3d):
+                 conv_op=Conv3d_WS, norm_op=nn.GroupNorm, dropout_op=nn.Dropout3d):
         super(Grapher, self).__init__()
         self.channels = in_channels
         self.n = n
@@ -597,7 +600,7 @@ class Grapher(nn.Module):
                     0).unsqueeze(1)
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r)), mode='bicubic', align_corners=False)
-            elif self.conv_op == nn.Conv3d:
+            elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_3d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
                                                                                                         1 / 3))))).unsqueeze(
@@ -618,7 +621,7 @@ class Grapher(nn.Module):
                 N_reduced = N // (self.r * self.r)
                 return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
 
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             H, W, D = size_tuple
             if relative_pos is None or H * W * D == self.n:
                 return relative_pos
@@ -636,7 +639,7 @@ class Grapher(nn.Module):
             B, C, H, W = x.shape
             size_tuple = (H, W)
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B, C, H, W, D = x.shape
             size_tuple = (H, W, D)
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
@@ -719,7 +722,7 @@ class SwinGrapher(nn.Module):
 
     def __init__(self, in_channels, img_shape, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
-                 conv_op=nn.Conv3d, norm_op=nn.GroupNorm, norm_op_kwargs=None, dropout_op=nn.Dropout3d,
+                 conv_op=Conv3d_WS, norm_op=nn.GroupNorm, norm_op_kwargs=None, dropout_op=nn.Dropout3d,
                  window_size=[3, 6, 6], shift_size=[0, 0, 0]):
         super(SwinGrapher, self).__init__()
         self.channels = in_channels
@@ -757,7 +760,7 @@ class SwinGrapher(nn.Module):
                     0).unsqueeze(1)  ####
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r)), mode='bicubic', align_corners=False)
-            elif self.conv_op == nn.Conv3d:
+            elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_3d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
                                                                                                         1 / 3))))).unsqueeze(
@@ -778,7 +781,7 @@ class SwinGrapher(nn.Module):
                 N_reduced = N // (self.r * self.r)
                 return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
 
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             S, H, W = window_size_tuple
             if relative_pos is None or S * H * W == self.n:
                 return relative_pos
@@ -796,7 +799,7 @@ class SwinGrapher(nn.Module):
             size_tuple = (H, W)
             h, w = self.img_shape
             assert H == h and W == w, "input feature has wrong size"
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B, C, S, H, W = x.shape
             size_tuple = (S, H, W)
             s, h, w = self.img_shape
@@ -806,7 +809,7 @@ class SwinGrapher(nn.Module):
 
         if max(self.shift_size) > 0 and self.conv_op == nn.Conv2d:
             shifted_x = torch.roll(x, shifts=(-self.shift_size[0], -self.shift_size[1]), dims=(2, 3))
-        elif max(self.shift_size) > 0 and self.conv_op == nn.Conv3d:
+        elif max(self.shift_size) > 0 and (self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS):
             shifted_x = torch.roll(x, shifts=(-self.shift_size[0], -self.shift_size[1], -self.shift_size[2]),
                                    dims=(2, 3, 4))
         else:
@@ -821,7 +824,7 @@ class SwinGrapher(nn.Module):
             B_, C, H, W = x.shape
             window_size_tuple = (H, W)
             relative_pos = self._get_relative_pos(self.relative_pos, window_size_tuple)
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B_, C, S, H, W = x.shape
             window_size_tuple = (S, H, W)
             relative_pos = self._get_relative_pos(self.relative_pos, window_size_tuple)
@@ -836,7 +839,7 @@ class SwinGrapher(nn.Module):
         # reverse cyclic shift
         if max(self.shift_size) > 0 and self.conv_op == nn.Conv2d:
             x = torch.roll(shifted_x, shifts=(self.shift_size[0], self.shift_size[1]), dims=(2, 3))
-        elif max(self.shift_size) > 0 and self.conv_op == nn.Conv3d:
+        elif max(self.shift_size) > 0 and (self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS):
             x = torch.roll(shifted_x, shifts=(self.shift_size[0], self.shift_size[1], self.shift_size[2]),
                            dims=(2, 3, 4))
         else:
@@ -853,7 +856,7 @@ class PoolGrapher(nn.Module):
 
     def __init__(self, in_channels, img_shape, kernel_size=9, dilation=1, conv='edge', act='relu', norm='group',
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
-                 conv_op=nn.Conv3d, norm_op=nn.GroupNorm, norm_op_kwargs=None, dropout_op=nn.Dropout3d,
+                 conv_op=Conv3d_WS, norm_op=nn.GroupNorm, norm_op_kwargs=None, dropout_op=nn.Dropout3d,
                  img_min_shape=None):
         super(PoolGrapher, self).__init__()
         self.channels = in_channels
@@ -905,7 +908,7 @@ class PoolGrapher(nn.Module):
                     0).unsqueeze(1)
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r)), mode='bicubic', align_corners=False)
-            elif self.conv_op == nn.Conv3d:
+            elif self.conv_op == Conv3d_WS:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_3d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
                                                                                                         1 / 3))))).unsqueeze(
@@ -926,7 +929,7 @@ class PoolGrapher(nn.Module):
                 N_reduced = N // (self.r * self.r)
                 return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
 
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == Conv3d_WS:
             S, H, W = size_tuple
             if relative_pos is None or S * H * W == self.n:
                 return relative_pos
@@ -943,7 +946,7 @@ class PoolGrapher(nn.Module):
             B, C, H, W = x.shape
             size_tuple = (H, W)
             h, w = self.img_shape
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B, C, S, H, W = x.shape
             size_tuple = (S, H, W)
             s, h, w = self.img_shape
@@ -955,7 +958,7 @@ class PoolGrapher(nn.Module):
             B_, C, H, W = x.shape
             size_tuple = (H // self.pool_size[0], W // self.pool_size[1])
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
-        elif self.conv_op == nn.Conv3d:
+        elif self.conv_op == nn.Conv3d or self.conv_op == Conv3d_WS:
             B_, C, S, H, W = x.shape
             size_tuple = (S // self.pool_size[0], H // self.pool_size[1], W // self.pool_size[2])
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
@@ -970,7 +973,7 @@ class PoolGrapher(nn.Module):
 
 
 class Efficient_ViG_blocks(nn.Module):
-    def __init__(self, channels, img_shape, index, conv_layer_d_num, opt=None, conv_op=nn.Conv3d,
+    def __init__(self, channels, img_shape, index, conv_layer_d_num, opt=None, conv_op=Conv3d_WS,
                  norm_op=nn.GroupNorm, norm_op_kwargs=None,
                  dropout_op=nn.Dropout3d, **kwargs):
         super(Efficient_ViG_blocks, self).__init__()
@@ -1000,7 +1003,7 @@ class Efficient_ViG_blocks(nn.Module):
             max_dilation = (H_min * W_min) // max(k)
             window_size = img_min_shape
             window_size_n = window_size[0] * window_size[1]
-        elif conv_op == nn.Conv3d:
+        elif conv_op == nn.Conv3d or conv_op == Conv3d_WS:
             H_min, W_min, D_min = img_min_shape
             max_dilation = (H_min * W_min * D_min) // max(k)
             window_size = img_min_shape
@@ -1013,7 +1016,7 @@ class Efficient_ViG_blocks(nn.Module):
             idx = idx_list[j]
             if conv_op == nn.Conv2d:
                 shift_size = [window_size[0] // 2, window_size[1] // 2]
-            elif conv_op == nn.Conv3d:
+            elif conv_op == nn.Conv3d or conv_op == Conv3d_WS:
                 shift_size = [window_size[0] // 2, window_size[1] // 2, window_size[2] // 2]
             else:
                 raise NotImplementedError('conv operation [%s] is not found' % conv_op)

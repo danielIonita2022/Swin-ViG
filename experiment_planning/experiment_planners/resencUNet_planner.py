@@ -5,6 +5,8 @@ from torch import nn
 from nnunetv2.experiment_planning.experiment_planners.default_experiment_planner import ExperimentPlanner
 from dynamic_network_architectures.architectures.unet import ResidualEncoderUNet
 
+from nnunetv2.training.nnUNetTrainer.variants.network_architecture.torch_nn import Conv3d_WS
+
 
 class ResEncUNetPlanner(ExperimentPlanner):
     def __init__(self, dataset_name_or_id: Union[str, int],
@@ -36,7 +38,7 @@ class ResEncUNetPlanner(ExperimentPlanner):
 if __name__ == '__main__':
     # we know both of these networks run with batch size 2 and 12 on ~8-10GB, respectively
     net = ResidualEncoderUNet(input_channels=1, n_stages=6, features_per_stage=(32, 64, 128, 256, 320, 320),
-                              conv_op=nn.Conv3d, kernel_sizes=3, strides=(1, 2, 2, 2, 2, 2),
+                              conv_op=Conv3d_WS, kernel_sizes=3, strides=(1, 2, 2, 2, 2, 2),
                               n_blocks_per_stage=(1, 3, 4, 6, 6, 6), num_classes=3,
                               n_conv_per_stage_decoder=(1, 1, 1, 1, 1),
                               conv_bias=True, norm_op=nn.InstanceNorm3d, norm_op_kwargs={}, dropout_op=None,

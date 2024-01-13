@@ -10,6 +10,7 @@ from nnunetv2.training.nnUNetTrainer.variants.network_architecture.NexToU import
 from dynamic_network_architectures.building_blocks.helper import convert_dim_to_conv_op, get_matching_batchnorm
 from dynamic_network_architectures.initialization.weight_init import init_last_bn_before_add_to_0, InitWeights_He
 from nnunetv2.training.nnUNetTrainer.nnUNetTrainer import nnUNetTrainer
+from nnunetv2.training.nnUNetTrainer.variants.network_architecture.torch_nn import Conv3d_WS
 from nnunetv2.utilities.plans_handling.plans_handler import ConfigurationManager, PlansManager
 from nnunetv2.utilities.get_network_from_plans import get_network_from_plans
 from nnunetv2.utilities.label_handling.label_handling import convert_labelmap_to_one_hot, determine_num_input_channels
@@ -26,6 +27,10 @@ class nnUNetTrainer_NexToU(nnUNetTrainer):
 
         dim = len(configuration_manager.conv_kernel_sizes[0])
         conv_op = convert_dim_to_conv_op(dim)
+
+        #TEMPORAR
+        if conv_op == nn.Conv3d:
+            conv_op = Conv3d_WS
 
         label_manager = plans_manager.get_label_manager(dataset_json)
 
