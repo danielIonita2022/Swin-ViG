@@ -4,10 +4,11 @@ from nnunetv2.training.loss.robust_ce_loss import RobustCrossEntropyLoss
 from nnunetv2.training.loss.bti_loss import BTI_Loss
 from nnunetv2.utilities.helpers import softmax_helper_dim1
 from torch import nn
+from monai.losses import GeneralizedDiceLoss
 
 class DC_and_CE_and_BTI_Loss(nn.Module):
     def __init__(self, soft_dice_kwargs, ce_kwargs, ti_kwargs, weight_ce=1, weight_dice=1, weight_ti=1e-6, ignore_label=None,
-                 dice_class=SoftDiceLoss):
+                 dice_class=GeneralizedDiceLoss):
         """
         Weights for CE and Dice do not need to sum to one. You can set whatever you want.
         :param soft_dice_kwargs:
@@ -27,7 +28,7 @@ class DC_and_CE_and_BTI_Loss(nn.Module):
         self.ignore_label = ignore_label
 
         self.ce = RobustCrossEntropyLoss(**ce_kwargs)
-        self.dc = dice_class(apply_nonlin=softmax_helper_dim1, **soft_dice_kwargs)
+        self.dc = GeneralizedDiceLoss(include_background=False, to_onehot_y=True, softmax=True, batch=True)
         self.ti = BTI_Loss(**ti_kwargs)
 
     def forward(self, net_output: torch.Tensor, target: torch.Tensor):
@@ -50,7 +51,7 @@ class DC_and_CE_and_BTI_Loss(nn.Module):
             target_dice = target
             mask = None
 
-        dc_loss = self.dc(net_output, target_dice, loss_mask=mask) \
+        dc_loss = self.dc(net_output, target_dice) \
             if self.weight_dice != 0 else 0
         ce_loss = self.ce(net_output, target[:, 0].long()) \
             if self.weight_ce != 0 and (self.ignore_label is None or num_fg > 0) else 0

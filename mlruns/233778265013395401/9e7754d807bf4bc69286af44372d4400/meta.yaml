@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/9e7754d807bf4bc69286af44372d4400/artifacts
+deleted_time: 1706825115099
+end_time: 1706811200737
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 9e7754d807bf4bc69286af44372d4400
+run_name: exultant-perch-371
+run_uuid: 9e7754d807bf4bc69286af44372d4400
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706811200732
+status: 4
+tags: []
+user_id: danielionita

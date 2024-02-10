@@ -5,7 +5,7 @@ import nnunetv2.utilities.my_utils as my_utils
 
 if __name__ == "__main__":
 
-    dataset_id = [137]
+    dataset_id = [200]
     print('Started plan and preprocess')
     plan_and_preprocess.extract_fingerprints(dataset_id)
     print('Finished plan and preprocess')

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/e2a6afece44c479a932d2ecec5f70faa/artifacts
+deleted_time: 1706825115101
+end_time: 1706823734830
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: e2a6afece44c479a932d2ecec5f70faa
+run_name: suave-hawk-438
+run_uuid: e2a6afece44c479a932d2ecec5f70faa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706823734826
+status: 4
+tags: []
+user_id: danielionita

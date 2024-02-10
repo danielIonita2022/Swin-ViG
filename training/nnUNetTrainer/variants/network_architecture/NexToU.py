@@ -52,6 +52,9 @@ class NexToU(nn.Module):
         self.decoder = NexToU_Decoder(self.encoder, patch_size, strides, num_classes, n_conv_per_stage_decoder, deep_supervision,
                                    nonlin_first=nonlin_first)
 
+        print("ENCODER", self.encoder)
+        print("DECODER", self.decoder)
+
     def forward(self, x):
         skips = self.encoder(x)
         return self.decoder(skips)

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/ebeceecdf0634a6faede59e9d069609c/artifacts
+end_time: 1707563616688
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: ebeceecdf0634a6faede59e9d069609c
+run_name: bustling-smelt-796
+run_uuid: ebeceecdf0634a6faede59e9d069609c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707554306836
+status: 3
+tags: []
+user_id: danielionita

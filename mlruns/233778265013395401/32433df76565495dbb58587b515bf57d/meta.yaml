@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/32433df76565495dbb58587b515bf57d/artifacts
+end_time: 1706887871915
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 32433df76565495dbb58587b515bf57d
+run_name: flawless-hare-561
+run_uuid: 32433df76565495dbb58587b515bf57d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706887839656
+status: 4
+tags: []
+user_id: danielionita

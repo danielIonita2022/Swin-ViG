@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/323e663d5ad1427695888c17a2fff827/artifacts
+deleted_time: 1706825115094
+end_time: 1706820937669
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 323e663d5ad1427695888c17a2fff827
+run_name: nimble-cub-205
+run_uuid: 323e663d5ad1427695888c17a2fff827
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706820937613
+status: 4
+tags: []
+user_id: danielionita

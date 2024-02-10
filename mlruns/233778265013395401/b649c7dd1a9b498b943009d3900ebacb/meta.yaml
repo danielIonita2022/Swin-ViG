@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/b649c7dd1a9b498b943009d3900ebacb/artifacts
+end_time: 1705176801910
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: b649c7dd1a9b498b943009d3900ebacb
+run_name: exultant-shark-187
+run_uuid: b649c7dd1a9b498b943009d3900ebacb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1705155350691
+status: 3
+tags: []
+user_id: danielionita

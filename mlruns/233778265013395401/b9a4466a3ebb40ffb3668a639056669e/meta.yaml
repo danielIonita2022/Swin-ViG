@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/b9a4466a3ebb40ffb3668a639056669e/artifacts
+end_time: 1707036268163
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: b9a4466a3ebb40ffb3668a639056669e
+run_name: aged-frog-73
+run_uuid: b9a4466a3ebb40ffb3668a639056669e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707036259586
+status: 4
+tags: []
+user_id: danielionita

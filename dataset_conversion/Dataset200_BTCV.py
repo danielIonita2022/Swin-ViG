@@ -73,5 +73,5 @@ if __name__ == '__main__':
     #                        "You need to specify the folder with the imagesTr, imagesVal, labelsTr etc subfolders here!")
     # parser.add_argument('-d', required=False, type=int, default=218, help='nnU-Net Dataset ID, default: 218')
     # args = parser.parse_args()
-    base_dir = "/mnt/hdd1/home/danielionita/data/Abdomen/RawData"
+    base_dir = "/mnt/hdd2/home/danielionita/data/Abdomen/RawData"
     convert_btcv(base_dir, 200)

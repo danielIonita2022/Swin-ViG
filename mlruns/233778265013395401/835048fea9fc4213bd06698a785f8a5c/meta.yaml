@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/835048fea9fc4213bd06698a785f8a5c/artifacts
+deleted_time: 1706825115101
+end_time: 1706811079875
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 835048fea9fc4213bd06698a785f8a5c
+run_name: thundering-sow-676
+run_uuid: 835048fea9fc4213bd06698a785f8a5c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706811079867
+status: 4
+tags: []
+user_id: danielionita

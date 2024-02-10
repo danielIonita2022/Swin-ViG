@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/233778265013395401
+creation_time: 1705155347892
+experiment_id: '233778265013395401'
+last_update_time: 1705155347892
+lifecycle_stage: active
+name: BTCV_BatchNorm

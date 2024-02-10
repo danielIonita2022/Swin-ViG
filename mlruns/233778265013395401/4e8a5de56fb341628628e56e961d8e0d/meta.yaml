@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/4e8a5de56fb341628628e56e961d8e0d/artifacts
+deleted_time: 1706825115125
+end_time: 1706823914684
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 4e8a5de56fb341628628e56e961d8e0d
+run_name: dashing-eel-594
+run_uuid: 4e8a5de56fb341628628e56e961d8e0d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706823747697
+status: 4
+tags: []
+user_id: danielionita

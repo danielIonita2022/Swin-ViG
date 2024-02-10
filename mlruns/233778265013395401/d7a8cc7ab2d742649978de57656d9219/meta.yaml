@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/d7a8cc7ab2d742649978de57656d9219/artifacts
+end_time: 1706881672911
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: d7a8cc7ab2d742649978de57656d9219
+run_name: mysterious-gull-560
+run_uuid: d7a8cc7ab2d742649978de57656d9219
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706871232935
+status: 4
+tags: []
+user_id: danielionita

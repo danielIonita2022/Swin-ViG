@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/f8e95c5f20af4149a2246916f96b556d/artifacts
+end_time: 1706961538248
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: f8e95c5f20af4149a2246916f96b556d
+run_name: abundant-ant-158
+run_uuid: f8e95c5f20af4149a2246916f96b556d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706952904223
+status: 3
+tags: []
+user_id: danielionita

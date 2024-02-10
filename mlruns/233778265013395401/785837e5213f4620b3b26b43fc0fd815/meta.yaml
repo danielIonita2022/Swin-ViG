@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/785837e5213f4620b3b26b43fc0fd815/artifacts
+deleted_time: 1706825115125
+end_time: 1706823942609
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 785837e5213f4620b3b26b43fc0fd815
+run_name: bedecked-boar-964
+run_uuid: 785837e5213f4620b3b26b43fc0fd815
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706823930278
+status: 4
+tags: []
+user_id: danielionita

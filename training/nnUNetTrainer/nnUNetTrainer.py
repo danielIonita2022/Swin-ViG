@@ -53,12 +53,14 @@ from nnunetv2.utilities.helpers import empty_cache, dummy_context
 from nnunetv2.utilities.label_handling.label_handling import convert_labelmap_to_one_hot, determine_num_input_channels
 from nnunetv2.utilities.plans_handling.plans_handler import PlansManager, ConfigurationManager
 from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
 from torch import autocast, nn
 from torch import distributed as dist
 from torch.cuda import device_count
 from torch.cuda.amp import GradScaler
 from torch.nn.parallel import DistributedDataParallel as DDP
 import mlflow
+from ranger21 import Ranger21
 
 
 class nnUNetTrainer(object):
@@ -134,12 +136,12 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 1e-3  # modificat de la 1e-2
-        self.weight_decay = 3e-5
+        self.initial_lr = 3e-3
+        self.weight_decay = 1e-4
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 21  # modificat de la 250
-        self.num_val_iterations_per_epoch = 5
-        self.num_epochs = 300
+        self.num_iterations_per_epoch = 18 # modificat de la 250
+        self.num_val_iterations_per_epoch = 12
+        self.num_epochs = 1000
         self.current_epoch = 0
 
         ### Dealing with labels/regions
@@ -446,8 +448,14 @@ class nnUNetTrainer(object):
             self.print_to_log_file('These are the global plan.json settings:\n', dct, '\n', add_timestamp=False)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-                                    momentum=0.99, nesterov=True)
+        # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
+        #                             momentum=0.99, nesterov=True)
+        # optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+        #                               weight_decay=self.weight_decay,
+        #                               amsgrad=True)
+        optimizer = Ranger21(self.network.parameters(), self.initial_lr,
+                             num_batches_per_epoch=2, num_epochs=1000,
+                             weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
         return optimizer, lr_scheduler
 
@@ -511,13 +519,17 @@ class nnUNetTrainer(object):
                 self.print_to_log_file("Creating new 5-fold cross-validation split...")
                 splits = []
                 all_keys_sorted = np.sort(list(dataset.keys()))
-                kfold = KFold(n_splits=5, shuffle=True, random_state=12345)
-                for i, (train_idx, test_idx) in enumerate(kfold.split(all_keys_sorted)):
-                    train_keys = np.array(all_keys_sorted)[train_idx]
-                    test_keys = np.array(all_keys_sorted)[test_idx]
-                    splits.append({})
-                    splits[-1]['train'] = list(train_keys)
-                    splits[-1]['val'] = list(test_keys)
+                np.random.seed(12345)
+                #kfold = KFold(n_splits=5, shuffle=True, random_state=12345)
+                # for i, (train_idx, test_idx) in enumerate(kfold.split(all_keys_sorted)):
+                #     train_keys = np.array(all_keys_sorted)[train_idx]
+                #     test_keys = np.array(all_keys_sorted)[test_idx]
+                #     splits.append({})
+                #     splits[-1]['train'] = list(train_keys)
+                #     splits[-1]['val'] = list(test_keys)
+                for _ in range(5):
+                    train_keys, test_keys = train_test_split(all_keys_sorted, test_size=12, train_size=18)
+                    splits.append({'train': list(train_keys), 'val': list(test_keys)})
                 save_json(splits, splits_file)
 
             else:
