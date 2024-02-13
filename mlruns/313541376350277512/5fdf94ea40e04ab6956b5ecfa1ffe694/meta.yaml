@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/5fdf94ea40e04ab6956b5ecfa1ffe694/artifacts
+end_time: 1707696919716
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 5fdf94ea40e04ab6956b5ecfa1ffe694
+run_name: valuable-asp-125
+run_uuid: 5fdf94ea40e04ab6956b5ecfa1ffe694
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707683975697
+status: 3
+tags: []
+user_id: danielionita

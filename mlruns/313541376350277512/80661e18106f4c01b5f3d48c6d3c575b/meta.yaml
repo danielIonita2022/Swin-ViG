@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/80661e18106f4c01b5f3d48c6d3c575b/artifacts
+end_time: 1707736019741
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 80661e18106f4c01b5f3d48c6d3c575b
+run_name: adorable-zebra-210
+run_uuid: 80661e18106f4c01b5f3d48c6d3c575b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707736017210
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/e460df24592c40a9a2eab48ac56a335f/artifacts
+end_time: 1707592166011
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: e460df24592c40a9a2eab48ac56a335f
+run_name: judicious-seal-153
+run_uuid: e460df24592c40a9a2eab48ac56a335f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707583016379
+status: 3
+tags: []
+user_id: danielionita

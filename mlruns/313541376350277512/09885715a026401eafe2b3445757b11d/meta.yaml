@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/09885715a026401eafe2b3445757b11d/artifacts
+end_time: 1707582965193
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 09885715a026401eafe2b3445757b11d
+run_name: stylish-bass-627
+run_uuid: 09885715a026401eafe2b3445757b11d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707582952379
+status: 4
+tags: []
+user_id: danielionita

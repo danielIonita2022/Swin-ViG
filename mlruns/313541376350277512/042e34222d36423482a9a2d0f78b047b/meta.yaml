@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/042e34222d36423482a9a2d0f78b047b/artifacts
+end_time: 1707580183307
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 042e34222d36423482a9a2d0f78b047b
+run_name: funny-deer-160
+run_uuid: 042e34222d36423482a9a2d0f78b047b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707579838756
+status: 4
+tags: []
+user_id: danielionita

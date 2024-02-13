@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/15a7f62a6c4b4b2fa3431eea71e10780/artifacts
+end_time: 1707579637748
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 15a7f62a6c4b4b2fa3431eea71e10780
+run_name: enchanting-flea-276
+run_uuid: 15a7f62a6c4b4b2fa3431eea71e10780
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707579630005
+status: 4
+tags: []
+user_id: danielionita

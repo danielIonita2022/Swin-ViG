@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/b817b9224fdc4f2cbc065be6631e167a/artifacts
+end_time: 1707660536290
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: b817b9224fdc4f2cbc065be6631e167a
+run_name: industrious-loon-181
+run_uuid: b817b9224fdc4f2cbc065be6631e167a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707647480964
+status: 3
+tags: []
+user_id: danielionita

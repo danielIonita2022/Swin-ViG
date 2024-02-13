@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/26b352b7304447058a0414af0f6b68ac/artifacts
+end_time: 1707576766347
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 26b352b7304447058a0414af0f6b68ac
+run_name: gregarious-smelt-683
+run_uuid: 26b352b7304447058a0414af0f6b68ac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707576745560
+status: 4
+tags: []
+user_id: danielionita
