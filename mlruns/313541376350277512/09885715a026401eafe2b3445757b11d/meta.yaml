@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/09885715a026401eafe2b3445757b11d/artifacts
+deleted_time: 1707906355104
 end_time: 1707582965193
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 09885715a026401eafe2b3445757b11d
 run_name: stylish-bass-627
 run_uuid: 09885715a026401eafe2b3445757b11d

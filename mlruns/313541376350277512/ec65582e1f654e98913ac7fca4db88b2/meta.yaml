@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/ec65582e1f654e98913ac7fca4db88b2/artifacts
+end_time: 1708459750778
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: ec65582e1f654e98913ac7fca4db88b2
+run_name: useful-mink-623
+run_uuid: ec65582e1f654e98913ac7fca4db88b2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708459653741
+status: 4
+tags: []
+user_id: danielionita

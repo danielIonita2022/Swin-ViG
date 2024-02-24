@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/246c8d47c9a0462eb9c7ea1754f5065c/artifacts
+end_time: 1708430073235
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 246c8d47c9a0462eb9c7ea1754f5065c
+run_name: zealous-steed-772
+run_uuid: 246c8d47c9a0462eb9c7ea1754f5065c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708430028408
+status: 4
+tags: []
+user_id: danielionita

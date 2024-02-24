@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/109804203604034113/84f8dd07759d46c1a88b3a00de704ece/artifacts
+end_time: 1708013619102
+entry_point_name: ''
+experiment_id: '109804203604034113'
+lifecycle_stage: active
+run_id: 84f8dd07759d46c1a88b3a00de704ece
+run_name: stylish-goat-718
+run_uuid: 84f8dd07759d46c1a88b3a00de704ece
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708013609076
+status: 4
+tags: []
+user_id: danielionita

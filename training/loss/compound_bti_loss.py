@@ -8,7 +8,7 @@ from nnunetv2.training.loss.tvmf_dice_loss import Adaptive_tvMF_DiceLoss
 
 class DC_and_CE_and_BTI_Loss(nn.Module):
     def __init__(self, soft_dice_kwargs, ce_kwargs, ti_kwargs, weight_ce=1, weight_dice=1, weight_ti=1e-6, ignore_label=None,
-                 dice_class=Adaptive_tvMF_DiceLoss):
+                 dice_class=SoftDiceLoss):
         """
         Weights for CE and Dice do not need to sum to one. You can set whatever you want.
         :param soft_dice_kwargs:
@@ -28,11 +28,10 @@ class DC_and_CE_and_BTI_Loss(nn.Module):
         self.ignore_label = ignore_label
 
         self.ce = RobustCrossEntropyLoss(**ce_kwargs)
-        self.dc = Adaptive_tvMF_DiceLoss(n_classes=14)
+        self.dc = dice_class(apply_nonlin=softmax_helper_dim1, **soft_dice_kwargs)
         self.ti = BTI_Loss(**ti_kwargs)
 
-    ## kappa - tvMF DICE
-    def forward(self, net_output: torch.Tensor, target: torch.Tensor, kappa: torch.Tensor):
+    def forward(self, net_output: torch.Tensor, target: torch.Tensor):
         """
         target must be b, c, x, y(, z) with c=1
         :param net_output:
@@ -53,7 +52,7 @@ class DC_and_CE_and_BTI_Loss(nn.Module):
             mask = None
 
         ## KAPPA PENTRU TVMF DICE, SCOATE-L PT ORICE ALTCEVA
-        dc_loss = self.dc(net_output, target_dice, kappa) \
+        dc_loss = self.dc(net_output, target_dice) \
             if self.weight_dice != 0 else 0
         ce_loss = self.ce(net_output, target[:, 0].long()) \
             if self.weight_ce != 0 and (self.ignore_label is None or num_fg > 0) else 0

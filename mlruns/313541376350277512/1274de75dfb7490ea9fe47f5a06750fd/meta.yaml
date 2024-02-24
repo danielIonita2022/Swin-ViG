@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/1274de75dfb7490ea9fe47f5a06750fd/artifacts
+deleted_time: 1707906355098
 end_time: 1707597038412
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 1274de75dfb7490ea9fe47f5a06750fd
 run_name: mysterious-auk-171
 run_uuid: 1274de75dfb7490ea9fe47f5a06750fd

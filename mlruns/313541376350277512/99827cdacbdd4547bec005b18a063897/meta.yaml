@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/99827cdacbdd4547bec005b18a063897/artifacts
+deleted_time: 1707906355121
 end_time: 1707579018941
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 99827cdacbdd4547bec005b18a063897
 run_name: welcoming-flea-74
 run_uuid: 99827cdacbdd4547bec005b18a063897

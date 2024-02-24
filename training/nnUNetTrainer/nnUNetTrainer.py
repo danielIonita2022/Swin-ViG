@@ -136,19 +136,19 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 3e-3
+        self.initial_lr = 1e-3
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 6 # modificat de la 250
         self.num_val_iterations_per_epoch = 4
-        self.num_epochs = 2000
+        self.num_epochs = 6000
         self.current_epoch = 0
 
         ## in loc de 14 trebuie sa fie nr. de clase, daca se schimba dataset, se schimba si el
         ## gaseste cum sa iei nr de clase direct din jsonul dataset
         #num_classes = plans_manager.get_label_manager(dataset_json).num_segmentation_heads
-        self.kappa = torch.Tensor(np.zeros(14)).cuda(torch.device('cuda'))
-        self.lamda = 32
+        # self.kappa = torch.Tensor(np.zeros(14)).cuda(torch.device('cuda'))
+        # self.lamda = 32
 
         ### Dealing with labels/regions
         self.label_manager = self.plans_manager.get_label_manager(dataset_json)
@@ -456,13 +456,14 @@ class nnUNetTrainer(object):
     def configure_optimizers(self):
         # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
         #                             momentum=0.99, nesterov=True)
-        optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
-                                      weight_decay=self.weight_decay,
-                                      amsgrad=True)
-        #optimizer = Ranger21(self.network.parameters(), self.initial_lr,
-        #                     num_batches_per_epoch=3, num_epochs=1000,
-        #                     weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
-        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=2000, eta_min=1e-6)
+        #optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+        #                              weight_decay=self.weight_decay,
+        #                              amsgrad=True)
+        optimizer = Ranger21(self.network.parameters(), self.initial_lr,
+                            num_batches_per_epoch=3, num_epochs=6000,
+                            weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
+        #lr_scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-4,
+        #                                                 max_lr=3e-3, step_size_up=500, mode='triangular2')
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
         return optimizer, lr_scheduler
 
@@ -872,7 +873,7 @@ class nnUNetTrainer(object):
         with autocast(self.device.type, enabled=True) if self.device.type == 'cuda' else dummy_context():
             output = self.network(data)
             # del data
-            l = self.loss(output, target, (self.kappa,))
+            l = self.loss(output, target)
 
         if self.grad_scaler is not None:
             self.grad_scaler.scale(l).backward()
@@ -885,7 +886,8 @@ class nnUNetTrainer(object):
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
             self.optimizer.step()
 
-        self.lr_scheduler.step(self.current_epoch)
+        ##self.lr_scheduler.step()
+
         return {'loss': l.detach().cpu().numpy()}
 
     def on_train_epoch_end(self, train_outputs: List[dict]):
@@ -923,7 +925,7 @@ class nnUNetTrainer(object):
         with autocast(self.device.type, enabled=True) if self.device.type == 'cuda' else dummy_context():
             output = self.network(data)
             del data
-            l = self.loss(output, target, (self.kappa,))
+            l = self.loss(output, target)
 
         # we only need the output with the highest output resolution
         output = output[0]
@@ -997,11 +999,13 @@ class nnUNetTrainer(object):
             loss_here = np.mean(outputs_collated['loss'])
 
         global_dc_per_class = [2 * i / (2 * i + j + k) if (2 * i + j + k) != 0 else 0 for i, j, k in zip(tp, fp, fn)]
-        self.kappa = self.adjust_kappa(global_dc_per_class)
+        #self.kappa = self.adjust_kappa(global_dc_per_class)
         mean_fg_dice = np.nanmean(global_dc_per_class)
         self.logger.log('mean_fg_dice', mean_fg_dice, self.current_epoch)
         self.logger.log('dice_per_class_or_region', global_dc_per_class, self.current_epoch)
         self.logger.log('val_losses', loss_here, self.current_epoch)
+
+        mlflow.log_metric('mean foreground dice', mean_fg_dice, step=self.current_epoch)
 
     def on_epoch_start(self):
         self.logger.log('epoch_start_timestamps', time(), self.current_epoch)

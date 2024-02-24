@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/80661e18106f4c01b5f3d48c6d3c575b/artifacts
+deleted_time: 1707906355094
 end_time: 1707736019741
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 80661e18106f4c01b5f3d48c6d3c575b
 run_name: adorable-zebra-210
 run_uuid: 80661e18106f4c01b5f3d48c6d3c575b

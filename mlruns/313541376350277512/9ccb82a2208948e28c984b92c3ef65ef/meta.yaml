@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/9ccb82a2208948e28c984b92c3ef65ef/artifacts
+deleted_time: 1707906355110
 end_time: 1707582516384
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 9ccb82a2208948e28c984b92c3ef65ef
 run_name: magnificent-pig-688
 run_uuid: 9ccb82a2208948e28c984b92c3ef65ef

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/6c7fa8a81237402bb646ffc765eea16b/artifacts
+end_time: 1708452064405
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 6c7fa8a81237402bb646ffc765eea16b
+run_name: auspicious-cow-257
+run_uuid: 6c7fa8a81237402bb646ffc765eea16b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708430283690
+status: 4
+tags: []
+user_id: danielionita

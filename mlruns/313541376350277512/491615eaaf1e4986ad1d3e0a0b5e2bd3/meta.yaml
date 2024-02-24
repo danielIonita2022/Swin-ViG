@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/491615eaaf1e4986ad1d3e0a0b5e2bd3/artifacts
+deleted_time: 1707906355106
 end_time: 1707582661518
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 491615eaaf1e4986ad1d3e0a0b5e2bd3
 run_name: loud-fly-292
 run_uuid: 491615eaaf1e4986ad1d3e0a0b5e2bd3

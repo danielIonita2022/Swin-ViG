@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/3827e4bc9f844146bca724ef74a005d8/artifacts
+deleted_time: 1707906355110
 end_time: 1707582548055
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 3827e4bc9f844146bca724ef74a005d8
 run_name: receptive-chimp-127
 run_uuid: 3827e4bc9f844146bca724ef74a005d8

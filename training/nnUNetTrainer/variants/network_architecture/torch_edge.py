@@ -55,6 +55,56 @@ def xy_pairwise_distance(x, y):
         return x_square + xy_inner + y_square.transpose(2, 1)
 
 
+def pairwise_cosine_similarity(x):
+    """
+    Compute pairwise cosine similarity of a point cloud.
+    Args:
+        x: tensor (batch_size, num_points, num_dims)
+    Returns:
+        pairwise cosine similarity: (batch_size, num_points, num_points)
+    """
+    with torch.no_grad():
+        x_norm = torch.nn.functional.normalize(x, p=2, dim=-1)
+        similarity = torch.matmul(x_norm, x_norm.transpose(2, 1))
+    return 1 - similarity
+
+
+def part_pairwise_cosine_similarity(x, start_idx=0, end_idx=1):
+    """
+    Compute pairwise cosine similarity of a point cloud for a part of it.
+    Args:
+        x: tensor (batch_size, num_points, num_dims)
+    Returns:
+        pairwise cosine similarity: (batch_size, num_points, num_points)
+    """
+    with torch.no_grad():
+        x_part_norm = torch.nn.functional.normalize(x[:, start_idx:end_idx], p=2, dim=-1)
+        x_norm = torch.nn.functional.normalize(x, p=2, dim=-1)
+        similarity = torch.matmul(x_part_norm, x_norm.transpose(2, 1))
+    return 1 - similarity
+
+def xy_cosine_similarity(x, y):
+    """
+    Compute pairwise cosine similarity of two point clouds.
+    Args:
+        x: tensor (batch_size, num_points, num_dims)
+        y: tensor (batch_size, num_points, num_dims)
+    Returns:
+        pairwise cosine similarity: (batch_size, num_points, num_points)
+    """
+
+    with torch.no_grad():
+        # Normalize x and y along the dimension representing the number of dimensions (num_dims)
+        x_norm = torch.nn.functional.normalize(x, p=2, dim=-1)
+        y_norm = torch.nn.functional.normalize(y, p=2, dim=-1)
+
+        # Compute cosine similarity
+        # Using matmul for batch-wise matrix multiplication and summing over the dimensions
+        similiarity = torch.matmul(x_norm, y_norm.transpose(2, 1))
+
+    return 1 - similiarity
+
+
 def dense_knn_matrix(x, k=16, relative_pos=None):
     """Get KNN based on the pairwise distance.
     Args:
@@ -74,14 +124,14 @@ def dense_knn_matrix(x, k=16, relative_pos=None):
             for i in range(groups):
                 start_idx = n_part * i
                 end_idx = min(n_points, n_part * (i + 1))
-                dist = part_pairwise_distance(x.detach(), start_idx, end_idx)
+                dist = part_pairwise_cosine_similarity(x.detach(), start_idx, end_idx)
                 if relative_pos is not None:
                     dist += relative_pos[:, start_idx:end_idx]
                 _, nn_idx_part = torch.topk(-dist, k=k)
                 nn_idx_list += [nn_idx_part]
             nn_idx = torch.cat(nn_idx_list, dim=1)
         else:
-            dist = pairwise_distance(x.detach())
+            dist = pairwise_cosine_similarity(x.detach())
             if relative_pos is not None:
                 dist += relative_pos
             _, nn_idx = torch.topk(-dist, k=k) # b, n, k
@@ -102,7 +152,7 @@ def xy_dense_knn_matrix(x, y, k=16, relative_pos=None):
         x = x.transpose(2, 1).squeeze(-1)
         y = y.transpose(2, 1).squeeze(-1)
         batch_size, n_points, n_dims = x.shape
-        dist = xy_pairwise_distance(x.detach(), y.detach())
+        dist = xy_cosine_similarity(x.detach(), y.detach())
         if relative_pos is not None:
             dist += relative_pos
         _, nn_idx = torch.topk(-dist, k=k)

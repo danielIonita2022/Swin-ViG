@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/069a5354356741caa2e653bd827663df/artifacts
+end_time: 1707926052350
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 069a5354356741caa2e653bd827663df
+run_name: sneaky-flea-307
+run_uuid: 069a5354356741caa2e653bd827663df
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707906929315
+status: 3
+tags: []
+user_id: danielionita

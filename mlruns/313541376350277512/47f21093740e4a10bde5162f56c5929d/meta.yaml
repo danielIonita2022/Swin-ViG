@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/47f21093740e4a10bde5162f56c5929d/artifacts
+deleted_time: 1707906355104
 end_time: 1707582912473
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 47f21093740e4a10bde5162f56c5929d
 run_name: thoughtful-rat-217
 run_uuid: 47f21093740e4a10bde5162f56c5929d

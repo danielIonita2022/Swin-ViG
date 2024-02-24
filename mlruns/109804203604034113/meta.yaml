@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/109804203604034113
+creation_time: 1708009485171
+experiment_id: '109804203604034113'
+last_update_time: 1708009485171
+lifecycle_stage: active
+name: BTCV_Ranger_nnUNet

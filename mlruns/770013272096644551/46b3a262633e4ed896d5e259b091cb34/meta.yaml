@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/770013272096644551/46b3a262633e4ed896d5e259b091cb34/artifacts
+end_time: 1707839489207
+entry_point_name: ''
+experiment_id: '770013272096644551'
+lifecycle_stage: active
+run_id: 46b3a262633e4ed896d5e259b091cb34
+run_name: burly-calf-924
+run_uuid: 46b3a262633e4ed896d5e259b091cb34
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707832807345
+status: 3
+tags: []
+user_id: danielionita

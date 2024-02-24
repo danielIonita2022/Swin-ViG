@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/109804203604034113/10002ed69e3143169e2fe41e646159af/artifacts
+end_time: 1708200422614
+entry_point_name: ''
+experiment_id: '109804203604034113'
+lifecycle_stage: active
+run_id: 10002ed69e3143169e2fe41e646159af
+run_name: treasured-hog-252
+run_uuid: 10002ed69e3143169e2fe41e646159af
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708181498612
+status: 3
+tags: []
+user_id: danielionita

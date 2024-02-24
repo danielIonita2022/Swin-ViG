@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/703c80b780484e06bd23eb7af22442b1/artifacts
+deleted_time: 1707906355095
 end_time: 1707735893471
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 703c80b780484e06bd23eb7af22442b1
 run_name: able-colt-439
 run_uuid: 703c80b780484e06bd23eb7af22442b1

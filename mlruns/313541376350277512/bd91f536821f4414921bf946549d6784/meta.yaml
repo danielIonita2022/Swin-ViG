@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/bd91f536821f4414921bf946549d6784/artifacts
+deleted_time: 1707906355113
 end_time: 1707580701518
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: bd91f536821f4414921bf946549d6784
 run_name: treasured-robin-925
 run_uuid: bd91f536821f4414921bf946549d6784

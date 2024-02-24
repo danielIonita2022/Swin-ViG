@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/04e5053b18b84d168095ea99a115d2a3/artifacts
+deleted_time: 1707906355119
 end_time: 1707579357393
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 04e5053b18b84d168095ea99a115d2a3
 run_name: wistful-donkey-970
 run_uuid: 04e5053b18b84d168095ea99a115d2a3

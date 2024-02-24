@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/77bfd7103b6f40a78103002c7de3d8a6/artifacts
+deleted_time: 1707906355119
 end_time: 1707579697458
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 77bfd7103b6f40a78103002c7de3d8a6
 run_name: mysterious-moose-693
 run_uuid: 77bfd7103b6f40a78103002c7de3d8a6

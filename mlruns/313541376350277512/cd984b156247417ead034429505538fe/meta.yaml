@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/cd984b156247417ead034429505538fe/artifacts
+deleted_time: 1707906355110
 end_time: 1707580835214
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: cd984b156247417ead034429505538fe
 run_name: masked-midge-956
 run_uuid: cd984b156247417ead034429505538fe

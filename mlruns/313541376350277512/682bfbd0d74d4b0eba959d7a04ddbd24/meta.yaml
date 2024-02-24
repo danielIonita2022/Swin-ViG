@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/313541376350277512/682bfbd0d74d4b0eba959d7a04ddbd24/artifacts
+deleted_time: 1707906355104
 end_time: 1707582942405
 entry_point_name: ''
 experiment_id: '313541376350277512'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 682bfbd0d74d4b0eba959d7a04ddbd24
 run_name: flawless-lynx-617
 run_uuid: 682bfbd0d74d4b0eba959d7a04ddbd24
