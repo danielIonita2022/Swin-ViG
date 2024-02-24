@@ -1,5 +1,5 @@
 artifact_uri: mlflow-artifacts:/354121225166798290/e5b85f3fedbb494fbf35687789d1234d/artifacts
-end_time: null
+end_time: 1708791120950
 entry_point_name: ''
 experiment_id: '354121225166798290'
 lifecycle_stage: active
@@ -10,6 +10,6 @@ source_name: ''
 source_type: 4
 source_version: ''
 start_time: 1708765621723
-status: 1
+status: 3
 tags: []
 user_id: danielionita
