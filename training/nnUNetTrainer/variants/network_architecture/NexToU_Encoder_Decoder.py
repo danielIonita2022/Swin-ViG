@@ -432,7 +432,6 @@ class Grapher(nn.Module):
         super(Grapher, self).__init__()
         self.channels = in_channels
         self.K = K
-        self.r = r
         self.conv_op = conv_op
         self.fc1 = nn.Sequential(
             conv_op(in_channels, in_channels, 1, stride=1, padding=0),
