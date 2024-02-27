@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/19d86c4774b64025ba447141a263e1d1/artifacts
+end_time: 1708997845890
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: 19d86c4774b64025ba447141a263e1d1
+run_name: bald-dove-60
+run_uuid: 19d86c4774b64025ba447141a263e1d1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708971691200
+status: 3
+tags: []
+user_id: danielionita

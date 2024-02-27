@@ -568,8 +568,8 @@ if __name__ == '__main__':
     predict_from_raw_data(
         '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs',
         '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs_predicted',
-        '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer__nnUNetPlans__3d_fullres',
-        (0,),
+        '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres',
+        (3,),
         0.5,
         use_gaussian=True,
         use_mirroring=False,
@@ -578,8 +578,8 @@ if __name__ == '__main__':
         save_probabilities=True,
         overwrite=True,
         checkpoint_name='checkpoint_best.pth',
-        num_processes_preprocessing=1,
-        num_processes_segmentation_export=1)
+        num_processes_preprocessing=4,
+        num_processes_segmentation_export=4)
 
     print('PREDICTION DONE!')
 

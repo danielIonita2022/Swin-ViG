@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/235313633331819289/83e3d419319a4a4cb16ce37d35956b3a/artifacts
+end_time: 1708881028442
+entry_point_name: ''
+experiment_id: '235313633331819289'
+lifecycle_stage: active
+run_id: 83e3d419319a4a4cb16ce37d35956b3a
+run_name: whimsical-tern-131
+run_uuid: 83e3d419319a4a4cb16ce37d35956b3a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708881023665
+status: 4
+tags: []
+user_id: danielionita

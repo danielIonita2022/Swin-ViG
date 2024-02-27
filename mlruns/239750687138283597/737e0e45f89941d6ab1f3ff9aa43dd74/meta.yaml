@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/737e0e45f89941d6ab1f3ff9aa43dd74/artifacts
+end_time: 1708899773706
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: 737e0e45f89941d6ab1f3ff9aa43dd74
+run_name: invincible-foal-925
+run_uuid: 737e0e45f89941d6ab1f3ff9aa43dd74
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708899742460
+status: 4
+tags: []
+user_id: danielionita

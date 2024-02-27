@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/235313633331819289/114183342b394e7ab14b400f4da8a446/artifacts
+end_time: 1708880939792
+entry_point_name: ''
+experiment_id: '235313633331819289'
+lifecycle_stage: active
+run_id: 114183342b394e7ab14b400f4da8a446
+run_name: mercurial-sponge-791
+run_uuid: 114183342b394e7ab14b400f4da8a446
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708880939785
+status: 4
+tags: []
+user_id: danielionita
