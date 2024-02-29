@@ -136,7 +136,7 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 1e-3
+        self.initial_lr = 1e-4
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 6 # modificat de la 250

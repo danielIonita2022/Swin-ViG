@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/493414238713751313/540a8cf537764c47879a0afceea3c380/artifacts
+end_time: 1709177478076
+entry_point_name: ''
+experiment_id: '493414238713751313'
+lifecycle_stage: active
+run_id: 540a8cf537764c47879a0afceea3c380
+run_name: gregarious-steed-231
+run_uuid: 540a8cf537764c47879a0afceea3c380
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709153292954
+status: 3
+tags: []
+user_id: danielionita

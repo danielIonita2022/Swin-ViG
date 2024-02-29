@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/191670855226444553/002af3c4110e40b2bc67253923b94c8a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '191670855226444553'
+lifecycle_stage: active
+run_id: 002af3c4110e40b2bc67253923b94c8a
+run_name: legendary-ox-58
+run_uuid: 002af3c4110e40b2bc67253923b94c8a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709203862008
+status: 1
+tags: []
+user_id: danielionita

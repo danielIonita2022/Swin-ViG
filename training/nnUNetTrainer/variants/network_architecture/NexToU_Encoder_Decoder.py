@@ -558,9 +558,10 @@ class Efficient_ViG_blocks(nn.Module):
                 Grapher(channels, conv=conv, act=act, norm=norm, bias=bias, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op, dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs),
-                Grapher(channels, conv=conv, act=act, norm=norm, bias=bias, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op, dropout_op=dropout_op),
-                FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
-                    norm_op_kwargs=norm_op_kwargs)))
+                # Grapher(channels, conv=conv, act=act, norm=norm, bias=bias, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op, dropout_op=dropout_op),
+                # FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
+                #     norm_op_kwargs=norm_op_kwargs)))
+            ))
 
         blocks = nn.Sequential(*blocks)
         self.blocks = blocks

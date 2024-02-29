@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/191670855226444553/f9dc53cbadce477c84f1d614eb9ad119/artifacts
+end_time: 1709203434958
+entry_point_name: ''
+experiment_id: '191670855226444553'
+lifecycle_stage: active
+run_id: f9dc53cbadce477c84f1d614eb9ad119
+run_name: bright-worm-935
+run_uuid: f9dc53cbadce477c84f1d614eb9ad119
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709203432073
+status: 4
+tags: []
+user_id: danielionita

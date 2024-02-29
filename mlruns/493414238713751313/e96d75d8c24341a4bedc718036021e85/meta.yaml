@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/493414238713751313/e96d75d8c24341a4bedc718036021e85/artifacts
+end_time: 1709104485606
+entry_point_name: ''
+experiment_id: '493414238713751313'
+lifecycle_stage: active
+run_id: e96d75d8c24341a4bedc718036021e85
+run_name: nervous-shark-308
+run_uuid: e96d75d8c24341a4bedc718036021e85
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709104484160
+status: 4
+tags: []
+user_id: danielionita
