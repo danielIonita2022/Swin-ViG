@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/72c655b4c8d84c97b78371e35459ef91/artifacts
+deleted_time: 1710250438977
+end_time: 1709892236109
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 72c655b4c8d84c97b78371e35459ef91
+run_name: able-sloth-716
+run_uuid: 72c655b4c8d84c97b78371e35459ef91
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709892234292
+status: 4
+tags: []
+user_id: danielionita

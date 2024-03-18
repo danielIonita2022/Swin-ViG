@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/800dd21a518444d1bc38b3a111af70b0/artifacts
+deleted_time: 1710250438987
+end_time: 1709889556744
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 800dd21a518444d1bc38b3a111af70b0
+run_name: tasteful-bear-132
+run_uuid: 800dd21a518444d1bc38b3a111af70b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709889556702
+status: 4
+tags: []
+user_id: danielionita

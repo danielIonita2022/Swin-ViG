@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/44155c9e60c9498ab7602282307ef645/artifacts
+deleted_time: 1710250438962
+end_time: 1709915923650
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 44155c9e60c9498ab7602282307ef645
+run_name: youthful-zebra-74
+run_uuid: 44155c9e60c9498ab7602282307ef645
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915892135
+status: 4
+tags: []
+user_id: danielionita

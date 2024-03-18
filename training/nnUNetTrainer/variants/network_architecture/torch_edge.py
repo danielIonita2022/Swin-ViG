@@ -173,6 +173,7 @@ class DenseDilated(nn.Module):
         self.epsilon = epsilon
         self.k = k
 
+
     def forward(self, edge_index):
         if self.stochastic:
             if torch.rand(1) < self.epsilon and self.training:

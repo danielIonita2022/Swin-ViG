@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/1e02d570746e4fc28b39bfdf3703d4a4/artifacts
+end_time: 1709859200652
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: active
+run_id: 1e02d570746e4fc28b39bfdf3703d4a4
+run_name: able-snail-269
+run_uuid: 1e02d570746e4fc28b39bfdf3703d4a4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709831438361
+status: 3
+tags: []
+user_id: danielionita

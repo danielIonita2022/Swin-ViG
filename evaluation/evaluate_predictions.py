@@ -254,7 +254,7 @@ def evaluate_simple_entry_point():
 if __name__ == '__main__':
     folder_ref = '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/labelsTs'
     folder_pred = '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs_predicted'
-    output_file = '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres/fold_3/testing/summary.json'
+    output_file = '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres/fold_4/testing/summary.json'
     image_reader_writer = SimpleITKIO()
     file_ending = '.nii.gz'
     regions = list(range(1, 14))

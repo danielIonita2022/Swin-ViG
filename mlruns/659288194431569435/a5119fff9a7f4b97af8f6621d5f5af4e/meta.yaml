@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/a5119fff9a7f4b97af8f6621d5f5af4e/artifacts
+deleted_time: 1710250438987
+end_time: 1709889698631
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: a5119fff9a7f4b97af8f6621d5f5af4e
+run_name: melodic-ram-827
+run_uuid: a5119fff9a7f4b97af8f6621d5f5af4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709889698586
+status: 4
+tags: []
+user_id: danielionita

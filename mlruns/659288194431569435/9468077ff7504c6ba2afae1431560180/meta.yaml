@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/9468077ff7504c6ba2afae1431560180/artifacts
+deleted_time: 1710250438980
+end_time: 1709892152588
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 9468077ff7504c6ba2afae1431560180
+run_name: bustling-eel-151
+run_uuid: 9468077ff7504c6ba2afae1431560180
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709892150788
+status: 4
+tags: []
+user_id: danielionita

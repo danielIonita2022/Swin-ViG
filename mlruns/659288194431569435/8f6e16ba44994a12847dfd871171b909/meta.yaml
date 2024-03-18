@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/8f6e16ba44994a12847dfd871171b909/artifacts
+deleted_time: 1710250438981
+end_time: 1709890813238
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 8f6e16ba44994a12847dfd871171b909
+run_name: burly-turtle-140
+run_uuid: 8f6e16ba44994a12847dfd871171b909
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890799370
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/4418de00a8044801a60400a689161d2c/artifacts
+deleted_time: 1710250438970
+end_time: 1709915255579
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 4418de00a8044801a60400a689161d2c
+run_name: whimsical-moose-42
+run_uuid: 4418de00a8044801a60400a689161d2c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915110992
+status: 4
+tags: []
+user_id: danielionita

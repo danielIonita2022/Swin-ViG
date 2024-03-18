@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/d25e463d07b443ddb8dd8e777e109538/artifacts
+deleted_time: 1709760244791
+end_time: 1709672398058
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: d25e463d07b443ddb8dd8e777e109538
+run_name: upbeat-jay-978
+run_uuid: d25e463d07b443ddb8dd8e777e109538
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709672369130
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/878176a2964e453cb1ae96221b0cbf66/artifacts
+deleted_time: 1710250438961
+end_time: 1709922018815
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 878176a2964e453cb1ae96221b0cbf66
+run_name: popular-fly-874
+run_uuid: 878176a2964e453cb1ae96221b0cbf66
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709921476481
+status: 4
+tags: []
+user_id: danielionita

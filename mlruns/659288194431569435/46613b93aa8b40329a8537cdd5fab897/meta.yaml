@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/46613b93aa8b40329a8537cdd5fab897/artifacts
+deleted_time: 1710250438976
+end_time: 1709892746303
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 46613b93aa8b40329a8537cdd5fab897
+run_name: abrasive-crane-712
+run_uuid: 46613b93aa8b40329a8537cdd5fab897
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709892745313
+status: 4
+tags: []
+user_id: danielionita

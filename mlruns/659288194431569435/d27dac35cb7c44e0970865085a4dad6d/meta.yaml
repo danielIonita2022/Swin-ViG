@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/d27dac35cb7c44e0970865085a4dad6d/artifacts
+deleted_time: 1710250438970
+end_time: 1709915025772
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: d27dac35cb7c44e0970865085a4dad6d
+run_name: unique-midge-443
+run_uuid: d27dac35cb7c44e0970865085a4dad6d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709914965385
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/a94c6b4bd3f04baf9dd409d4e4191fb7/artifacts
+deleted_time: 1710250438980
+end_time: 1709890924406
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: a94c6b4bd3f04baf9dd409d4e4191fb7
+run_name: enthused-turtle-296
+run_uuid: a94c6b4bd3f04baf9dd409d4e4191fb7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890910172
+status: 4
+tags: []
+user_id: danielionita

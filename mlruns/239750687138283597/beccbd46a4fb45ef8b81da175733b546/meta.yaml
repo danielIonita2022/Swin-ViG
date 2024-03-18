@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/beccbd46a4fb45ef8b81da175733b546/artifacts
+end_time: 1709233408798
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: beccbd46a4fb45ef8b81da175733b546
+run_name: judicious-toad-55
+run_uuid: beccbd46a4fb45ef8b81da175733b546
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709232266031
+status: 4
+tags: []
+user_id: danielionita

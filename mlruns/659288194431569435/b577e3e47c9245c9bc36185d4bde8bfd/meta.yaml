@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/b577e3e47c9245c9bc36185d4bde8bfd/artifacts
+deleted_time: 1710250438970
+end_time: null
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: b577e3e47c9245c9bc36185d4bde8bfd
+run_name: bustling-mole-782
+run_uuid: b577e3e47c9245c9bc36185d4bde8bfd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915536767
+status: 1
+tags: []
+user_id: danielionita

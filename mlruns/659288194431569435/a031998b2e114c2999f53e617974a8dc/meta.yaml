@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/a031998b2e114c2999f53e617974a8dc/artifacts
+deleted_time: 1710250438976
+end_time: null
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: a031998b2e114c2999f53e617974a8dc
+run_name: rare-mouse-225
+run_uuid: a031998b2e114c2999f53e617974a8dc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709893058054
+status: 1
+tags: []
+user_id: danielionita

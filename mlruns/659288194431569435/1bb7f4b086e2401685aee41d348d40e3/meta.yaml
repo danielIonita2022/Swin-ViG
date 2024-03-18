@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/1bb7f4b086e2401685aee41d348d40e3/artifacts
+end_time: 1709786115805
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: active
+run_id: 1bb7f4b086e2401685aee41d348d40e3
+run_name: agreeable-ray-51
+run_uuid: 1bb7f4b086e2401685aee41d348d40e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709760479541
+status: 3
+tags: []
+user_id: danielionita

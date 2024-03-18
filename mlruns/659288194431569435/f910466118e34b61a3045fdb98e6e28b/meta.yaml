@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/f910466118e34b61a3045fdb98e6e28b/artifacts
+deleted_time: 1710250438983
+end_time: 1709890308098
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: f910466118e34b61a3045fdb98e6e28b
+run_name: intrigued-shark-803
+run_uuid: f910466118e34b61a3045fdb98e6e28b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890068622
+status: 4
+tags: []
+user_id: danielionita

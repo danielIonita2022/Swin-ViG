@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/b256d70fc9a2416a92c2af82bab94941/artifacts
+end_time: 1710279053919
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: active
+run_id: b256d70fc9a2416a92c2af82bab94941
+run_name: agreeable-turtle-851
+run_uuid: b256d70fc9a2416a92c2af82bab94941
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710250591460
+status: 3
+tags: []
+user_id: danielionita

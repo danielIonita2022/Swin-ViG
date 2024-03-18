@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/2c1c260427f941279534bff0a7177066/artifacts
+deleted_time: 1710250438961
+end_time: 1709922177415
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 2c1c260427f941279534bff0a7177066
+run_name: popular-gnu-882
+run_uuid: 2c1c260427f941279534bff0a7177066
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709922158876
+status: 4
+tags: []
+user_id: danielionita

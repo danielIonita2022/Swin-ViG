@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/ba089be2bdb645e283f8c8285a0dd13e/artifacts
+deleted_time: 1710250438981
+end_time: 1709890710929
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: ba089be2bdb645e283f8c8285a0dd13e
+run_name: whimsical-goat-506
+run_uuid: ba089be2bdb645e283f8c8285a0dd13e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890697641
+status: 4
+tags: []
+user_id: danielionita

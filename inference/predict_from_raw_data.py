@@ -569,7 +569,7 @@ if __name__ == '__main__':
         '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs',
         '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs_predicted',
         '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres',
-        (3,),
+        (4,),
         0.5,
         use_gaussian=True,
         use_mirroring=False,

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/635ce793fbb049098e7b1a93160addd9/artifacts
+end_time: 1709690156152
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: active
+run_id: 635ce793fbb049098e7b1a93160addd9
+run_name: fortunate-hare-773
+run_uuid: 635ce793fbb049098e7b1a93160addd9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709672407665
+status: 3
+tags: []
+user_id: danielionita

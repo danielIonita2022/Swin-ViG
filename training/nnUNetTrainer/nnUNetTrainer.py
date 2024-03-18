@@ -456,12 +456,12 @@ class nnUNetTrainer(object):
     def configure_optimizers(self):
         # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
         #                             momentum=0.99, nesterov=True)
-        #optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
-        #                              weight_decay=self.weight_decay,
-        #                              amsgrad=True)
-        optimizer = Ranger21(self.network.parameters(), self.initial_lr,
-                            num_batches_per_epoch=3, num_epochs=6000,
-                            weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
+        optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+                                     weight_decay=self.weight_decay,
+                                     amsgrad=True)
+        # optimizer = Ranger21(self.network.parameters(), self.initial_lr,
+        #                     num_batches_per_epoch=3, num_epochs=6000,
+        #                     weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
         #lr_scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-4,
         #                                                 max_lr=3e-3, step_size_up=500, mode='triangular2')
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
@@ -1001,6 +1001,7 @@ class nnUNetTrainer(object):
         global_dc_per_class = [2 * i / (2 * i + j + k) if (2 * i + j + k) != 0 else 0 for i, j, k in zip(tp, fp, fn)]
         #self.kappa = self.adjust_kappa(global_dc_per_class)
         mean_fg_dice = np.nanmean(global_dc_per_class)
+        mlflow.log_metric("Mean foreground Dice", mean_fg_dice, step=self.current_epoch)
         self.logger.log('mean_fg_dice', mean_fg_dice, self.current_epoch)
         self.logger.log('dice_per_class_or_region', global_dc_per_class, self.current_epoch)
         self.logger.log('val_losses', loss_here, self.current_epoch)

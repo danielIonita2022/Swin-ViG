@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/e5896e90dd704ae7a6a663af979e324f/artifacts
+deleted_time: 1710250438977
+end_time: 1709892351536
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: e5896e90dd704ae7a6a663af979e324f
+run_name: blushing-mule-844
+run_uuid: e5896e90dd704ae7a6a663af979e324f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709892347295
+status: 4
+tags: []
+user_id: danielionita
