@@ -136,7 +136,7 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 1e-3
+        self.initial_lr = 0.002
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 6 # modificat de la 250
@@ -456,12 +456,12 @@ class nnUNetTrainer(object):
     def configure_optimizers(self):
         # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
         #                             momentum=0.99, nesterov=True)
-        optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
-                                     weight_decay=self.weight_decay,
-                                     amsgrad=True)
-        # optimizer = Ranger21(self.network.parameters(), self.initial_lr,
-        #                     num_batches_per_epoch=3, num_epochs=6000,
-        #                     weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
+        # optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+        #                              weight_decay=self.weight_decay,
+        #                              amsgrad=True)
+        optimizer = Ranger21(self.network.parameters(), self.initial_lr,
+                            num_batches_per_epoch=2, num_epochs=6000,
+                            weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
         #lr_scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-4,
         #                                                 max_lr=3e-3, step_size_up=500, mode='triangular2')
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
@@ -844,7 +844,6 @@ class nnUNetTrainer(object):
 
     def on_train_epoch_start(self):
         self.network.train()
-        #self.lr_scheduler.step(self.current_epoch)
         self.print_to_log_file('')
         self.print_to_log_file(f'Epoch {self.current_epoch}')
         self.print_to_log_file(
@@ -886,7 +885,7 @@ class nnUNetTrainer(object):
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
             self.optimizer.step()
 
-        ##self.lr_scheduler.step()
+        self.lr_scheduler.step(self.current_epoch)
 
         return {'loss': l.detach().cpu().numpy()}
 

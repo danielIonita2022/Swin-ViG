@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/66c6231532e2492f8dbd6756d87eb3c7/artifacts
+deleted_time: 1711275241969
+end_time: 1711225018762
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 66c6231532e2492f8dbd6756d87eb3c7
+run_name: GATv2ConvLite-Ranger+decay-fold3
+run_uuid: 66c6231532e2492f8dbd6756d87eb3c7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711219546174
+status: 4
+tags: []
+user_id: danielionita

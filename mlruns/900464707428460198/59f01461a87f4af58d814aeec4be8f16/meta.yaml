@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/59f01461a87f4af58d814aeec4be8f16/artifacts
+deleted_time: 1710774234780
+end_time: 1710771498638
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 59f01461a87f4af58d814aeec4be8f16
+run_name: nosy-goose-139
+run_uuid: 59f01461a87f4af58d814aeec4be8f16
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710771284833
+status: 4
+tags: []
+user_id: danielionita

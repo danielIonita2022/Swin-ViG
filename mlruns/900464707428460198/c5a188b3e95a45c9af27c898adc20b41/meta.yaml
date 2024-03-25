@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/c5a188b3e95a45c9af27c898adc20b41/artifacts
+end_time: 1710808968286
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: active
+run_id: c5a188b3e95a45c9af27c898adc20b41
+run_name: puzzled-stork-805
+run_uuid: c5a188b3e95a45c9af27c898adc20b41
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710773887068
+status: 3
+tags: []
+user_id: danielionita

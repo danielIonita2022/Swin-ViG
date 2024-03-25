@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/47e7aace01e9430b92351271548ce456/artifacts
+deleted_time: 1711225778224
+end_time: 1711225715957
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 47e7aace01e9430b92351271548ce456
+run_name: bittersweet-fox-379
+run_uuid: 47e7aace01e9430b92351271548ce456
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711225615534
+status: 4
+tags: []
+user_id: danielionita

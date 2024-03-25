@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/nextou/nnUNet-2.0/nnunetv2/inference/mlruns/0/a3bb9f2535604950b60489e73107d7db/artifacts
+end_time: 1711136131363
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a3bb9f2535604950b60489e73107d7db
+run_name: unruly-gull-37
+run_uuid: a3bb9f2535604950b60489e73107d7db
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711135683103
+status: 3
+tags: []
+user_id: danielionita

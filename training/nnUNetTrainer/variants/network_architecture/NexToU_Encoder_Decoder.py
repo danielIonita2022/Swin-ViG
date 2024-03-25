@@ -23,7 +23,7 @@ from torch_geometric.nn.conv import GATConv, GATv2Conv
 class OptInit:
     def __init__(self, drop_path_rate=0., pool_op_kernel_sizes_len=4):
         self.k = [4, 8, 16] + [32] * (pool_op_kernel_sizes_len - 3)
-        self.conv = 'mr'
+        self.conv = 'gat'
         self.act = 'leakyrelu'
         self.norm = 'instance'
         self.bias = True
@@ -143,7 +143,7 @@ class NexToU_Encoder(nn.Module):
                                       nonlin_kwargs, nonlin_first),
                     Efficient_ViG_blocks(features_per_stage[s], img_shape_list[s], s - conv_layer_d_num,
                                          conv_layer_d_num, opt=self.opt, conv_op=conv_op,
-                                         norm_op=norm_op, norm_op_kwargs=norm_op_kwargs, dropout_op=dropout_op)))
+                                         norm_op=norm_op, norm_op_kwargs=norm_op_kwargs, dropout_op=dropout_op, is_decoder=False)))
 
             stages.append(nn.Sequential(*stage_modules))
             input_channels = features_per_stage[s]
@@ -291,7 +291,7 @@ class NexToU_Decoder(nn.Module):
                                          n_stages_encoder - conv_layer_d_num - (s + 1), conv_layer_d_num, opt=self.opt,
                                          conv_op=encoder.conv_op,
                                          norm_op=encoder.norm_op, norm_op_kwargs=encoder.norm_op_kwargs,
-                                         dropout_op=encoder.dropout_op)))
+                                         dropout_op=encoder.dropout_op, is_decoder=True)))
 
             else:
                 stages.append(StackedConvBlocks(
@@ -427,13 +427,15 @@ class MRConv(nn.Module):
 class GraphAttentionConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, act=nn.LeakyReLU, norm=None, bias=True, conv_op=nn.Conv3d, dropout=nn.Dropout3d):
         super(GraphAttentionConv2d, self).__init__()
-        self.gatconv = GATv2Conv(in_channels, out_channels, heads=1, concat=False, bias=bias)
+        self.gatconv = GATv2Conv(in_channels, out_channels, heads=1, concat=False, bias=bias, share_weights=True)
         self.act = nn.LeakyReLU()
-        self.norm = nn.InstanceNorm3d(out_channels)
+        self.norm = nn.LayerNorm(out_channels)
         self.dropout = dropout
 
     def forward(self, x, edge_index, y=None):
-        print(x.shape)
+        b, c, h, w = x.size()
+        x = x.view(b, c, -1).permute(0, 2, 1).contiguous().view(-1, c)
+
         x = self.gatconv(x, edge_index)
         x = self.norm(x)
         x = self.act(x)
@@ -452,8 +454,8 @@ class GraphConv(nn.Module):
         super(GraphConv, self).__init__()
         if conv == 'mr':
             self.gconv = MRConv(in_channels, out_channels, act, norm, bias, conv_op, dropout_op)
-        if conv == 'gat':
-            self.gconv = GraphAttentionConv2d(in_channels, out_channels, act, norm, bias, conv_op, droupout_op)
+        elif conv == 'gat':
+            self.gconv = GraphAttentionConv2d(in_channels, out_channels, act, norm, bias, conv_op, dropout_op)
         else:
             raise NotImplementedError('conv:{} is not supported'.format(conv))
 
@@ -596,7 +598,7 @@ class Grapher(nn.Module):
 class Efficient_ViG_blocks(nn.Module):
     def __init__(self, channels, img_shape, index, conv_layer_d_num, opt=None, conv_op=nn.Conv3d,
                  norm_op=nn.BatchNorm3d, norm_op_kwargs=None,
-                 dropout_op=nn.Dropout3d, **kwargs):
+                 dropout_op=nn.Dropout3d, is_decoder=False, **kwargs):
         super(Efficient_ViG_blocks, self).__init__()
 
         blocks = []
@@ -612,6 +614,10 @@ class Efficient_ViG_blocks(nn.Module):
         blocks_num_list = opt.blocks
         n_size_list = opt.n_size_list
         img_min_shape = opt.img_min_shape
+        if is_decoder:
+            conv = 'gat'
+        else:
+            conv = 'mr'
 
         self.n_blocks = sum(blocks_num_list)
         # stochastic depth decay rule
@@ -637,15 +643,15 @@ class Efficient_ViG_blocks(nn.Module):
 
             blocks.append(nn.Sequential(
                 Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
-                            bias, stochastic, epsilon, 1, n=nr_of_vertices, drop_path=dpr[idx],
-                            relative_pos=True, conv_op=conv_op, norm_op=norm_op, norm_op_kwargs=norm_op_kwargs,
+                            bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
+                            relative_pos=True, conv_op=conv_op, norm_op=norm_op,
                             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs),
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
-                            bias, stochastic, epsilon, 1, n=nr_of_vertices, drop_path=dpr[idx],
-                            relative_pos=True, conv_op=conv_op, norm_op=norm_op, norm_op_kwargs=norm_op_kwargs,
-                            dropout_op=dropout_op),
+                # Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
+                #             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
+                #             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
+                #             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs)))
 

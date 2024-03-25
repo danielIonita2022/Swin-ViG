@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/nextou/nnUNet-2.0/nnunetv2/inference/mlruns/0/0cbdfafc36314dcfa907d371cddea981/artifacts
+end_time: 1710851824820
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0cbdfafc36314dcfa907d371cddea981
+run_name: orderly-squid-463
+run_uuid: 0cbdfafc36314dcfa907d371cddea981
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710851377208
+status: 3
+tags: []
+user_id: danielionita

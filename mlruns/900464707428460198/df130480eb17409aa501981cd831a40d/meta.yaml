@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/df130480eb17409aa501981cd831a40d/artifacts
+end_time: 1710952172114
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: active
+run_id: df130480eb17409aa501981cd831a40d
+run_name: ViG_fold0
+run_uuid: df130480eb17409aa501981cd831a40d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710926429622
+status: 3
+tags: []
+user_id: danielionita

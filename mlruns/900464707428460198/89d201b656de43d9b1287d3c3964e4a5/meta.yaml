@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/89d201b656de43d9b1287d3c3964e4a5/artifacts
+deleted_time: 1711226099211
+end_time: 1711225929469
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 89d201b656de43d9b1287d3c3964e4a5
+run_name: rebellious-bee-635
+run_uuid: 89d201b656de43d9b1287d3c3964e4a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711225766076
+status: 4
+tags: []
+user_id: danielionita

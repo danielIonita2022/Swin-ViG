@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/d4fa5eeb334441e2a16b246d2dda5278/artifacts
+deleted_time: 1710774234781
+end_time: null
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: d4fa5eeb334441e2a16b246d2dda5278
+run_name: loud-yak-897
+run_uuid: d4fa5eeb334441e2a16b246d2dda5278
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710771541489
+status: 1
+tags: []
+user_id: danielionita

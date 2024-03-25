@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/nextou/nnUNet-2.0/nnunetv2/inference/mlruns/0/6e9db7f171424de5abb411c9776ae32c/artifacts
+end_time: 1711300737106
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6e9db7f171424de5abb411c9776ae32c
+run_name: honorable-gnu-375
+run_uuid: 6e9db7f171424de5abb411c9776ae32c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711300371734
+status: 3
+tags: []
+user_id: danielionita

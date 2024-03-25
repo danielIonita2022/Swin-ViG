@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/nextou/nnUNet-2.0/nnunetv2/inference/mlruns/0/2901f79e36d346fa8c1c98761c67ad09/artifacts
+end_time: 1711218061440
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2901f79e36d346fa8c1c98761c67ad09
+run_name: colorful-goose-674
+run_uuid: 2901f79e36d346fa8c1c98761c67ad09
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711217683435
+status: 3
+tags: []
+user_id: danielionita

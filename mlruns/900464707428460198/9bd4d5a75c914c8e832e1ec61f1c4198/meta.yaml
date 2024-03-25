@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/9bd4d5a75c914c8e832e1ec61f1c4198/artifacts
+deleted_time: 1710866918955
+end_time: 1710864980396
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 9bd4d5a75c914c8e832e1ec61f1c4198
+run_name: flawless-moth-870
+run_uuid: 9bd4d5a75c914c8e832e1ec61f1c4198
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710864906090
+status: 4
+tags: []
+user_id: danielionita
