@@ -661,18 +661,18 @@ class Efficient_ViG_blocks(nn.Module):
             idx = idx_list[j]
 
             blocks.append(nn.Sequential(
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'mr', act, norm,
-                            bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
-                            relative_pos=True, conv_op=conv_op, norm_op=norm_op,
-                            dropout_op=dropout_op),
-                FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
-                    norm_op_kwargs=norm_op_kwargs),
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
+                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
                             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
                             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
                             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs)))
+                # Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
+                #             bias, stochastic, epsilon, 1, n=nr_of_vertices, drop_path=dpr[idx],
+                #             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
+                #             dropout_op=dropout_op),
+                # FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
+                #     norm_op_kwargs=norm_op_kwargs)))
 
         blocks = nn.Sequential(*blocks)
         self.blocks = blocks
