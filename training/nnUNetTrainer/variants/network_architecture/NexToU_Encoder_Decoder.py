@@ -79,7 +79,7 @@ class NexToU_Encoder(nn.Module):
                                          "Important: first entry is recommended to be 1, else we run strided conv drectly on the input"
         img_shape_list = []
         n_size_list = []
-        self.reduce_dimensions_list = [8, 8, 4]
+        self.reduce_dimensions_list = [4, 8, 8]
         conv_layer_d_num = 2
         pool_op_kernel_sizes = strides[1:]
         if conv_op == nn.Conv2d:
@@ -442,25 +442,13 @@ class GraphAttentionConv2d(nn.Module):
         super(GraphAttentionConv2d, self).__init__()
         self.gatconv = GATv2Conv(in_channels, out_channels, heads=2, concat=False, bias=bias, share_weights=True)
         self.act = nn.LeakyReLU()
-        self.norm = nn.BatchNorm3d(out_channels)
+        self.norm = nn.LayerNorm(out_channels)
         #self.dropout = nn.Dropout3d(p=0.3)
         self.conv_op = conv_op
 
     def forward(self, x, edge_index, y=None):
-        if self.conv_op == nn.Conv2d:
-            B, C, H, W = x.shape
-        if self.conv_op == nn.Conv3d:
-            B, C, D, H, W = x.shape
-        else:
-            raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
-
-        x = x.view(B, C, -1).permute(0, 2, 1).contiguous().view(-1, C)
 
         x = self.gatconv(x, edge_index)
-        if self.conv_op == nn.Conv2d:
-            x = x.view(B, -1, H, W)
-        elif self.conv_op == nn.Conv3d:
-            x = x.view(B, -1, D, H, W)
         x = self.norm(x)
         x = self.act(x)
 
@@ -492,7 +480,7 @@ class DyGraphConv(GraphConv):
     """
 
     def __init__(self, in_channels, out_channels, kernel_size=9, dilation=1, conv='edge', act='relu',
-                 norm=None, bias=True, stochastic=False, epsilon=0.0, r=1, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
+                 norm=None, bias=True, stochastic=False, epsilon=0.0, r=1, changed_dimensions=None, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
         super(DyGraphConv, self).__init__(in_channels, out_channels, conv, act, norm, bias, conv_op, dropout_op)
         self.k = kernel_size
         self.d = dilation
@@ -513,27 +501,36 @@ class DyGraphConv(GraphConv):
     def forward(self, x, relative_pos=None):
         if self.conv_op == nn.Conv2d:
             B, C, H, W = x.shape
+            patch_h, patch_w = self.changed_dimensions
+            new_h, new_w = H // patch_h, W // patch_w
+            x = x.reshape(B, C, new_h, patch_h, new_w, patch_w)
         elif self.conv_op == nn.Conv3d:
             B, C, D, H, W = x.shape
+            patch_d, patch_h, patch_w = self.changed_dimensions
+            new_d, new_h, new_w = D // patch_d, H // patch_h, W // patch_w
+            x = x.reshape(B, C, new_d, patch_d, new_h, patch_h, new_w, patch_w).contiguous()
+            x = x.permute(0, 2, 4, 6, 1, 3, 5, 7)
+            x = x.reshape(B, new_d * new_h * new_w, C * patch_d * patch_h * patch_w).contiguous()
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
 
         y = None
-        if self.r > 1:
-            y = self.avg_pool(x, self.r, self.r)
-            y = y.reshape(B, C, -1, 1).contiguous()
-        x = x.reshape(B, C, -1, 1).contiguous()
+        # if self.r > 1:
+        #     y = self.avg_pool(x, self.r, self.r)
+        #     y = y.reshape(B, C, -1, 1).contiguous()
+
         edge_index = self.dilated_knn_graph(x, y, relative_pos)
-        if self.conv == 'gat':
-            x = x.view(B, C, D, H, W)
         x = super(DyGraphConv, self).forward(x, edge_index, y)
-        if self.conv != 'gat':
-            if self.conv_op == nn.Conv2d:
-                return x.reshape(B, -1, H, W).contiguous()
-            elif self.conv_op == nn.Conv3d:
-                return x.reshape(B, -1, D, H, W).contiguous()
-            else:
-                raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+        if self.conv_op == nn.Conv2d:
+            x =  x.reshape(B, -1, H, W).contiguous()
+            ## WORK IN PROGRESS FOR 2D
+        elif self.conv_op == nn.Conv3d:
+            x = x.reshape(B, new_d, new_h, new_w, C, patch_d, patch_h, patch_w).contiguious()
+            x = x.permute(0, 4, 1, 5, 2, 6, 3, 7)
+            x = x.reshape(B, C, D, H, W).contiguous()
+        else:
+            raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+
         x = self.dropout_op(x)
         return x
 
@@ -543,10 +540,12 @@ class Grapher(nn.Module):
     Grapher module with graph convolution and fc layers
     """
 
-    def  __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
-                 bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
-                 conv_op=nn.Conv3d, norm_op=nn.BatchNorm3d, dropout_op=nn.Dropout3d):
+    def  __init__(self, in_channels, kernel_size=9, dilation=1, conv='mr', act='relu', norm=None,
+                  bias=True, stochastic=False, epsilon=0.0, r=1, changed_dimensions=None, n=196, drop_path=0.0, relative_pos=False,
+                  conv_op=nn.Conv3d, norm_op=nn.BatchNorm3d, dropout_op=nn.Dropout3d):
         super(Grapher, self).__init__()
+        if changed_dimensions is None:
+            changed_dimensions = []
         self.channels = in_channels
         self.n = n
         self.r = r
@@ -556,7 +555,7 @@ class Grapher(nn.Module):
             norm_op(in_channels),
         )
         self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
-                                      act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
+                                      act, norm, bias, stochastic, epsilon, r, changed_dimensions, conv_op, dropout_op)
         self.fc2 = nn.Sequential(
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
             norm_op(in_channels),
@@ -586,22 +585,24 @@ class Grapher(nn.Module):
 
     def _get_relative_pos(self, relative_pos, size_tuple):
         if self.conv_op == nn.Conv2d:
-            H, W = size_tuple
-            if relative_pos is None or H * W == self.n:
-                return relative_pos
-            else:
-                N = H * W
-                N_reduced = N // (self.r * self.r)
-                return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
+            # H, W = size_tuple
+            # if relative_pos is None or H * W == self.n:
+            #     return relative_pos
+            # else:
+            #     N = H * W
+            #     N_reduced = N // (self.r * self.r)
+            #     return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
+            return relative_pos
 
         elif self.conv_op == nn.Conv3d:
-            H, W, D = size_tuple
-            if relative_pos is None or H * W * D == self.n:
-                return relative_pos
-            else:
-                N = H * W * D
-                N_reduced = N // (self.r * self.r * self.r)
-                return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
+            # D, H, W = size_tuple
+            # if relative_pos is None or D * H * W == self.n:
+            #     return relative_pos
+            # else:
+            #     N = H * W * D
+            #     N_reduced = N // (self.r * self.r * self.r)
+            #     return F.interpolate(relative_pos.unsqueeze(0), size=(N, N_reduced), mode="bicubic").squeeze(0)
+            return relative_pos
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
 
@@ -614,7 +615,7 @@ class Grapher(nn.Module):
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
         elif self.conv_op == nn.Conv3d:
             B, C, H, W, D = x.shape
-            size_tuple = (H, W, D)
+            size_tuple = (D, H, W)
             relative_pos = self._get_relative_pos(self.relative_pos, size_tuple)
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
@@ -626,7 +627,7 @@ class Grapher(nn.Module):
 
 
 class Efficient_ViG_blocks(nn.Module):
-    def __init__(self, channels, img_shape, index, conv_layer_d_num, changed_dimensions_list, opt=None, conv_op=nn.Conv3d,
+    def __init__(self, channels, img_shape, index, conv_layer_d_num, changed_dimensions, opt=None, conv_op=nn.Conv3d,
                  norm_op=nn.BatchNorm3d, norm_op_kwargs=None,
                  dropout_op=nn.Dropout3d, is_decoder=False, **kwargs):
         super(Efficient_ViG_blocks, self).__init__()
@@ -655,13 +656,16 @@ class Efficient_ViG_blocks(nn.Module):
         sum_blocks = sum(blocks_num_list[conv_layer_d_num - 2:index])
         idx_list = [(k + sum_blocks) for k in range(0, blocks_num_list[index])]
 
+
         if conv_op == nn.Conv2d:
+            h_patch, w_patch = changed_dimensions
             H, W = img_shape
-            nr_of_vertices = H * W
+            nr_of_vertices = h_patch * w_patch
             max_dilation = (nr_of_vertices) // max(k)
         elif conv_op == nn.Conv3d:
-            H, W, D = img_shape
-            nr_of_vertices = H * W * D
+            d_patch, h_patch, w_patch = changed_dimensions
+            D, H, W = img_shape
+            nr_of_vertices = d_patch * h_patch * w_patch
             max_dilation = (nr_of_vertices) // max(k)
         else:
             raise NotImplementedError('conv operation [%s] is not found' % conv_op)
@@ -673,7 +677,7 @@ class Efficient_ViG_blocks(nn.Module):
 
             blocks.append(nn.Sequential(
                 Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
-                            bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
+                            bias, stochastic, epsilon, 1, changed_dimensions, n=nr_of_vertices, drop_path=dpr[idx],
                             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
                             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
