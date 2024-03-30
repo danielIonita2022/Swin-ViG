@@ -25,7 +25,7 @@ class OptInit:
         self.k = [4, 8, 16] + [32] * (pool_op_kernel_sizes_len - 3)
         self.conv = 'gat'
         self.act = 'leakyrelu'
-        self.norm = 'instance'
+        self.norm = 'batch'
         self.bias = True
         self.dropout = 0.0  # dropout rate
         self.use_dilation = True  # use dilated knn or not
@@ -79,10 +79,12 @@ class NexToU_Encoder(nn.Module):
                                          "Important: first entry is recommended to be 1, else we run strided conv drectly on the input"
         img_shape_list = []
         n_size_list = []
+        self.reduce_dimensions_list = [8, 8, 4]
         conv_layer_d_num = 2
         pool_op_kernel_sizes = strides[1:]
         if conv_op == nn.Conv2d:
             h, w = patch_size[0], patch_size[1]
+            assert h % 48 == 0 and w % 48 == 0, "Each patch size dim. must be divisible by 48 (because of superpixel configuration)"
             img_shape_list.append((h, w))
             n_size_list.append(h * w)
 
@@ -95,16 +97,17 @@ class NexToU_Encoder(nn.Module):
 
         elif conv_op == nn.Conv3d:
             h, w, d = patch_size[0], patch_size[1], patch_size[2]
-            img_shape_list.append((h, w, d))
-            n_size_list.append(h * w * d)
+            assert h % 48 == 0 and w % 48 == 0 and d % 4 == 0, "Each patch size dim. must be divisible by 48 (because of superpixel configuration)"
+            img_shape_list.append((d, h, w))
+            n_size_list.append(d * h * w)
 
             for i in range(len(pool_op_kernel_sizes)):
                 h_k, w_k, d_k = pool_op_kernel_sizes[i]
                 h //= h_k
                 w //= w_k
                 d //= d_k
-                img_shape_list.append((h, w, d))
-                n_size_list.append(h * w * d)
+                img_shape_list.append((d, h, w))
+                n_size_list.append(d * h * w)
         else:
             raise ValueError("unknown convolution dimensionality, conv op: %s" % str(conv_op))
 
@@ -142,8 +145,13 @@ class NexToU_Encoder(nn.Module):
                                       conv_bias, norm_op, norm_op_kwargs, dropout_op, dropout_op_kwargs, nonlin,
                                       nonlin_kwargs, nonlin_first),
                     Efficient_ViG_blocks(features_per_stage[s], img_shape_list[s], s - conv_layer_d_num,
-                                         conv_layer_d_num, opt=self.opt, conv_op=conv_op,
+                                         conv_layer_d_num, self.reduce_dimensions_list, opt=self.opt, conv_op=conv_op,
                                          norm_op=norm_op, norm_op_kwargs=norm_op_kwargs, dropout_op=dropout_op, is_decoder=False)))
+                d_reduce, h_reduce, w_reduce = self.reduce_dimensions_list[s - conv_layer_d_num]
+                d_reduce = d_reduce - 2 if d_reduce > 2 else 1
+                h_reduce = h_reduce - 2 if h_reduce > 2 else 1
+                w_reduce = w_reduce - 2 if w_reduce > 2 else 1
+                self.reduce_dimensions_list.append([d_reduce, h_reduce, w_reduce])
 
             stages.append(nn.Sequential(*stage_modules))
             input_channels = features_per_stage[s]
@@ -226,6 +234,7 @@ class NexToU_Decoder(nn.Module):
 
         img_shape_list = []
         n_size_list = []
+        self.increase_dimension_list = encoder.reduce_dimensions_list[::-1]
         conv_layer_d_num = 2
         pool_op_kernel_sizes = strides[1:]
         if encoder.conv_op == nn.Conv2d:
@@ -288,7 +297,9 @@ class NexToU_Decoder(nn.Module):
                                       encoder.dropout_op, encoder.dropout_op_kwargs, encoder.nonlin,
                                       encoder.nonlin_kwargs, nonlin_first),
                     Efficient_ViG_blocks(input_features_skip, img_shape_list[n_stages_encoder - (s + 1)],
-                                         n_stages_encoder - conv_layer_d_num - (s + 1), conv_layer_d_num, opt=self.opt,
+                                         n_stages_encoder - conv_layer_d_num - (s + 1), conv_layer_d_num,
+                                         self.increase_dimension_list[n_stages_encoder - conv_layer_d_num - (s + 1)],
+                                         opt=self.opt,
                                          conv_op=encoder.conv_op,
                                          norm_op=encoder.norm_op, norm_op_kwargs=encoder.norm_op_kwargs,
                                          dropout_op=encoder.dropout_op, is_decoder=True)))
@@ -532,7 +543,7 @@ class Grapher(nn.Module):
     Grapher module with graph convolution and fc layers
     """
 
-    def __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
+    def  __init__(self, in_channels, kernel_size=9, dilation=1, conv='edge', act='relu', norm=None,
                  bias=True, stochastic=False, epsilon=0.0, r=1, n=196, drop_path=0.0, relative_pos=False,
                  conv_op=nn.Conv3d, norm_op=nn.BatchNorm3d, dropout_op=nn.Dropout3d):
         super(Grapher, self).__init__()
@@ -615,7 +626,7 @@ class Grapher(nn.Module):
 
 
 class Efficient_ViG_blocks(nn.Module):
-    def __init__(self, channels, img_shape, index, conv_layer_d_num, opt=None, conv_op=nn.Conv3d,
+    def __init__(self, channels, img_shape, index, conv_layer_d_num, changed_dimensions_list, opt=None, conv_op=nn.Conv3d,
                  norm_op=nn.BatchNorm3d, norm_op_kwargs=None,
                  dropout_op=nn.Dropout3d, is_decoder=False, **kwargs):
         super(Efficient_ViG_blocks, self).__init__()
@@ -661,18 +672,19 @@ class Efficient_ViG_blocks(nn.Module):
             idx = idx_list[j]
 
             blocks.append(nn.Sequential(
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'mr', act, norm,
+                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
                             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
                             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
                             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs),
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
-                            bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
-                            relative_pos=True, conv_op=conv_op, norm_op=norm_op,
-                            dropout_op=dropout_op),
-                FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
-                    norm_op_kwargs=norm_op_kwargs)))
+                # Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
+                #             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
+                #             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
+                #             dropout_op=dropout_op),
+                # FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
+                #     norm_op_kwargs=norm_op_kwargs)
+                ))
 
         blocks = nn.Sequential(*blocks)
         self.blocks = blocks
