@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/419a450acabb4ec389e576b98506c2da/artifacts
+deleted_time: 1711633941511
+end_time: 1711633273654
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 419a450acabb4ec389e576b98506c2da
+run_name: gentle-gnu-336
+run_uuid: 419a450acabb4ec389e576b98506c2da
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711633107057
+status: 4
+tags: []
+user_id: danielionita

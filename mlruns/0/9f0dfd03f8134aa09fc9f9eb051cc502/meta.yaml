@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/0/9f0dfd03f8134aa09fc9f9eb051cc502/artifacts
+deleted_time: 1711791969722
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: 9f0dfd03f8134aa09fc9f9eb051cc502
+run_name: bouncy-shrew-303
+run_uuid: 9f0dfd03f8134aa09fc9f9eb051cc502
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711523161113
+status: 1
+tags: []
+user_id: danielionita

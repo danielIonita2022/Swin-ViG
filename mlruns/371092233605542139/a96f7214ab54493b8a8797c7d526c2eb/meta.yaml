@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/a96f7214ab54493b8a8797c7d526c2eb/artifacts
+deleted_time: 1711582523925
+end_time: 1711581722901
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: a96f7214ab54493b8a8797c7d526c2eb
+run_name: silent-crow-12
+run_uuid: a96f7214ab54493b8a8797c7d526c2eb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711581331708
+status: 4
+tags: []
+user_id: danielionita

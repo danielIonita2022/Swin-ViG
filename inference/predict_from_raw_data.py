@@ -566,10 +566,10 @@ if __name__ == '__main__':
     #my_utils.split_folder(original_folder, new_folder1, new_folder2, split)
 
     predict_from_raw_data(
-        '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs',
-        '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesTs_predicted',
-        '/mnt/hdd2/home/danielionita/nextou/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres',
-        (3,),
+        '/mnt/hdd2/home/danielionita/vig_nnunet/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesVal_fold_0',
+        '/mnt/hdd2/home/danielionita/vig_nnunet/nnunet_data/nnUNet_raw/Dataset200_BTCV/imagesVal_predicted_fold_0',
+        '/mnt/hdd2/home/danielionita/vig_nnunet/nnunet_data/nnUNet_results/Dataset200_BTCV/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres',
+        (0,),
         0.5,
         use_gaussian=True,
         use_mirroring=False,
@@ -578,8 +578,8 @@ if __name__ == '__main__':
         save_probabilities=True,
         overwrite=True,
         checkpoint_name='checkpoint_best.pth',
-        num_processes_preprocessing=4,
-        num_processes_segmentation_export=4)
+        num_processes_preprocessing=2,
+        num_processes_segmentation_export=2)
 
     print('PREDICTION DONE!')
 

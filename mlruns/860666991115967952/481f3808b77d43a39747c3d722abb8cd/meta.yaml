@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/481f3808b77d43a39747c3d722abb8cd/artifacts
+deleted_time: 1711482158407
+end_time: 1711482103531
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: 481f3808b77d43a39747c3d722abb8cd
+run_name: fortunate-cod-949
+run_uuid: 481f3808b77d43a39747c3d722abb8cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711482094391
+status: 4
+tags: []
+user_id: danielionita

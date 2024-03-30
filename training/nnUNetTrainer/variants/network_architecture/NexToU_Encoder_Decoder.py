@@ -421,25 +421,37 @@ class MRConv(nn.Module):
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
 
-        return self.nn(x)
+        x = self.nn(x)
+
+        return x
 
 
 class GraphAttentionConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, act=nn.LeakyReLU, norm=None, bias=True, conv_op=nn.Conv3d, dropout=nn.Dropout3d):
         super(GraphAttentionConv2d, self).__init__()
-        self.gatconv = GATv2Conv(in_channels, out_channels, heads=1, concat=False, bias=bias, share_weights=True)
+        self.gatconv = GATv2Conv(in_channels, out_channels, heads=2, concat=False, bias=bias, share_weights=True)
         self.act = nn.LeakyReLU()
-        self.norm = nn.LayerNorm(out_channels)
-        self.dropout = dropout
+        self.norm = nn.BatchNorm3d(out_channels)
+        #self.dropout = nn.Dropout3d(p=0.3)
+        self.conv_op = conv_op
 
     def forward(self, x, edge_index, y=None):
-        b, c, h, w = x.size()
-        x = x.view(b, c, -1).permute(0, 2, 1).contiguous().view(-1, c)
+        if self.conv_op == nn.Conv2d:
+            B, C, H, W = x.shape
+        if self.conv_op == nn.Conv3d:
+            B, C, D, H, W = x.shape
+        else:
+            raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+
+        x = x.view(B, C, -1).permute(0, 2, 1).contiguous().view(-1, C)
 
         x = self.gatconv(x, edge_index)
+        if self.conv_op == nn.Conv2d:
+            x = x.view(B, -1, H, W)
+        elif self.conv_op == nn.Conv3d:
+            x = x.view(B, -1, D, H, W)
         x = self.norm(x)
         x = self.act(x)
-        x = self.norm(x)
 
         return x
 
@@ -474,11 +486,12 @@ class DyGraphConv(GraphConv):
         self.k = kernel_size
         self.d = dilation
         self.r = r
+        self.conv = conv
         neighbors = 9
         mlflow.log_param("k", neighbors)
         self.dilated_knn_graph = DenseDilatedKnnGraph(neighbors, dilation, stochastic, epsilon)
         self.conv_op = conv_op
-        self.dropout_op = dropout_op
+        self.dropout_op = nn.Dropout3d(0.2)
         if self.conv_op == nn.Conv2d:
             self.avg_pool = F.avg_pool2d
         elif self.conv_op == nn.Conv3d:
@@ -490,7 +503,7 @@ class DyGraphConv(GraphConv):
         if self.conv_op == nn.Conv2d:
             B, C, H, W = x.shape
         elif self.conv_op == nn.Conv3d:
-            B, C, H, W, D = x.shape
+            B, C, D, H, W = x.shape
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
 
@@ -500,13 +513,18 @@ class DyGraphConv(GraphConv):
             y = y.reshape(B, C, -1, 1).contiguous()
         x = x.reshape(B, C, -1, 1).contiguous()
         edge_index = self.dilated_knn_graph(x, y, relative_pos)
+        if self.conv == 'gat':
+            x = x.view(B, C, D, H, W)
         x = super(DyGraphConv, self).forward(x, edge_index, y)
-        if self.conv_op == nn.Conv2d:
-            return x.reshape(B, -1, H, W).contiguous()
-        elif self.conv_op == nn.Conv3d:
-            return x.reshape(B, -1, H, W, D).contiguous()
-        else:
-            raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+        if self.conv != 'gat':
+            if self.conv_op == nn.Conv2d:
+                return x.reshape(B, -1, H, W).contiguous()
+            elif self.conv_op == nn.Conv3d:
+                return x.reshape(B, -1, D, H, W).contiguous()
+            else:
+                raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+        x = self.dropout_op(x)
+        return x
 
 
 class Grapher(nn.Module):
@@ -532,7 +550,8 @@ class Grapher(nn.Module):
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
             norm_op(in_channels),
         )
-        self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
+        #self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
+        self.drop_path = DropPath(0.2)
         self.relative_pos = None
         if relative_pos:
 
@@ -642,16 +661,16 @@ class Efficient_ViG_blocks(nn.Module):
             idx = idx_list[j]
 
             blocks.append(nn.Sequential(
-                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
+                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'mr', act, norm,
                             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
                             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
                             dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs),
-                # Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), conv, act, norm,
-                #             bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
-                #             relative_pos=True, conv_op=conv_op, norm_op=norm_op,
-                #             dropout_op=dropout_op),
+                Grapher(channels, k[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
+                            bias, stochastic, epsilon, reduce_ratios[i], n=nr_of_vertices, drop_path=dpr[idx],
+                            relative_pos=True, conv_op=conv_op, norm_op=norm_op,
+                            dropout_op=dropout_op),
                 FFN(channels, channels * 4, act=act, drop_path=dpr[idx], conv_op=conv_op, norm_op=norm_op,
                     norm_op_kwargs=norm_op_kwargs)))
 

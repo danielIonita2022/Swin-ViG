@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/05bc733f8fd54092bd5a887ea57bb7b1/artifacts
+end_time: 1711525049915
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 05bc733f8fd54092bd5a887ea57bb7b1
+run_name: chill-trout-951
+run_uuid: 05bc733f8fd54092bd5a887ea57bb7b1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711523807018
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/ea6496282c0840b39977c3f58d8e38a9/artifacts
+deleted_time: 1711482082054
+end_time: 1711481531265
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: ea6496282c0840b39977c3f58d8e38a9
+run_name: unequaled-whale-810
+run_uuid: ea6496282c0840b39977c3f58d8e38a9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711481440122
+status: 3
+tags: []
+user_id: danielionita

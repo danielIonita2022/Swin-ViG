@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/65c5297983da42139d7c62b1d987a684/artifacts
+deleted_time: 1711482082064
+end_time: 1711473479967
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: 65c5297983da42139d7c62b1d987a684
+run_name: vaunted-foal-635
+run_uuid: 65c5297983da42139d7c62b1d987a684
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711473386100
+status: 3
+tags: []
+user_id: danielionita

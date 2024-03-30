@@ -136,11 +136,11 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 0.002
+        self.initial_lr = 0.001
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 6 # modificat de la 250
-        self.num_val_iterations_per_epoch = 4
+        self.num_iterations_per_epoch = 5 # modificat de la 250
+        self.num_val_iterations_per_epoch = 3
         self.num_epochs = 6000
         self.current_epoch = 0
 
@@ -175,6 +175,7 @@ class nnUNetTrainer(object):
 
         ### initializing stuff for remembering things and such
         self._best_ema = None
+        self._best_val_loss = None
 
         ### inference things
         self.inference_allowed_mirroring_axes = None  # this variable is set in
@@ -455,13 +456,13 @@ class nnUNetTrainer(object):
 
     def configure_optimizers(self):
         # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-        #                             momentum=0.99, nesterov=True)
-        # optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
-        #                              weight_decay=self.weight_decay,
-        #                              amsgrad=True)
-        optimizer = Ranger21(self.network.parameters(), self.initial_lr,
-                            num_batches_per_epoch=2, num_epochs=6000,
-                            weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
+        #                             momentum=0.9, nesterov=True)
+        optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+                                     weight_decay=self.weight_decay,
+                                     amsgrad=True)
+        # optimizer = Ranger21(self.network.parameters(), self.initial_lr,
+        #                     num_batches_per_epoch=2, num_epochs=6000,
+        #                     weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
         #lr_scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-4,
         #                                                 max_lr=3e-3, step_size_up=500, mode='triangular2')
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
@@ -1037,6 +1038,11 @@ class nnUNetTrainer(object):
         if (current_epoch + 1) % self.save_every == 0 and current_epoch != (self.num_epochs - 1):
             self.save_checkpoint(join(self.output_folder, 'checkpoint_latest.pth'))
 
+        if self._best_val_loss is None or self.logger.my_fantastic_logging['val_losses'][-1] < self._best_val_loss:
+            self._best_val_loss = self.logger.my_fantastic_logging['val_losses'][-1]
+            self.print_to_log_file(f"New best validations loss: {np.round(self._best_val_loss, decimals=4)}")
+            self.save_checkpoint(join(self.output_folder, 'checkpoint_best_val_loss.pth'))
+
         # handle 'best' checkpointing. ema_fg_dice is computed by the logger and can be accessed like this
         if self._best_ema is None or self.logger.my_fantastic_logging['ema_fg_dice'][-1] > self._best_ema:
             self._best_ema = self.logger.my_fantastic_logging['ema_fg_dice'][-1]
@@ -1057,6 +1063,7 @@ class nnUNetTrainer(object):
                     'grad_scaler_state': self.grad_scaler.state_dict() if self.grad_scaler is not None else None,
                     'logging': self.logger.get_checkpoint(),
                     '_best_ema': self._best_ema,
+                    '_best_val_loss': self._best_val_loss,
                     'current_epoch': self.current_epoch + 1,
                     'init_args': self.my_init_kwargs,
                     'trainer_name': self.__class__.__name__,
@@ -1085,6 +1092,7 @@ class nnUNetTrainer(object):
         self.current_epoch = checkpoint['current_epoch']
         self.logger.load_checkpoint(checkpoint['logging'])
         self._best_ema = checkpoint['_best_ema']
+        self._best_val_loss = checkpoint['_best_val_loss']
         self.inference_allowed_mirroring_axes = checkpoint[
             'inference_allowed_mirroring_axes'] if 'inference_allowed_mirroring_axes' in checkpoint.keys() else self.inference_allowed_mirroring_axes
 
@@ -1245,6 +1253,7 @@ class nnUNetTrainer(object):
         self.set_deep_supervision_enabled(True)
 
     def run_training(self):
+        mlflow.end_run()
         with mlflow.start_run():
             self.on_train_start()
 

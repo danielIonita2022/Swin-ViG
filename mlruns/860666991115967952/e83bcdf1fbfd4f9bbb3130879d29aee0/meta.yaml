@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/e83bcdf1fbfd4f9bbb3130879d29aee0/artifacts
+end_time: 1711453467956
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: active
+run_id: e83bcdf1fbfd4f9bbb3130879d29aee0
+run_name: mercurial-perch-58
+run_uuid: e83bcdf1fbfd4f9bbb3130879d29aee0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711446006098
+status: 4
+tags: []
+user_id: danielionita

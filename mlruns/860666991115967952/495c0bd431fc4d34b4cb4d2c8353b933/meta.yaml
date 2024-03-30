@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/495c0bd431fc4d34b4cb4d2c8353b933/artifacts
+end_time: 1711445986635
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: active
+run_id: 495c0bd431fc4d34b4cb4d2c8353b933
+run_name: abrasive-ant-751
+run_uuid: 495c0bd431fc4d34b4cb4d2c8353b933
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711440321696
+status: 4
+tags: []
+user_id: danielionita

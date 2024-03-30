@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/66715a84c0d843fea7e828c83cd78b93/artifacts
+end_time: 1711522965373
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 66715a84c0d843fea7e828c83cd78b93
+run_name: amusing-conch-907
+run_uuid: 66715a84c0d843fea7e828c83cd78b93
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711521932393
+status: 3
+tags: []
+user_id: danielionita

@@ -42,7 +42,7 @@ def convert_btcv(btcv_base_dir: str, nnunet_dataset_id: int = 200):
         if match:
             number = match.group()
             shutil.copy(join(test_folder, 'img', 'img' + number + '.nii.gz'), join(imagests, f'{number}_0000.nii.gz'))
-            shutil.copy(join(test_folder, 'label', 'label' + number + '.nii.gz'), join(labelsts, f'{number}.nii.gz'))
+            #shutil.copy(join(test_folder, 'label', 'label' + number + '.nii.gz'), join(labelsts, f'{number}.nii.gz'))
 
     generate_dataset_json(out_base, {0: "CT"}, labels=
     {

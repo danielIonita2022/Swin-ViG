@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/45e8186f563b42b5bbac28022fc8f842/artifacts
+deleted_time: 1711482141259
+end_time: 1711482094378
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: 45e8186f563b42b5bbac28022fc8f842
+run_name: gregarious-crab-490
+run_uuid: 45e8186f563b42b5bbac28022fc8f842
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711482012865
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/804286871621287938/0c7696dd9159425db41805457a222c14/artifacts
+deleted_time: 1711354075037
+end_time: 1711353334247
+entry_point_name: ''
+experiment_id: '804286871621287938'
+lifecycle_stage: deleted
+run_id: 0c7696dd9159425db41805457a222c14
+run_name: colorful-skunk-106
+run_uuid: 0c7696dd9159425db41805457a222c14
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711353334055
+status: 4
+tags: []
+user_id: danielionita

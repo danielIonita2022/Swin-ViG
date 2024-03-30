@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/804286871621287938/59348b5bec114b2e875d60dc740a2e42/artifacts
+deleted_time: 1711375586834
+end_time: 1711375567370
+entry_point_name: ''
+experiment_id: '804286871621287938'
+lifecycle_stage: deleted
+run_id: 59348b5bec114b2e875d60dc740a2e42
+run_name: rogue-koi-171
+run_uuid: 59348b5bec114b2e875d60dc740a2e42
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711375165766
+status: 4
+tags: []
+user_id: danielionita

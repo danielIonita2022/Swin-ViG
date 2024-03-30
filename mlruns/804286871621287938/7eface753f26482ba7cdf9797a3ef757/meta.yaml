@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/804286871621287938/7eface753f26482ba7cdf9797a3ef757/artifacts
+end_time: 1711418084574
+entry_point_name: ''
+experiment_id: '804286871621287938'
+lifecycle_stage: active
+run_id: 7eface753f26482ba7cdf9797a3ef757
+run_name: GATv2ConvLite-RangerPolyLR
+run_uuid: 7eface753f26482ba7cdf9797a3ef757
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711375937735
+status: 3
+tags: []
+user_id: danielionita

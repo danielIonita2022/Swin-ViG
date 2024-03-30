@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/2babb96c7d4f48c0a118f8431d5c692a/artifacts
+deleted_time: 1711482082051
+end_time: 1711481697595
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: 2babb96c7d4f48c0a118f8431d5c692a
+run_name: vaunted-crow-694
+run_uuid: 2babb96c7d4f48c0a118f8431d5c692a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711481668518
+status: 4
+tags: []
+user_id: danielionita

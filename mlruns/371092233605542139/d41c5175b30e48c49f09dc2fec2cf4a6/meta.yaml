@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/d41c5175b30e48c49f09dc2fec2cf4a6/artifacts
+deleted_time: 1711582523915
+end_time: 1711580302928
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: d41c5175b30e48c49f09dc2fec2cf4a6
+run_name: carefree-mule-386
+run_uuid: d41c5175b30e48c49f09dc2fec2cf4a6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711580280332
+status: 4
+tags: []
+user_id: danielionita
