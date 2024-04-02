@@ -797,6 +797,8 @@ class nnUNetTrainer(object):
         if not self.was_initialized:
             self.initialize()
 
+        self.print_to_log_file('MODEL ARCHITECTURE: ', self.network)
+
         maybe_mkdir_p(self.output_folder)
 
         # make sure deep supervision is on in the network
