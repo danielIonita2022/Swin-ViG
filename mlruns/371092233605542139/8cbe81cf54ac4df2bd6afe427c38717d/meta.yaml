@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/8cbe81cf54ac4df2bd6afe427c38717d/artifacts
+deleted_time: 1711836250855
+end_time: 1711819992490
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 8cbe81cf54ac4df2bd6afe427c38717d
+run_name: abrasive-mouse-878
+run_uuid: 8cbe81cf54ac4df2bd6afe427c38717d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711819844657
+status: 4
+tags: []
+user_id: danielionita

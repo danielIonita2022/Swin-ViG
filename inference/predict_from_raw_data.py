@@ -576,10 +576,10 @@ if __name__ == '__main__':
         perform_everything_on_gpu=True,
         verbose=True,
         save_probabilities=True,
-        overwrite=True,
-        checkpoint_name='checkpoint_best.pth',
-        num_processes_preprocessing=2,
-        num_processes_segmentation_export=2)
+        overwrite=False,
+        checkpoint_name='checkpoint_best_val_loss.pth',
+        num_processes_preprocessing=1,
+        num_processes_segmentation_export=1)
 
     print('PREDICTION DONE!')
 

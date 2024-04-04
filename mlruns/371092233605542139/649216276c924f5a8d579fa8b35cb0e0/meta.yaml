@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/649216276c924f5a8d579fa8b35cb0e0/artifacts
+deleted_time: 1711836250877
+end_time: 1711817609669
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 649216276c924f5a8d579fa8b35cb0e0
+run_name: glamorous-whale-921
+run_uuid: 649216276c924f5a8d579fa8b35cb0e0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711817394805
+status: 4
+tags: []
+user_id: danielionita

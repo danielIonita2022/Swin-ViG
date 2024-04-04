@@ -136,12 +136,12 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 0.001
+        self.initial_lr = 0.002
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
         self.num_iterations_per_epoch = 5 # modificat de la 250
         self.num_val_iterations_per_epoch = 3
-        self.num_epochs = 6000
+        self.num_epochs = 2000
         self.current_epoch = 0
 
         ## in loc de 14 trebuie sa fie nr. de clase, daca se schimba dataset, se schimba si el
@@ -465,7 +465,8 @@ class nnUNetTrainer(object):
         #                     weight_decay=self.weight_decay, use_warmup=False, warmdown_active=False)
         #lr_scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-4,
         #                                                 max_lr=3e-3, step_size_up=500, mode='triangular2')
-        lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
+        #lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
+        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=6000, eta_min=1e-5)
         return optimizer, lr_scheduler
 
     def plot_network_architecture(self):

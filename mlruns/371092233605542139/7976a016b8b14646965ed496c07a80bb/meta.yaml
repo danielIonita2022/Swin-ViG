@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/7976a016b8b14646965ed496c07a80bb/artifacts
+deleted_time: 1711836250842
+end_time: 1711833836507
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 7976a016b8b14646965ed496c07a80bb
+run_name: stately-crow-198
+run_uuid: 7976a016b8b14646965ed496c07a80bb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711833711493
+status: 4
+tags: []
+user_id: danielionita

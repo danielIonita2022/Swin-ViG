@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/7270f977fee7424c9c1551e0f5e2f6e8/artifacts
+end_time: 1712237009830
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7270f977fee7424c9c1551e0f5e2f6e8
+run_name: tasteful-gnat-231
+run_uuid: 7270f977fee7424c9c1551e0f5e2f6e8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712234070971
+status: 3
+tags: []
+user_id: danielionita

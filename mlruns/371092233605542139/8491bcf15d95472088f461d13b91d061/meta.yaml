@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/8491bcf15d95472088f461d13b91d061/artifacts
+deleted_time: 1711836250823
+end_time: 1711835724506
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 8491bcf15d95472088f461d13b91d061
+run_name: polite-bass-543
+run_uuid: 8491bcf15d95472088f461d13b91d061
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711835697724
+status: 4
+tags: []
+user_id: danielionita

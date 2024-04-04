@@ -22,8 +22,8 @@ from torch_geometric.nn.conv import GATConv, GATv2Conv
 
 class OptInit:
     def __init__(self, drop_path_rate=0., pool_op_kernel_sizes_len=4):
-        self.k = [4, 8, 16] + [32] * (pool_op_kernel_sizes_len - 3)
-        self.conv = 'gat'
+        self.pool_op_kernel_sizes_len = pool_op_kernel_sizes_len
+        self.conv = 'mr'
         self.act = 'leakyrelu'
         self.norm = 'instance'
         self.bias = True
@@ -33,9 +33,9 @@ class OptInit:
         self.use_stochastic = True
         self.drop_path = drop_path_rate
         # number of basic blocks in the backbone
-        self.blocks = [1] * (pool_op_kernel_sizes_len - 2) + [1, 1]
+        self.blocks = [1] * pool_op_kernel_sizes_len
         # number of reduce ratios in the backbone
-        self.reduce_ratios = [4, 2, 1, 1] + [1] * (pool_op_kernel_sizes_len - 4)
+        self.reduce_ratios = [16, 8, 4, 2] + [1] * (pool_op_kernel_sizes_len - 4)
 
 
 class NexToU_Encoder(nn.Module):
@@ -108,11 +108,11 @@ class NexToU_Encoder(nn.Module):
         else:
             raise ValueError("unknown convolution dimensionality, conv op: %s" % str(conv_op))
 
-        img_min_shape = img_shape_list[-1]
+        self.window_shape_list = img_shape_list[1 + conv_layer_d_num:] + [img_shape_list[-1]]
 
         opt = OptInit(pool_op_kernel_sizes_len=len(strides))
         self.opt = opt
-        self.opt.img_min_shape = img_min_shape
+        self.opt.window_shape_list = self.window_shape_list
         self.conv_layer_d_num = conv_layer_d_num
         self.opt.n_size_list = n_size_list
 
@@ -141,9 +141,11 @@ class NexToU_Encoder(nn.Module):
                                       kernel_sizes[s], conv_stride,
                                       conv_bias, norm_op, norm_op_kwargs, dropout_op, dropout_op_kwargs, nonlin,
                                       nonlin_kwargs, nonlin_first),
-                    SwinGNNBlocks(False, features_per_stage[s], img_shape_list[s], s - conv_layer_d_num,
-                                         opt=self.opt, conv_op=conv_op,
-                                         norm_op=norm_op, norm_op_kwargs=norm_op_kwargs, dropout_op=dropout_op)))
+                    SwinGNNBlocks(False, features_per_stage[s], img_shape_list[s],
+                                  self.window_shape_list[s - conv_layer_d_num],
+                                  s - conv_layer_d_num,
+                                  opt=self.opt, conv_op=conv_op,
+                                  norm_op=norm_op, norm_op_kwargs=norm_op_kwargs, dropout_op=dropout_op)))
 
             stages.append(nn.Sequential(*stage_modules))
             input_channels = features_per_stage[s]
@@ -256,11 +258,11 @@ class NexToU_Decoder(nn.Module):
             raise ValueError(
                 "unknown convolution dimensionality, conv op: %s" % str(encoder.conv_op))
 
-        img_min_shape = img_shape_list[-1]
+        self.window_shape_list = self.encoder.window_shape_list
 
         opt = OptInit(pool_op_kernel_sizes_len=len(strides))
         self.opt = opt
-        self.opt.img_min_shape = img_min_shape
+        self.opt.window_shape_list = self.window_shape_list
         self.conv_layer_d_num = conv_layer_d_num
         self.opt.n_size_list = n_size_list
 
@@ -288,10 +290,11 @@ class NexToU_Decoder(nn.Module):
                                       encoder.dropout_op, encoder.dropout_op_kwargs, encoder.nonlin,
                                       encoder.nonlin_kwargs, nonlin_first),
                     SwinGNNBlocks(True, input_features_skip, img_shape_list[n_stages_encoder - (s + 1)],
-                                         n_stages_encoder - conv_layer_d_num - (s + 1), opt=self.opt,
-                                         conv_op=encoder.conv_op,
-                                         norm_op=encoder.norm_op, norm_op_kwargs=encoder.norm_op_kwargs,
-                                         dropout_op=encoder.dropout_op)))
+                                  self.window_shape_list[n_stages_encoder - conv_layer_d_num - (s + 1)],
+                                  n_stages_encoder - conv_layer_d_num - (s + 1), opt=self.opt,
+                                  conv_op=encoder.conv_op,
+                                  norm_op=encoder.norm_op, norm_op_kwargs=encoder.norm_op_kwargs,
+                                  dropout_op=encoder.dropout_op)))
 
             else:
                 stages.append(StackedConvBlocks(
@@ -427,12 +430,13 @@ class MRConv(nn.Module):
 
 
 class GraphAttentionConv2d(nn.Module):
-    def __init__(self, in_channels, out_channels, act=nn.LeakyReLU, norm=None, bias=True, conv_op=nn.Conv3d, dropout=nn.Dropout3d):
+    def __init__(self, in_channels, out_channels, act=nn.LeakyReLU, norm=None, bias=True, conv_op=nn.Conv3d,
+                 dropout=nn.Dropout3d):
         super(GraphAttentionConv2d, self).__init__()
         self.gatconv = GATv2Conv(in_channels, out_channels, heads=2, concat=False, bias=bias, share_weights=True)
         self.act = nn.LeakyReLU()
         self.norm = nn.BatchNorm3d(out_channels)
-        #self.dropout = nn.Dropout3d(p=0.3)
+        # self.dropout = nn.Dropout3d(p=0.3)
         self.conv_op = conv_op
 
     def forward(self, x, edge_index, y=None):
@@ -550,7 +554,7 @@ class Grapher(nn.Module):
             conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
             norm_op(in_channels),
         )
-        #self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
+        # self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.drop_path = DropPath(0.2)
         self.relative_pos = None
         if relative_pos:
@@ -558,14 +562,14 @@ class Grapher(nn.Module):
             if self.conv_op == nn.Conv2d:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_2d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
-                                                                                                        1 / 2))))).unsqueeze(
+                                                                                                    1 / 2))))).unsqueeze(
                     0).unsqueeze(1)
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r)), mode='bicubic', align_corners=False)
             elif self.conv_op == nn.Conv3d:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_3d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
-                                                                                                        1 / 3))))).unsqueeze(
+                                                                                                    1 / 3))))).unsqueeze(
                     0).unsqueeze(1)
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r * r)), mode='bicubic', align_corners=False)
@@ -655,6 +659,7 @@ def window_reverse(windows, window_size, size_tuple):
     Returns:
         x: (B, C, S ,H, W)
     """
+    x = None
     if len(windows.shape) == 4:
         H, W = size_tuple
         B = int(windows.shape[0] / (H * W / window_size[0] / window_size[1]))
@@ -672,7 +677,7 @@ def window_reverse(windows, window_size, size_tuple):
                       s=S // window_size[0], h=H // window_size[1], w=W // window_size[2])
         x = x.permute(0, 4, 1, 2, 3)
     else:
-        raise NotImplementedError('len(x.shape) [%d] is equal to 4 or 5' % len(x.shape))
+        raise NotImplementedError('len(x.shape) [%d] is equal to 4 or 5' % len(windows.shape))
 
     return x
 
@@ -717,14 +722,14 @@ class SwinGrapher(nn.Module):
             if self.conv_op == nn.Conv2d:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_2d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
-                                                                                                        1 / 2))))).unsqueeze(
+                                                                                                    1 / 2))))).unsqueeze(
                     0).unsqueeze(1)  ####
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r)), mode='bicubic', align_corners=False)
             elif self.conv_op == nn.Conv3d:
                 relative_pos_tensor = torch.from_numpy(np.float32(get_3d_relative_pos_embed(in_channels,
                                                                                             int(n ** (
-                                                                                                        1 / 3))))).unsqueeze(
+                                                                                                    1 / 3))))).unsqueeze(
                     0).unsqueeze(1)  ####
                 relative_pos_tensor = F.interpolate(
                     relative_pos_tensor, size=(n, n // (r * r * r)), mode='bicubic', align_corners=False)
@@ -811,7 +816,8 @@ class SwinGrapher(nn.Module):
 
 
 class SwinGNNBlocks(nn.Module):
-    def __init__(self, has_attention, channels, img_shape, index, opt=None, conv_op=nn.Conv3d, norm_op=nn.BatchNorm3d,
+    def __init__(self, has_attention, channels, img_shape, window_size, index, opt=None, conv_op=nn.Conv3d,
+                 norm_op=nn.BatchNorm3d,
                  norm_op_kwargs=None,
                  dropout_op=nn.Dropout3d, **kwargs):
         super(SwinGNNBlocks, self).__init__()
@@ -828,13 +834,12 @@ class SwinGNNBlocks(nn.Module):
         reduce_ratios = opt.reduce_ratios
         blocks_num_list = opt.blocks
         n_size_list = opt.n_size_list
-        img_min_shape = opt.img_min_shape
+        img_min_shape = window_size
 
         if has_attention:
             conv = 'gat'
         else:
             conv = 'mr'
-
 
         self.n_blocks = sum(blocks_num_list)
         # stochastic depth decay rule

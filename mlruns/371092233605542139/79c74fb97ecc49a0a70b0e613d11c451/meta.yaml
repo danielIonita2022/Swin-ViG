@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/79c74fb97ecc49a0a70b0e613d11c451/artifacts
+deleted_time: 1711836250853
+end_time: 1711820977438
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 79c74fb97ecc49a0a70b0e613d11c451
+run_name: receptive-fly-66
+run_uuid: 79c74fb97ecc49a0a70b0e613d11c451
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711820855176
+status: 4
+tags: []
+user_id: danielionita

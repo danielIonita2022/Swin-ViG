@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/23c464ec807541a9937beb2717f53b5e/artifacts
+deleted_time: 1711836250823
+end_time: 1711835576081
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 23c464ec807541a9937beb2717f53b5e
+run_name: debonair-seal-62
+run_uuid: 23c464ec807541a9937beb2717f53b5e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711835559236
+status: 4
+tags: []
+user_id: danielionita

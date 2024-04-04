@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/e142ba9e1b0047d1a669fa31cc828031/artifacts
+deleted_time: 1711836250878
+end_time: 1711816940735
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: e142ba9e1b0047d1a669fa31cc828031
+run_name: wistful-moth-274
+run_uuid: e142ba9e1b0047d1a669fa31cc828031
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711816940636
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/37a5efa1689a4a33832234df076ec627/artifacts
+deleted_time: 1711811115068
+end_time: 1711807972740
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 37a5efa1689a4a33832234df076ec627
+run_name: selective-snake-797
+run_uuid: 37a5efa1689a4a33832234df076ec627
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711807952009
+status: 4
+tags: []
+user_id: danielionita

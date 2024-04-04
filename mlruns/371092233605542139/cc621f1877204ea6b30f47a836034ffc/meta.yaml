@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/cc621f1877204ea6b30f47a836034ffc/artifacts
+deleted_time: 1712129867216
+end_time: 1712126946212
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: cc621f1877204ea6b30f47a836034ffc
+run_name: glamorous-colt-729
+run_uuid: cc621f1877204ea6b30f47a836034ffc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712126860749
+status: 4
+tags: []
+user_id: danielionita

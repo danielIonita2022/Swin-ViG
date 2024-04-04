@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/129385515a844ee1889c3feeb421fb36/artifacts
+deleted_time: 1712058183494
+end_time: 1712055688164
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 129385515a844ee1889c3feeb421fb36
+run_name: upset-finch-472
+run_uuid: 129385515a844ee1889c3feeb421fb36
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712055662852
+status: 4
+tags: []
+user_id: danielionita

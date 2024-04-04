@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/eb15231ef71d4b1eb7a38d64e58175b2/artifacts
+deleted_time: 1711811115065
+end_time: 1711808267533
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: eb15231ef71d4b1eb7a38d64e58175b2
+run_name: rumbling-moth-55
+run_uuid: eb15231ef71d4b1eb7a38d64e58175b2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711808252002
+status: 4
+tags: []
+user_id: danielionita

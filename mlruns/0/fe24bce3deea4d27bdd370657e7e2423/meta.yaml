@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/fe24bce3deea4d27bdd370657e7e2423/artifacts
+end_time: 1712123803071
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fe24bce3deea4d27bdd370657e7e2423
+run_name: redolent-steed-853
+run_uuid: fe24bce3deea4d27bdd370657e7e2423
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712122228819
+status: 3
+tags: []
+user_id: danielionita

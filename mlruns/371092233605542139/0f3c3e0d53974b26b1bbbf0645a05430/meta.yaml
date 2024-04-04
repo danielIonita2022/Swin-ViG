@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/0f3c3e0d53974b26b1bbbf0645a05430/artifacts
+end_time: 1712097745206
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: 0f3c3e0d53974b26b1bbbf0645a05430
+run_name: painted-hare-690
+run_uuid: 0f3c3e0d53974b26b1bbbf0645a05430
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712058156895
+status: 3
+tags: []
+user_id: danielionita

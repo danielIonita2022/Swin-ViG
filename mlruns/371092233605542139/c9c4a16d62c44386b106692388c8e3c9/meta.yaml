@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/c9c4a16d62c44386b106692388c8e3c9/artifacts
+deleted_time: 1712129867217
+end_time: 1712126829029
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: c9c4a16d62c44386b106692388c8e3c9
+run_name: burly-donkey-273
+run_uuid: c9c4a16d62c44386b106692388c8e3c9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712126662028
+status: 4
+tags: []
+user_id: danielionita

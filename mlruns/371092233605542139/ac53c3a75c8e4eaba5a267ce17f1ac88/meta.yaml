@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/ac53c3a75c8e4eaba5a267ce17f1ac88/artifacts
+deleted_time: 1711836250865
+end_time: 1711818943095
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: ac53c3a75c8e4eaba5a267ce17f1ac88
+run_name: bittersweet-mule-472
+run_uuid: ac53c3a75c8e4eaba5a267ce17f1ac88
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711818887475
+status: 4
+tags: []
+user_id: danielionita

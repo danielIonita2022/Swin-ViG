@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/d301e952345e48979f7b44f388b6b447/artifacts
+end_time: 1711982197297
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: d301e952345e48979f7b44f388b6b447
+run_name: sincere-stag-649
+run_uuid: d301e952345e48979f7b44f388b6b447
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711880138510
+status: 3
+tags: []
+user_id: danielionita

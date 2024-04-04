@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/411cc1dacfec47a2ac0e3e7b5ac13d76/artifacts
+deleted_time: 1712129867236
+end_time: 1712126630214
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 411cc1dacfec47a2ac0e3e7b5ac13d76
+run_name: nebulous-steed-99
+run_uuid: 411cc1dacfec47a2ac0e3e7b5ac13d76
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712126383549
+status: 4
+tags: []
+user_id: danielionita

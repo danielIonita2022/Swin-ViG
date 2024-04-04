@@ -1,0 +1,3 @@
+# SwinGNN with variable windows_size instead of fixed (6,6,6)
+- started from larger windows to smaller ones down to (6,6,6)
+- used CosineSched for LR

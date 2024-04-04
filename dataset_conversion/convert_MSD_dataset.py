@@ -129,4 +129,4 @@ def entry_point():
 
 
 if __name__ == '__main__':
-    convert_msd_dataset('/mnt/hdd1/home/danielionita/data/Task01_RAVIR')
+    convert_msd_dataset('/mnt/hdd2/home/danielionita/data/Task07_Pancreas')

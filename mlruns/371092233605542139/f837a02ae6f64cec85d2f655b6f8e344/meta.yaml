@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/f837a02ae6f64cec85d2f655b6f8e344/artifacts
+end_time: 1712230185174
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: f837a02ae6f64cec85d2f655b6f8e344
+run_name: SwinGNN (GATv2Conv - Decoder)
+run_uuid: f837a02ae6f64cec85d2f655b6f8e344
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712180795226
+status: 3
+tags: []
+user_id: danielionita

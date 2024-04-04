@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/f44fd3213c264f00bc218c924e988ca1/artifacts
+end_time: 1711815504302
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: f44fd3213c264f00bc218c924e988ca1
+run_name: luminous-hare-568
+run_uuid: f44fd3213c264f00bc218c924e988ca1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711809146094
+status: 4
+tags: []
+user_id: danielionita

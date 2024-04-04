@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/aee1f769c8d04e36bdffc5a7f6d51a8b/artifacts
+deleted_time: 1711811115054
+end_time: 1711809116032
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: aee1f769c8d04e36bdffc5a7f6d51a8b
+run_name: whimsical-panda-721
+run_uuid: aee1f769c8d04e36bdffc5a7f6d51a8b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711808979109
+status: 4
+tags: []
+user_id: danielionita

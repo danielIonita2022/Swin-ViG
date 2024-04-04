@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/84855ae9bc0941e194c7a4feae0320d2/artifacts
+deleted_time: 1711836250868
+end_time: 1711817878934
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 84855ae9bc0941e194c7a4feae0320d2
+run_name: wise-ox-953
+run_uuid: 84855ae9bc0941e194c7a4feae0320d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711817851717
+status: 4
+tags: []
+user_id: danielionita
