@@ -334,11 +334,11 @@ def entry_point_apply_postprocessing():
 
 
 if __name__ == '__main__':
-    trained_model_folder = '/home/fabian/results/nnUNet_remake/Dataset004_Hippocampus/nnUNetTrainer__nnUNetPlans__3d_fullres'
-    labelstr = join(nnUNet_raw, 'Dataset004_Hippocampus', 'labelsTr')
+    trained_model_folder = '/mnt/hdd2/home/danielionita/vig_nnunet/nnunet_data/nnUNet_results/Dataset218_AMOS2022_postChallenge_task1/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres'
+    labelstr = join(nnUNet_raw, 'Dataset218_AMOS2022_postChallenge_task1', 'labelsTr')
     plans_manager = PlansManager(join(trained_model_folder, 'plans.json'))
     dataset_json = load_json(join(trained_model_folder, 'dataset.json'))
-    folds = (0, 1, 2, 3, 4)
+    folds = (0,)
     label_manager = plans_manager.get_label_manager(dataset_json)
 
     merged_output_folder = join(trained_model_folder, f'crossval_results_folds_{folds_tuple_to_string(folds)}')

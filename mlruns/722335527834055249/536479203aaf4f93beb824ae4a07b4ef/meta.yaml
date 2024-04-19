@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/536479203aaf4f93beb824ae4a07b4ef/artifacts
+end_time: 1712807961408
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: active
+run_id: 536479203aaf4f93beb824ae4a07b4ef
+run_name: valuable-gnu-3
+run_uuid: 536479203aaf4f93beb824ae4a07b4ef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712785681433
+status: 4
+tags: []
+user_id: danielionita

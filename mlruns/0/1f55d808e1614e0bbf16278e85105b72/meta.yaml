@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/1f55d808e1614e0bbf16278e85105b72/artifacts
+end_time: 1712729709643
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1f55d808e1614e0bbf16278e85105b72
+run_name: upbeat-snail-341
+run_uuid: 1f55d808e1614e0bbf16278e85105b72
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712729682418
+status: 3
+tags: []
+user_id: danielionita

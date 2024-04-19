@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/681297957449357217
+creation_time: 1712243821061
+experiment_id: '681297957449357217'
+last_update_time: 1712243821061
+lifecycle_stage: active
+name: MSD_Pancreas07_nnUNetSwinViG

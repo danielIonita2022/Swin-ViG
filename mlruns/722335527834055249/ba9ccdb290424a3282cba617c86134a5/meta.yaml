@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ba9ccdb290424a3282cba617c86134a5/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: active
+run_id: ba9ccdb290424a3282cba617c86134a5
+run_name: SwinGNN-NoAttn
+run_uuid: ba9ccdb290424a3282cba617c86134a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713294710059
+status: 1
+tags: []
+user_id: danielionita

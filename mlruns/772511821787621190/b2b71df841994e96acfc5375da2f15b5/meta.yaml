@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/772511821787621190/b2b71df841994e96acfc5375da2f15b5/artifacts
+deleted_time: 1712612410272
+end_time: 1712612043615
+entry_point_name: ''
+experiment_id: '772511821787621190'
+lifecycle_stage: deleted
+run_id: b2b71df841994e96acfc5375da2f15b5
+run_name: rare-panda-902
+run_uuid: b2b71df841994e96acfc5375da2f15b5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712612043548
+status: 4
+tags: []
+user_id: danielionita

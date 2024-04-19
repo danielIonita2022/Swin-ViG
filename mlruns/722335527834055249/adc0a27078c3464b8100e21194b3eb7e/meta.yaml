@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/adc0a27078c3464b8100e21194b3eb7e/artifacts
+deleted_time: 1713301034611
+end_time: 1713294710044
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: adc0a27078c3464b8100e21194b3eb7e
+run_name: salty-hen-769
+run_uuid: adc0a27078c3464b8100e21194b3eb7e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713294705676
+status: 3
+tags: []
+user_id: danielionita

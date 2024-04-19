@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/c944ad0a31c943feb10ba14b50dcc22d/artifacts
+end_time: 1712376555196
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: active
+run_id: c944ad0a31c943feb10ba14b50dcc22d
+run_name: silent-gnat-490
+run_uuid: c944ad0a31c943feb10ba14b50dcc22d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712342095925
+status: 3
+tags: []
+user_id: danielionita

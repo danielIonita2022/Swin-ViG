@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/182e3bbe495441a5866017e6d1fcaaac/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 182e3bbe495441a5866017e6d1fcaaac
+run_name: loud-bear-297
+run_uuid: 182e3bbe495441a5866017e6d1fcaaac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712654701840
+status: 1
+tags: []
+user_id: danielionita

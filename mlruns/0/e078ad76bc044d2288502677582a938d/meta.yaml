@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/e078ad76bc044d2288502677582a938d/artifacts
+end_time: 1712695497709
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e078ad76bc044d2288502677582a938d
+run_name: treasured-cat-679
+run_uuid: e078ad76bc044d2288502677582a938d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712691451898
+status: 3
+tags: []
+user_id: danielionita

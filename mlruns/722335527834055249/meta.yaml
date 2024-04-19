@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/722335527834055249
+creation_time: 1712784783986
+experiment_id: '722335527834055249'
+last_update_time: 1712784783986
+lifecycle_stage: active
+name: AMOS22_nnUNetSwinGNN

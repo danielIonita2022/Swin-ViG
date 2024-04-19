@@ -289,7 +289,7 @@ class NexToU_Decoder(nn.Module):
                                       encoder.norm_op_kwargs,
                                       encoder.dropout_op, encoder.dropout_op_kwargs, encoder.nonlin,
                                       encoder.nonlin_kwargs, nonlin_first),
-                    SwinGNNBlocks(True, input_features_skip, img_shape_list[n_stages_encoder - (s + 1)],
+                    SwinGNNBlocks(False, input_features_skip, img_shape_list[n_stages_encoder - (s + 1)],
                                   self.window_shape_list[n_stages_encoder - conv_layer_d_num - (s + 1)],
                                   n_stages_encoder - conv_layer_d_num - (s + 1), opt=self.opt,
                                   conv_op=encoder.conv_op,

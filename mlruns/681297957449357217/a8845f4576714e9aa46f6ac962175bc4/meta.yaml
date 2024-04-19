@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/a8845f4576714e9aa46f6ac962175bc4/artifacts
+end_time: 1712464521764
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: active
+run_id: a8845f4576714e9aa46f6ac962175bc4
+run_name: sassy-goat-70
+run_uuid: a8845f4576714e9aa46f6ac962175bc4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712429885323
+status: 3
+tags: []
+user_id: danielionita

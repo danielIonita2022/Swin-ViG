@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/0d27621337aa46158b39d7e822b0510e/artifacts
+end_time: 1712666039351
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0d27621337aa46158b39d7e822b0510e
+run_name: salty-lark-580
+run_uuid: 0d27621337aa46158b39d7e822b0510e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712666007012
+status: 3
+tags: []
+user_id: danielionita

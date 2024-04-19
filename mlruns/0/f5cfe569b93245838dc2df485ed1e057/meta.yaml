@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f5cfe569b93245838dc2df485ed1e057/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f5cfe569b93245838dc2df485ed1e057
+run_name: rumbling-bass-961
+run_uuid: f5cfe569b93245838dc2df485ed1e057
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712662460724
+status: 1
+tags: []
+user_id: danielionita
