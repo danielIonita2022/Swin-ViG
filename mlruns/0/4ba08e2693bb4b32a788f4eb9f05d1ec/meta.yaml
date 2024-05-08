@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/4ba08e2693bb4b32a788f4eb9f05d1ec/artifacts
+end_time: 1714986465750
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4ba08e2693bb4b32a788f4eb9f05d1ec
+run_name: luminous-snail-32
+run_uuid: 4ba08e2693bb4b32a788f4eb9f05d1ec
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714986196662
+status: 3
+tags: []
+user_id: danielionita

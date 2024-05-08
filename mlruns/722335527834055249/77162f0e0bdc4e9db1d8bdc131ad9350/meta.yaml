@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/77162f0e0bdc4e9db1d8bdc131ad9350/artifacts
+deleted_time: 1715032454451
+end_time: 1715001880907
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 77162f0e0bdc4e9db1d8bdc131ad9350
+run_name: illustrious-croc-252
+run_uuid: 77162f0e0bdc4e9db1d8bdc131ad9350
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715001727961
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/63750a37f5a14c23b2dd9673fe5f065c/artifacts
+end_time: 1713597920409
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 63750a37f5a14c23b2dd9673fe5f065c
+run_name: fortunate-skink-788
+run_uuid: 63750a37f5a14c23b2dd9673fe5f065c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713597865680
+status: 3
+tags: []
+user_id: danielionita

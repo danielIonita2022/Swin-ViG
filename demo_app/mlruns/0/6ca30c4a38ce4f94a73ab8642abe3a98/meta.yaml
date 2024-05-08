@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/6ca30c4a38ce4f94a73ab8642abe3a98/artifacts
+end_time: 1713727846163
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6ca30c4a38ce4f94a73ab8642abe3a98
+run_name: learned-skunk-684
+run_uuid: 6ca30c4a38ce4f94a73ab8642abe3a98
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713727723352
+status: 3
+tags: []
+user_id: danielionita

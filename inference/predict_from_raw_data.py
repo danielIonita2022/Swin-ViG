@@ -33,6 +33,8 @@ from nnunetv2.utilities.label_handling.label_handling import determine_num_input
 from nnunetv2.utilities.plans_handling.plans_handler import PlansManager, ConfigurationManager
 from nnunetv2.utilities.utils import create_lists_from_splitted_dataset_folder
 
+from paths import nnUNet_results, nnUNet_raw
+
 
 class nnUNetPredictor(object):
     def __init__(self,
@@ -97,14 +99,8 @@ class nnUNetPredictor(object):
         trainer_class = recursive_find_python_class(join(nnunetv2.__path__[0], "training", "nnUNetTrainer"),
                                                     trainer_name, 'nnunetv2.training.nnUNetTrainer')
 
-        network = trainer_class.build_network_architecture(
-            configuration_manager.network_arch_class_name,
-            configuration_manager.network_arch_init_kwargs,
-            configuration_manager.network_arch_init_kwargs_req_import,
-            num_input_channels,
-            plans_manager.get_label_manager(dataset_json).num_segmentation_heads,
-            enable_deep_supervision=False
-        )
+        network = trainer_class.build_network_architecture(plans_manager, dataset_json, configuration_manager,
+                                                           num_input_channels, enable_deep_supervision=False)
 
         self.plans_manager = plans_manager
         self.configuration_manager = configuration_manager
@@ -889,7 +885,9 @@ def predict_entry_point():
 
 def make_prediction_app(input_file_path, trained_model_path, fold):
 
-    output_file_path = join(trained_model_path, f'fold_{fold}', 'demo_app')
+    #output_file_path = join(trained_model_path, f'fold_{fold}', 'demo_app')
+    output_file_path = join(trained_model_path, f'fold_{fold}', 'val2')
+
 
     predictor = nnUNetPredictor(
         tile_step_size=0.5,
@@ -908,15 +906,22 @@ def make_prediction_app(input_file_path, trained_model_path, fold):
     )
     predictor.predict_from_files(input_file_path,
                                  output_file_path,
-                                 save_probabilities=False, overwrite=True,
-                                 num_processes_preprocessing=4, num_processes_segmentation_export=4,
+                                 save_probabilities=False, overwrite=False,
+                                 num_processes_preprocessing=8, num_processes_segmentation_export=8,
                                  folder_with_segs_from_prev_stage=None, num_parts=1, part_id=0)
-    for file in os.listdir(output_file_path):
-        if file.endswith(".nii.gz"):
-            return join(output_file_path, file)
-        return None
-#if __name__ == '__main__':
+    # predicted_seg = None
+    # for file in os.listdir(output_file_path):
+    #     if file.endswith(".nii.gz"):
+    #         predicted_seg = join(output_file_path, file)
+    # return predicted_seg
+
+
+if __name__ == '__main__':
     # predict a bunch of files
+    input_file_path = join(nnUNet_raw, "Dataset218_AMOS2022_postChallenge_task1/imagesVal_fold_0")
+    trained_model_path = join(nnUNet_results, 'Dataset218_AMOS2022_postChallenge_task1'
+                                              '/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres')
+    make_prediction_app(input_file_path, trained_model_path, 0)
 
 
     # predict a numpy array

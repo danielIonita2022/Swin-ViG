@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/c2efa8b14f094a5a95dd43ae4cb843c2/artifacts
+end_time: 1713727646812
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2efa8b14f094a5a95dd43ae4cb843c2
+run_name: puzzled-crow-940
+run_uuid: c2efa8b14f094a5a95dd43ae4cb843c2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713727541239
+status: 3
+tags: []
+user_id: danielionita

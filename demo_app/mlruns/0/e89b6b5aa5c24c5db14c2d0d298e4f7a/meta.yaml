@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/e89b6b5aa5c24c5db14c2d0d298e4f7a/artifacts
+end_time: 1713775604076
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e89b6b5aa5c24c5db14c2d0d298e4f7a
+run_name: unequaled-goose-916
+run_uuid: e89b6b5aa5c24c5db14c2d0d298e4f7a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713775362095
+status: 3
+tags: []
+user_id: danielionita

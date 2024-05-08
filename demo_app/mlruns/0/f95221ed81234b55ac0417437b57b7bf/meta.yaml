@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/f95221ed81234b55ac0417437b57b7bf/artifacts
+end_time: 1713798975313
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f95221ed81234b55ac0417437b57b7bf
+run_name: bouncy-hen-486
+run_uuid: f95221ed81234b55ac0417437b57b7bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713796791994
+status: 3
+tags: []
+user_id: danielionita

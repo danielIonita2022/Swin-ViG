@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ee6a3ac09cb94eae9de1d70747ffd7a5/artifacts
+deleted_time: 1714201897588
+end_time: 1714169207817
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: ee6a3ac09cb94eae9de1d70747ffd7a5
+run_name: carefree-moose-226
+run_uuid: ee6a3ac09cb94eae9de1d70747ffd7a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714169204279
+status: 3
+tags: []
+user_id: danielionita

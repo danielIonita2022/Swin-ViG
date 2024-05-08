@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/994502c9b9c6432988a42c3284cac718/artifacts
+deleted_time: 1713856913336
+end_time: 1713856883860
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 994502c9b9c6432988a42c3284cac718
+run_name: incongruous-carp-142
+run_uuid: 994502c9b9c6432988a42c3284cac718
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713856880627
+status: 3
+tags: []
+user_id: danielionita

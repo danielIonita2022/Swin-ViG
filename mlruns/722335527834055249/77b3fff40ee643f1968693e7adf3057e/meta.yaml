@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/77b3fff40ee643f1968693e7adf3057e/artifacts
+deleted_time: 1714597369990
+end_time: 1714581493815
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 77b3fff40ee643f1968693e7adf3057e
+run_name: sedate-shad-528
+run_uuid: 77b3fff40ee643f1968693e7adf3057e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714581484479
+status: 3
+tags: []
+user_id: danielionita

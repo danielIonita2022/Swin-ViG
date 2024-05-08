@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/c03c1f8515fb4c0f8e07b5f07c9a4d12/artifacts
+deleted_time: 1714729921777
+end_time: 1714680320780
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: c03c1f8515fb4c0f8e07b5f07c9a4d12
+run_name: invincible-hen-25
+run_uuid: c03c1f8515fb4c0f8e07b5f07c9a4d12
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714680239104
+status: 4
+tags: []
+user_id: danielionita

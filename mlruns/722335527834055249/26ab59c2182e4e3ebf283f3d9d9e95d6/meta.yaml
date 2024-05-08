@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/26ab59c2182e4e3ebf283f3d9d9e95d6/artifacts
+deleted_time: 1714201897572
+end_time: 1714170295157
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 26ab59c2182e4e3ebf283f3d9d9e95d6
+run_name: bald-midge-417
+run_uuid: 26ab59c2182e4e3ebf283f3d9d9e95d6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714170291526
+status: 3
+tags: []
+user_id: danielionita

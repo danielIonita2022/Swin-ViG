@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/34dd2899d43044ba8e2bf48670948ac2/artifacts
+end_time: 1714986149033
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 34dd2899d43044ba8e2bf48670948ac2
+run_name: nimble-chimp-598
+run_uuid: 34dd2899d43044ba8e2bf48670948ac2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714986147329
+status: 3
+tags: []
+user_id: danielionita

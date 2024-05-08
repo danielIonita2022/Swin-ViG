@@ -142,8 +142,8 @@ class nnUNetTrainer(object):
         self.initial_lr = 0.002 # original 0.002
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 60 # modificat de la 250
-        self.num_val_iterations_per_epoch = 15
+        self.num_iterations_per_epoch = 27 # modificat de la 60
+        self.num_val_iterations_per_epoch = 7
         self.num_epochs = 1000
         self.current_epoch = 0
 
@@ -220,7 +220,7 @@ class nnUNetTrainer(object):
 
             self.loss = self._build_loss()
             self.was_initialized = True
-            self.print_to_log_file(summary(self.network, input_size=(4, 1, 64, 192, 160)))
+            #self.print_to_log_file(summary(self.network, input_size=(4, 1, 64, 192, 160)))
         else:
             raise RuntimeError("You have called self.initialize even though the trainer was already initialized. "
                                "That should not happen.")
@@ -1128,7 +1128,7 @@ class nnUNetTrainer(object):
 
         predictor = nnUNetPredictor(tile_step_size=0.5, use_gaussian=True, use_mirroring=True,
                                     perform_everything_on_device=True, device=self.device, verbose=False,
-                                    verbose_preprocessing=False, allow_tqdm=False)
+                                    verbose_preprocessing=False, allow_tqdm=True)
         predictor.manual_initialization(self.network, self.plans_manager, self.configuration_manager, None,
                                         self.dataset_json, 'nnUNetTrainer_NexToU_BTI_Synapse',
                                         self.inference_allowed_mirroring_axes)
@@ -1248,7 +1248,7 @@ class nnUNetTrainer(object):
                                                 self.label_manager.foreground_labels,
                                                 self.label_manager.ignore_label, chill=True,
                                                 num_processes=default_num_processes * dist.get_world_size() if
-                                                self.is_ddp else default_num_processes)
+                                                self.is_ddp else 8) # default_num_processes in loc de 8
             self.print_to_log_file("Validation complete", also_print_to_console=True)
             self.print_to_log_file("Mean Validation Dice: ", (metrics['foreground_mean']["Dice"]),
                                    also_print_to_console=True)

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/acdc6e05b9954d88b121bfce71279020/artifacts
+end_time: 1713775252680
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: acdc6e05b9954d88b121bfce71279020
+run_name: fearless-donkey-51
+run_uuid: acdc6e05b9954d88b121bfce71279020
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713760296896
+status: 3
+tags: []
+user_id: danielionita

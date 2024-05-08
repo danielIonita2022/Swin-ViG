@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/ab3c4b6091c44052846b2318b603a036/artifacts
+end_time: 1713648313209
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: ab3c4b6091c44052846b2318b603a036
+run_name: nervous-moose-738
+run_uuid: ab3c4b6091c44052846b2318b603a036
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713648303293
+status: 3
+tags: []
+user_id: danielionita

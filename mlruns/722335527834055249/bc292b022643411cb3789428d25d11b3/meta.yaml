@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/bc292b022643411cb3789428d25d11b3/artifacts
+deleted_time: 1714201898888
+end_time: 1714163159973
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: bc292b022643411cb3789428d25d11b3
+run_name: amazing-asp-7
+run_uuid: bc292b022643411cb3789428d25d11b3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714162791893
+status: 3
+tags: []
+user_id: danielionita

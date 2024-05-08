@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/84686d73d7a44388b1b5cff4f585a666/artifacts
+end_time: 1713622003946
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: 84686d73d7a44388b1b5cff4f585a666
+run_name: valuable-hound-684
+run_uuid: 84686d73d7a44388b1b5cff4f585a666
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713621999887
+status: 3
+tags: []
+user_id: danielionita

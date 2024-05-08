@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/aa491e84e76940aebb7ba0701a2cba32/artifacts
+deleted_time: 1714201897652
+end_time: 1714167448404
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: aa491e84e76940aebb7ba0701a2cba32
+run_name: luminous-koi-581
+run_uuid: aa491e84e76940aebb7ba0701a2cba32
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714167244815
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/067163e595c04bb8a1d103bd0da540ff/artifacts
+end_time: 1713640585128
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: 067163e595c04bb8a1d103bd0da540ff
+run_name: efficient-wren-493
+run_uuid: 067163e595c04bb8a1d103bd0da540ff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713622759001
+status: 4
+tags: []
+user_id: danielionita

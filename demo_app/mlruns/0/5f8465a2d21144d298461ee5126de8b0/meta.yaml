@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/5f8465a2d21144d298461ee5126de8b0/artifacts
+end_time: 1713621472806
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5f8465a2d21144d298461ee5126de8b0
+run_name: unruly-mole-497
+run_uuid: 5f8465a2d21144d298461ee5126de8b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713620806541
+status: 3
+tags: []
+user_id: danielionita

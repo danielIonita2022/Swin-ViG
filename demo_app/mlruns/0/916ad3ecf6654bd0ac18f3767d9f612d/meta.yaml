@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/916ad3ecf6654bd0ac18f3767d9f612d/artifacts
+end_time: 1713641347926
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 916ad3ecf6654bd0ac18f3767d9f612d
+run_name: unequaled-sheep-996
+run_uuid: 916ad3ecf6654bd0ac18f3767d9f612d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713641321184
+status: 3
+tags: []
+user_id: danielionita

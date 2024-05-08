@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/6aabdc7d1a344775ad8d0078e6e02207/artifacts
+deleted_time: 1713899788048
+end_time: 1713857015258
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 6aabdc7d1a344775ad8d0078e6e02207
+run_name: mercurial-stork-250
+run_uuid: 6aabdc7d1a344775ad8d0078e6e02207
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713856956965
+status: 4
+tags: []
+user_id: danielionita

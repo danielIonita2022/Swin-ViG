@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/4ff721877da4465daa0749a8ec83d13c/artifacts
+deleted_time: 1714201897522
+end_time: 1714172075547
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 4ff721877da4465daa0749a8ec83d13c
+run_name: incongruous-bee-945
+run_uuid: 4ff721877da4465daa0749a8ec83d13c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714172072169
+status: 3
+tags: []
+user_id: danielionita

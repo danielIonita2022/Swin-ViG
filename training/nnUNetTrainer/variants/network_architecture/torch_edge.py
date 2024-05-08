@@ -124,14 +124,14 @@ def dense_knn_matrix(x, k=16, relative_pos=None):
             for i in range(groups):
                 start_idx = n_part * i
                 end_idx = min(n_points, n_part * (i + 1))
-                dist = part_pairwise_distance(x.detach(), start_idx, end_idx)
+                dist = part_pairwise_cosine_similarity(x.detach(), start_idx, end_idx)
                 if relative_pos is not None:
                     dist += relative_pos[:, start_idx:end_idx]
                 _, nn_idx_part = torch.topk(-dist, k=k)
                 nn_idx_list += [nn_idx_part]
             nn_idx = torch.cat(nn_idx_list, dim=1)
         else:
-            dist = pairwise_distance(x.detach())
+            dist = pairwise_cosine_similarity(x.detach())
             if relative_pos is not None:
                 dist += relative_pos
             _, nn_idx = torch.topk(-dist, k=k) # b, n, k
@@ -152,7 +152,7 @@ def xy_dense_knn_matrix(x, y, k=16, relative_pos=None):
         x = x.transpose(2, 1).squeeze(-1)
         y = y.transpose(2, 1).squeeze(-1)
         batch_size, n_points, n_dims = x.shape
-        dist = xy_pairwise_distance(x.detach(), y.detach())
+        dist = xy_cosine_similarity(x.detach(), y.detach())
         if relative_pos is not None:
             dist += relative_pos
         _, nn_idx = torch.topk(-dist, k=k)
