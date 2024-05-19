@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/fa12b22eb96d4f99bdc93d2df5653894/artifacts
+deleted_time: 1714376019420
+end_time: 1714334010095
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: fa12b22eb96d4f99bdc93d2df5653894
+run_name: indecisive-swan-970
+run_uuid: fa12b22eb96d4f99bdc93d2df5653894
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714333964130
+status: 4
+tags: []
+user_id: danielionita

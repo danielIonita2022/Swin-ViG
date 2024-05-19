@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/d325ba6d01194f60b560b25585dd376c/artifacts
+deleted_time: 1713301034609
+end_time: 1713294667353
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: d325ba6d01194f60b560b25585dd376c
+run_name: rumbling-steed-39
+run_uuid: d325ba6d01194f60b560b25585dd376c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713294622445
+status: 4
+tags: []
+user_id: danielionita

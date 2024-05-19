@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/b3e9cc5139164eb8824427796d8c215b/artifacts
+deleted_time: 1714201898638
+end_time: 1714165266462
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: b3e9cc5139164eb8824427796d8c215b
+run_name: loud-wasp-951
+run_uuid: b3e9cc5139164eb8824427796d8c215b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714165223157
+status: 4
+tags: []
+user_id: danielionita

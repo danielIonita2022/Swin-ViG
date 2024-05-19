@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/fdbb0a4cbaa84af59f66ce2775d05d00/artifacts
+deleted_time: 1707906355110
+end_time: 1707581653192
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: deleted
+run_id: fdbb0a4cbaa84af59f66ce2775d05d00
+run_name: popular-ant-328
+run_uuid: fdbb0a4cbaa84af59f66ce2775d05d00
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707580970241
+status: 4
+tags: []
+user_id: danielionita

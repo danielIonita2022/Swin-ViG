@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/b4a34c16b9b745cdb1fc1b34e47f158d/artifacts
+end_time: 1709333213293
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: b4a34c16b9b745cdb1fc1b34e47f158d
+run_name: bright-wolf-668
+run_uuid: b4a34c16b9b745cdb1fc1b34e47f158d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709315480411
+status: 3
+tags: []
+user_id: danielionita

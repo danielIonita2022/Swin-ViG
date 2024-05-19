@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/5d2f0d000d3c41a8b0758783774f3bf3/artifacts
+deleted_time: 1710250438972
+end_time: null
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 5d2f0d000d3c41a8b0758783774f3bf3
+run_name: abrasive-mole-937
+run_uuid: 5d2f0d000d3c41a8b0758783774f3bf3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709914941916
+status: 1
+tags: []
+user_id: danielionita

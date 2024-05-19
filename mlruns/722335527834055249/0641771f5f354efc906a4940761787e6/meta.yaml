@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/0641771f5f354efc906a4940761787e6/artifacts
+deleted_time: 1714201898623
+end_time: 1714166341500
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 0641771f5f354efc906a4940761787e6
+run_name: bemused-goose-309
+run_uuid: 0641771f5f354efc906a4940761787e6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714166338368
+status: 3
+tags: []
+user_id: danielionita

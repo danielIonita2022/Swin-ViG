@@ -71,7 +71,7 @@ class MLP(Seq):
 
 
 class BasicConv(Seq):
-    def __init__(self, channels, act='relu', norm=None, bias=True, drop=0., conv_op=nn.Conv3d, dropout_op=None):
+    def __init__(self, channels, act='relu', norm=None, bias=True, drop=0.2, conv_op=nn.Conv3d, dropout_op=None):
         m = []
         self.conv_op = conv_op
         if self.conv_op == nn.Conv2d:
@@ -82,12 +82,11 @@ class BasicConv(Seq):
         elif self.conv_op == nn.Conv3d:
             self.batch_norm = nn.GroupNorm
             self.instance_norm = nn.InstanceNorm3d
-            self.group_norm = nn.GroupNorm
-            self.groups_num = 6 # modificat de la 6
+            self.groups_num = 1 # modificat de la 6
         else:
             raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
 
-        dropout_op = dropout_op
+        dropout_op = nn.Dropout3d
         dropout_op_kwargs = {}
         dropout_op_kwargs['p'] = drop
         for i in range(1, len(channels)):

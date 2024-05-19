@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/0706db689ec54b4ba4eae9d7ce05c08a/artifacts
+end_time: 1712729659212
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0706db689ec54b4ba4eae9d7ce05c08a
+run_name: nebulous-snipe-474
+run_uuid: 0706db689ec54b4ba4eae9d7ce05c08a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712729658958
+status: 3
+tags: []
+user_id: danielionita

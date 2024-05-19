@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/36dc069e52c64cde8ee57d4bc841f30d/artifacts
+deleted_time: 1714376019147
+end_time: 1714336000089
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 36dc069e52c64cde8ee57d4bc841f30d
+run_name: gaudy-shrew-646
+run_uuid: 36dc069e52c64cde8ee57d4bc841f30d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714334479620
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/ad6b61dface44a36a1ffc57fe179826b/artifacts
+end_time: 1706884228775
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: ad6b61dface44a36a1ffc57fe179826b
+run_name: peaceful-mink-81
+run_uuid: ad6b61dface44a36a1ffc57fe179826b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706884228739
+status: 4
+tags: []
+user_id: danielionita

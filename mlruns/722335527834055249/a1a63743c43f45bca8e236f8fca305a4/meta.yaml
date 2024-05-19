@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/a1a63743c43f45bca8e236f8fca305a4/artifacts
+deleted_time: 1715032454450
+end_time: 1715003856153
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: a1a63743c43f45bca8e236f8fca305a4
+run_name: languid-dog-343
+run_uuid: a1a63743c43f45bca8e236f8fca305a4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715003819557
+status: 4
+tags: []
+user_id: danielionita

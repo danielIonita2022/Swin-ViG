@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/169d258b82a149c19a2687a87802ba27/artifacts
+end_time: 1713642282445
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 169d258b82a149c19a2687a87802ba27
+run_name: auspicious-lark-527
+run_uuid: 169d258b82a149c19a2687a87802ba27
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713641712275
+status: 3
+tags: []
+user_id: danielionita

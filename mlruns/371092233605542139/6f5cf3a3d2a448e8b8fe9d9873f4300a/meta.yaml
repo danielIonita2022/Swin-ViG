@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/6f5cf3a3d2a448e8b8fe9d9873f4300a/artifacts
+deleted_time: 1711836250865
+end_time: 1711818273371
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 6f5cf3a3d2a448e8b8fe9d9873f4300a
+run_name: righteous-zebra-246
+run_uuid: 6f5cf3a3d2a448e8b8fe9d9873f4300a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711818246738
+status: 4
+tags: []
+user_id: danielionita

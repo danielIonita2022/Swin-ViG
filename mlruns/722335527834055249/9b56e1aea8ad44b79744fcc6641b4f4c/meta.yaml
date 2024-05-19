@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/9b56e1aea8ad44b79744fcc6641b4f4c/artifacts
+deleted_time: 1715435715516
+end_time: 1715435335177
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 9b56e1aea8ad44b79744fcc6641b4f4c
+run_name: dapper-koi-841
+run_uuid: 9b56e1aea8ad44b79744fcc6641b4f4c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715435331110
+status: 3
+tags: []
+user_id: danielionita

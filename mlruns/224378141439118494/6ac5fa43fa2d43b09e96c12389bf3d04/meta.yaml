@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/224378141439118494/6ac5fa43fa2d43b09e96c12389bf3d04/artifacts
+end_time: 1712767186150
+entry_point_name: ''
+experiment_id: '224378141439118494'
+lifecycle_stage: active
+run_id: 6ac5fa43fa2d43b09e96c12389bf3d04
+run_name: caring-sow-270
+run_uuid: 6ac5fa43fa2d43b09e96c12389bf3d04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712750794275
+status: 3
+tags: []
+user_id: danielionita

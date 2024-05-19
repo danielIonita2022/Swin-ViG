@@ -1,0 +1,4 @@
+# SwinGNN blocks for Encoder (MRConv) and Decoder (GATv2Conv - 2 heads, not concatenated)
+- starting lr = 0.002
+- CosineSched 
+- window size that decreases after each layer 

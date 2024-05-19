@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/dc628288a4c34b719418f84f9a3e59de/artifacts
+deleted_time: 1714201897653
+end_time: 1714167244781
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: dc628288a4c34b719418f84f9a3e59de
+run_name: gentle-snipe-147
+run_uuid: dc628288a4c34b719418f84f9a3e59de
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714167241405
+status: 3
+tags: []
+user_id: danielionita

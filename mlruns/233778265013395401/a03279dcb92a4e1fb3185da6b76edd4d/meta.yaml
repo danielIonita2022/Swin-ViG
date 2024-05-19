@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/a03279dcb92a4e1fb3185da6b76edd4d/artifacts
+end_time: 1706998001719
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: a03279dcb92a4e1fb3185da6b76edd4d
+run_name: hilarious-stork-102
+run_uuid: a03279dcb92a4e1fb3185da6b76edd4d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706997999917
+status: 4
+tags: []
+user_id: danielionita

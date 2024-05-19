@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d752342a75ab4db58be261ab7baa41e7/artifacts
+end_time: 1712656531300
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d752342a75ab4db58be261ab7baa41e7
+run_name: bustling-calf-344
+run_uuid: d752342a75ab4db58be261ab7baa41e7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712656335020
+status: 3
+tags: []
+user_id: danielionita

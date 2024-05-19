@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/bad0ca4ce2894fc0973d12bbeae8b918/artifacts
+end_time: 1713728594674
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bad0ca4ce2894fc0973d12bbeae8b918
+run_name: orderly-hog-816
+run_uuid: bad0ca4ce2894fc0973d12bbeae8b918
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713728451671
+status: 3
+tags: []
+user_id: danielionita

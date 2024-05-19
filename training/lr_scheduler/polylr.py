@@ -15,7 +15,12 @@ class PolyLRScheduler(_LRScheduler):
             current_step = self.ctr
             self.ctr += 1
 
+<<<<<<< HEAD
         #new_lr = self.initial_lr * (1 - current_step / self.max_steps) ** self.exponent
         new_lr = self.initial_lr #temporar - constant lr
+=======
+        new_lr = self.initial_lr * (1 - current_step / self.max_steps) ** self.exponent
+        #new_lr = self.initial_lr
+>>>>>>> nnUNet_ViG_SwinGNN_Attn
         for param_group in self.optimizer.param_groups:
             param_group['lr'] = new_lr

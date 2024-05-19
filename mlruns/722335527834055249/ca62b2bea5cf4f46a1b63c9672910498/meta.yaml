@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ca62b2bea5cf4f46a1b63c9672910498/artifacts
+deleted_time: 1714201898904
+end_time: 1714162161013
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: ca62b2bea5cf4f46a1b63c9672910498
+run_name: overjoyed-bird-1000
+run_uuid: ca62b2bea5cf4f46a1b63c9672910498
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714162122113
+status: 4
+tags: []
+user_id: danielionita

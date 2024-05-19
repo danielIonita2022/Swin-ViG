@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/8221b9bf3077421b9f32d030e0508462/artifacts
+deleted_time: 1711582523917
+end_time: 1711580444594
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 8221b9bf3077421b9f32d030e0508462
+run_name: loud-whale-636
+run_uuid: 8221b9bf3077421b9f32d030e0508462
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711580335837
+status: 4
+tags: []
+user_id: danielionita

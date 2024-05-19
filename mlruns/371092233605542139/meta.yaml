@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/371092233605542139
+creation_time: 1711527185951
+experiment_id: '371092233605542139'
+last_update_time: 1711527185951
+lifecycle_stage: active
+name: BTCV_AdamW_nnUNetViGLite(27.03)

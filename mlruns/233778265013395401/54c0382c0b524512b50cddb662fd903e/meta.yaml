@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/54c0382c0b524512b50cddb662fd903e/artifacts
+end_time: 1706998898179
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 54c0382c0b524512b50cddb662fd903e
+run_name: enchanting-robin-889
+run_uuid: 54c0382c0b524512b50cddb662fd903e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706998616911
+status: 4
+tags: []
+user_id: danielionita

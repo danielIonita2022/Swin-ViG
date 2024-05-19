@@ -80,7 +80,8 @@ def maybe_load_checkpoint(nnunet_trainer: nnUNetTrainer, continue_training: bool
             print(f"WARNING: Cannot continue training because there seems to be no checkpoint available to "
                                f"continue from. Starting a new training...")
     elif validation_only:
-        expected_checkpoint_file = join(nnunet_trainer.output_folder, 'checkpoint_final.pth')
+        expected_checkpoint_file = join(nnunet_trainer.output_folder, 'checkpoint_final.pth') #era checkpoint_final.pth inainte
+        #print("checkpoint: best_val_loss")
         if not isfile(expected_checkpoint_file):
             raise RuntimeError(f"Cannot run validation because the training is not finished yet!")
     else:
@@ -180,6 +181,7 @@ def run_training(dataset_name_or_id: Union[str, int],
 
         assert not (continue_training and only_run_validation), f'Cannot set --c and --val flag at the same time. Dummy.'
 
+        nnunet_trainer.initialize()
         maybe_load_checkpoint(nnunet_trainer, continue_training, only_run_validation, pretrained_weights)
 
         if torch.cuda.is_available():

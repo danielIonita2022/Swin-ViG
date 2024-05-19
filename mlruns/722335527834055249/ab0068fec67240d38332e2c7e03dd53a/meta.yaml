@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ab0068fec67240d38332e2c7e03dd53a/artifacts
+deleted_time: 1715448828918
+end_time: 1715439383604
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: ab0068fec67240d38332e2c7e03dd53a
+run_name: calm-lamb-646
+run_uuid: ab0068fec67240d38332e2c7e03dd53a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715439181055
+status: 4
+tags: []
+user_id: danielionita

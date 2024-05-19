@@ -1,0 +1,2 @@
+# ViG module: FFN + Grapher (MRConv) + FFN + Grapher (GATv2Conv - 2 heads, concatenate=False) for both Encoder and Decoder
+- Dropout(0.2) for Grapher + DropPath(0.2)

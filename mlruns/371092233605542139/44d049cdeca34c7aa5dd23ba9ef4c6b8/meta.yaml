@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/44d049cdeca34c7aa5dd23ba9ef4c6b8/artifacts
+deleted_time: 1712058183484
+end_time: 1712058144775
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 44d049cdeca34c7aa5dd23ba9ef4c6b8
+run_name: dazzling-dove-346
+run_uuid: 44d049cdeca34c7aa5dd23ba9ef4c6b8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712058062259
+status: 4
+tags: []
+user_id: danielionita

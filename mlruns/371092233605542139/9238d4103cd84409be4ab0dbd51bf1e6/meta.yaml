@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/9238d4103cd84409be4ab0dbd51bf1e6/artifacts
+deleted_time: 1711836250852
+end_time: 1711821855446
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 9238d4103cd84409be4ab0dbd51bf1e6
+run_name: spiffy-crab-525
+run_uuid: 9238d4103cd84409be4ab0dbd51bf1e6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711821816077
+status: 4
+tags: []
+user_id: danielionita

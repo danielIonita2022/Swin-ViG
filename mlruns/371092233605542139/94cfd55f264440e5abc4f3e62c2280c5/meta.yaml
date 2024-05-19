@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/94cfd55f264440e5abc4f3e62c2280c5/artifacts
+deleted_time: 1711836250829
+end_time: null
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 94cfd55f264440e5abc4f3e62c2280c5
+run_name: merciful-auk-342
+run_uuid: 94cfd55f264440e5abc4f3e62c2280c5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711834248324
+status: 1
+tags: []
+user_id: danielionita

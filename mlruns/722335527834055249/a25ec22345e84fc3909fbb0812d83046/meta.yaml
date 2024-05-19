@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/a25ec22345e84fc3909fbb0812d83046/artifacts
+deleted_time: 1715448829640
+end_time: 1715436354583
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: a25ec22345e84fc3909fbb0812d83046
+run_name: dapper-mink-714
+run_uuid: a25ec22345e84fc3909fbb0812d83046
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715436062555
+status: 3
+tags: []
+user_id: danielionita

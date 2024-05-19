@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/0401469b53934212b1865172dfe04d86/artifacts
+deleted_time: 1711811115065
+end_time: 1711808871893
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 0401469b53934212b1865172dfe04d86
+run_name: polite-stork-553
+run_uuid: 0401469b53934212b1865172dfe04d86
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711808828494
+status: 4
+tags: []
+user_id: danielionita

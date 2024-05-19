@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/7e71e2ee000345b5852f15c7459ab346/artifacts
+deleted_time: 1707906355086
+end_time: 1707745805283
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: deleted
+run_id: 7e71e2ee000345b5852f15c7459ab346
+run_name: abundant-robin-58
+run_uuid: 7e71e2ee000345b5852f15c7459ab346
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707745229112
+status: 4
+tags: []
+user_id: danielionita

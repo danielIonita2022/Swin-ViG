@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/0974776dae4f48b992738f08b625567b/artifacts
+end_time: 1711297389742
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: active
+run_id: 0974776dae4f48b992738f08b625567b
+run_name: ViGLite_Ranger21PolyLR_fold3
+run_uuid: 0974776dae4f48b992738f08b625567b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711275213609
+status: 3
+tags: []
+user_id: danielionita

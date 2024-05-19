@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/272bdc4b66fe48b19e076fbecb29b6ba/artifacts
+end_time: 1713776311849
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 272bdc4b66fe48b19e076fbecb29b6ba
+run_name: treasured-fowl-517
+run_uuid: 272bdc4b66fe48b19e076fbecb29b6ba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713776097259
+status: 3
+tags: []
+user_id: danielionita

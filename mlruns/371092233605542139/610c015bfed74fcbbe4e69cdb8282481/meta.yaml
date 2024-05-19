@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/610c015bfed74fcbbe4e69cdb8282481/artifacts
+deleted_time: 1711836250841
+end_time: 1711832847804
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 610c015bfed74fcbbe4e69cdb8282481
+run_name: able-toad-758
+run_uuid: 610c015bfed74fcbbe4e69cdb8282481
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711832306050
+status: 4
+tags: []
+user_id: danielionita

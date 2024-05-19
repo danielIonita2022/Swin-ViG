@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/1b2d5c6af1634ceaac4f2cf7e98d40e9/artifacts
+end_time: 1706972626461
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 1b2d5c6af1634ceaac4f2cf7e98d40e9
+run_name: bustling-lynx-288
+run_uuid: 1b2d5c6af1634ceaac4f2cf7e98d40e9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706963842173
+status: 3
+tags: []
+user_id: danielionita

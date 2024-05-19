@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/943b50c0ff4b4dafb6d5f6d0ed2b2b9e/artifacts
+end_time: 1707579347482
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 943b50c0ff4b4dafb6d5f6d0ed2b2b9e
+run_name: brawny-snake-894
+run_uuid: 943b50c0ff4b4dafb6d5f6d0ed2b2b9e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707579255728
+status: 3
+tags: []
+user_id: danielionita

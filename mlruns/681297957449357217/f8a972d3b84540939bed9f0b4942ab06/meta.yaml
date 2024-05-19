@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/f8a972d3b84540939bed9f0b4942ab06/artifacts
+end_time: 1712545188428
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: active
+run_id: f8a972d3b84540939bed9f0b4942ab06
+run_name: useful-duck-504
+run_uuid: f8a972d3b84540939bed9f0b4942ab06
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712510769215
+status: 3
+tags: []
+user_id: danielionita

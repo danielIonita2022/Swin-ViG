@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/235313633331819289/907bffc52ac44d448795f5ceebb100aa/artifacts
+end_time: 1708887205481
+entry_point_name: ''
+experiment_id: '235313633331819289'
+lifecycle_stage: active
+run_id: 907bffc52ac44d448795f5ceebb100aa
+run_name: bold-lynx-387
+run_uuid: 907bffc52ac44d448795f5ceebb100aa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708881066610
+status: 4
+tags: []
+user_id: danielionita

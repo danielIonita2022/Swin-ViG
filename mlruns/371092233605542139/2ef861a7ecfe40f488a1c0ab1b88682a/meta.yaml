@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/2ef861a7ecfe40f488a1c0ab1b88682a/artifacts
+deleted_time: 1712058183494
+end_time: 1712055813532
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 2ef861a7ecfe40f488a1c0ab1b88682a
+run_name: orderly-zebra-300
+run_uuid: 2ef861a7ecfe40f488a1c0ab1b88682a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712055733647
+status: 4
+tags: []
+user_id: danielionita

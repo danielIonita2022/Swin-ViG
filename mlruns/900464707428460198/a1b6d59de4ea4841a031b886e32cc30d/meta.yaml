@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/a1b6d59de4ea4841a031b886e32cc30d/artifacts
+deleted_time: 1710866918954
+end_time: 1710865602888
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: a1b6d59de4ea4841a031b886e32cc30d
+run_name: bright-carp-131
+run_uuid: a1b6d59de4ea4841a031b886e32cc30d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710865523466
+status: 4
+tags: []
+user_id: danielionita

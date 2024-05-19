@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/b67dbb78043d41c1b1098d1fac972bb3/artifacts
+end_time: 1712301022922
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: active
+run_id: b67dbb78043d41c1b1098d1fac972bb3
+run_name: grandiose-crow-101
+run_uuid: b67dbb78043d41c1b1098d1fac972bb3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712266674341
+status: 3
+tags: []
+user_id: danielionita

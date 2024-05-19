@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/d0bc6467992648f5883fdcc0a6c1bd53/artifacts
+deleted_time: 1710250438965
+end_time: 1709915862292
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: d0bc6467992648f5883fdcc0a6c1bd53
+run_name: burly-smelt-6
+run_uuid: d0bc6467992648f5883fdcc0a6c1bd53
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915861887
+status: 4
+tags: []
+user_id: danielionita

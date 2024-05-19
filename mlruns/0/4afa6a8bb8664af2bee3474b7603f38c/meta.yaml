@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/4afa6a8bb8664af2bee3474b7603f38c/artifacts
+end_time: 1712730615950
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4afa6a8bb8664af2bee3474b7603f38c
+run_name: capricious-carp-63
+run_uuid: 4afa6a8bb8664af2bee3474b7603f38c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712730551814
+status: 3
+tags: []
+user_id: danielionita

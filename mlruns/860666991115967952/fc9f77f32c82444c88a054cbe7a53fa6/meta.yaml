@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/fc9f77f32c82444c88a054cbe7a53fa6/artifacts
+end_time: 1711520526815
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: active
+run_id: fc9f77f32c82444c88a054cbe7a53fa6
+run_name: adorable-pug-338
+run_uuid: fc9f77f32c82444c88a054cbe7a53fa6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711482137233
+status: 3
+tags: []
+user_id: danielionita

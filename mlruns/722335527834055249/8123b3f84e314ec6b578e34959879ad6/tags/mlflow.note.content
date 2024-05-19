@@ -1,0 +1,1 @@
+## Same thing as SwinViG with attention from below, but replaced GATv2Conv with MRConv

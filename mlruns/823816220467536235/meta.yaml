@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/823816220467536235
+creation_time: 1709824224531
+experiment_id: '823816220467536235'
+last_update_time: 1709824224531
+lifecycle_stage: active
+name: BTCV_AdamW_ViGUNet

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/3c038094449c434c9f2ecd9b6d1f4fab/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3c038094449c434c9f2ecd9b6d1f4fab
+run_name: loud-hawk-452
+run_uuid: 3c038094449c434c9f2ecd9b6d1f4fab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712663003038
+status: 1
+tags: []
+user_id: danielionita

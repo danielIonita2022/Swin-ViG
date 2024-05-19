@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/566af793846b43e8bdf449d45af4064e/artifacts
+deleted_time: 1707906355088
+end_time: 1707736666389
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: deleted
+run_id: 566af793846b43e8bdf449d45af4064e
+run_name: silent-skink-706
+run_uuid: 566af793846b43e8bdf449d45af4064e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707736663890
+status: 4
+tags: []
+user_id: danielionita

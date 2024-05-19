@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/dcd9d5802d414243929548d8cca7aff7/artifacts
+deleted_time: 1712429660673
+end_time: 1712418277901
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: deleted
+run_id: dcd9d5802d414243929548d8cca7aff7
+run_name: youthful-gnat-836
+run_uuid: dcd9d5802d414243929548d8cca7aff7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712384776134
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/770013272096644551/3c99249124994a898ef18ef9fb59eb7b/artifacts
+deleted_time: 1707906315523
+end_time: 1707832776555
+entry_point_name: ''
+experiment_id: '770013272096644551'
+lifecycle_stage: deleted
+run_id: 3c99249124994a898ef18ef9fb59eb7b
+run_name: spiffy-hog-705
+run_uuid: 3c99249124994a898ef18ef9fb59eb7b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707832759026
+status: 4
+tags: []
+user_id: danielionita

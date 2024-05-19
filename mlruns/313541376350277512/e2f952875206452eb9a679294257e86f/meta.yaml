@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/e2f952875206452eb9a679294257e86f/artifacts
+deleted_time: 1707906355113
+end_time: 1707580731779
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: deleted
+run_id: e2f952875206452eb9a679294257e86f
+run_name: rebellious-hound-811
+run_uuid: e2f952875206452eb9a679294257e86f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707580715007
+status: 4
+tags: []
+user_id: danielionita

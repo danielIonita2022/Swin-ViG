@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/59fcbdab868e4678aa731d537e68080f/artifacts
+deleted_time: 1711582523933
+end_time: 1711582181933
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 59fcbdab868e4678aa731d537e68080f
+run_name: enthused-gull-434
+run_uuid: 59fcbdab868e4678aa731d537e68080f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711582009513
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/79aaf4d213fa46ddae9818f54b3cfa15/artifacts
+deleted_time: 1714376019134
+end_time: 1714336991563
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 79aaf4d213fa46ddae9818f54b3cfa15
+run_name: adorable-shrike-817
+run_uuid: 79aaf4d213fa46ddae9818f54b3cfa15
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714336988626
+status: 3
+tags: []
+user_id: danielionita

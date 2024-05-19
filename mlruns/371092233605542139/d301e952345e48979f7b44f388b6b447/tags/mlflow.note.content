@@ -1,0 +1,9 @@
+# Grapher: 
++ new_in_channels = in_channels * (changed_dimensions[0]*changed_dimensions[1]*changed_dimensions[2])
+        self.graph_conv = DyGraphConv(new_in_channels, new_in_channels, kernel_size, dilation, conv,
+                                      act, norm, bias, stochastic, epsilon, r, changed_dimensions, conv_op, dropout_op)
+
++ relative_pos_tensor enabled
+
+# 12 filtre la inceput, 156 maxim
+        

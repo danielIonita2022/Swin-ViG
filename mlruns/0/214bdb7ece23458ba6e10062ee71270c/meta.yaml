@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/214bdb7ece23458ba6e10062ee71270c/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 214bdb7ece23458ba6e10062ee71270c
+run_name: fearless-swan-992
+run_uuid: 214bdb7ece23458ba6e10062ee71270c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712230256407
+status: 1
+tags: []
+user_id: danielionita

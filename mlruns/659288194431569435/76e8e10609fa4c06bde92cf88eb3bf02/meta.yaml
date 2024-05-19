@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/76e8e10609fa4c06bde92cf88eb3bf02/artifacts
+deleted_time: 1710250438954
+end_time: 1709923094792
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 76e8e10609fa4c06bde92cf88eb3bf02
+run_name: bouncy-penguin-686
+run_uuid: 76e8e10609fa4c06bde92cf88eb3bf02
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709922240391
+status: 4
+tags: []
+user_id: danielionita

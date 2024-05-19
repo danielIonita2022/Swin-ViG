@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/3a54d82cc3604108846c1ae403f3c9b9/artifacts
+end_time: 1712728893552
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3a54d82cc3604108846c1ae403f3c9b9
+run_name: persistent-moth-250
+run_uuid: 3a54d82cc3604108846c1ae403f3c9b9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712726381495
+status: 3
+tags: []
+user_id: danielionita

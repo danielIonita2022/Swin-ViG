@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/dabf8d4942c74749bc5c26d7fa817ce4/artifacts
+deleted_time: 1711226099211
+end_time: 1711226087396
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: dabf8d4942c74749bc5c26d7fa817ce4
+run_name: nosy-shark-222
+run_uuid: dabf8d4942c74749bc5c26d7fa817ce4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711225937111
+status: 4
+tags: []
+user_id: danielionita

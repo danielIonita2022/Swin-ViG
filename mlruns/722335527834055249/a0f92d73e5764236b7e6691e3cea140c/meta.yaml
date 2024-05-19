@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/a0f92d73e5764236b7e6691e3cea140c/artifacts
+deleted_time: 1715087225607
+end_time: 1715084764583
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: a0f92d73e5764236b7e6691e3cea140c
+run_name: skittish-ray-9
+run_uuid: a0f92d73e5764236b7e6691e3cea140c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715083968124
+status: 4
+tags: []
+user_id: danielionita

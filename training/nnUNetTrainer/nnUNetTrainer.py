@@ -3,11 +3,12 @@ import multiprocessing
 import os
 import shutil
 import sys
+import warnings
 from copy import deepcopy
 from datetime import datetime
 from time import time, sleep
 from typing import Union, Tuple, List
-
+from torchinfo import summary
 import numpy as np
 import torch
 from batchgenerators.dataloading.single_threaded_augmenter import SingleThreadedAugmenter
@@ -21,8 +22,9 @@ from batchgenerators.transforms.utility_transforms import RemoveLabelTransform, 
 from batchgenerators.utilities.file_and_folder_operations import join, load_json, isfile, save_json, maybe_mkdir_p
 from nnunetv2.configuration import ANISO_THRESHOLD, default_num_processes
 from nnunetv2.evaluation.evaluate_predictions import compute_metrics_on_folder
-from nnunetv2.inference.export_prediction import export_prediction_from_softmax, resample_and_save
-from nnunetv2.inference.sliding_window_prediction import compute_gaussian, predict_sliding_window_return_logits
+from nnunetv2.inference.export_prediction import export_prediction_from_logits, resample_and_save
+from nnunetv2.inference.predict_from_raw_data import nnUNetPredictor
+from nnunetv2.inference.sliding_window_prediction import compute_gaussian
 from nnunetv2.paths import nnUNet_preprocessed, nnUNet_results
 from nnunetv2.training.data_augmentation.compute_initial_patch_size import get_patch_size
 from nnunetv2.training.data_augmentation.custom_transforms.cascade_transforms import MoveSegAsOneHotToData, \
@@ -47,18 +49,21 @@ from nnunetv2.training.loss.dice import get_tp_fp_fn_tn, MemoryEfficientSoftDice
 from nnunetv2.training.lr_scheduler.polylr import PolyLRScheduler
 from nnunetv2.utilities.collate_outputs import collate_outputs
 from nnunetv2.utilities.default_n_proc_DA import get_allowed_n_proc_DA
-from nnunetv2.utilities.file_path_utilities import should_i_save_to_file, check_workers_busy
 from nnunetv2.utilities.get_network_from_plans import get_network_from_plans
 from nnunetv2.utilities.helpers import empty_cache, dummy_context
 from nnunetv2.utilities.label_handling.label_handling import convert_labelmap_to_one_hot, determine_num_input_channels
 from nnunetv2.utilities.plans_handling.plans_handler import PlansManager, ConfigurationManager
 from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
 from torch import autocast, nn
 from torch import distributed as dist
 from torch.cuda import device_count
 from torch.cuda.amp import GradScaler
 from torch.nn.parallel import DistributedDataParallel as DDP
 import mlflow
+from ranger21 import Ranger21
+
+from utilities.file_path_utilities import check_workers_alive_and_busy
 
 
 class nnUNetTrainer(object):
@@ -134,13 +139,19 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 0.001  # modificat de la 1e-2
-        self.weight_decay = 5e-4  # modificat de la 3e-5
+        self.initial_lr = 0.002 # original 0.002
+        self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 20  # modificat de la 250
-        self.num_val_iterations_per_epoch = 5
-        self.num_epochs = 1700
+        self.num_iterations_per_epoch = 16 # modificat de la 4
+        self.num_val_iterations_per_epoch = 4 # era 1
+        self.num_epochs = 1000
         self.current_epoch = 0
+
+        ## in loc de 14 trebuie sa fie nr. de clase, daca se schimba dataset, se schimba si el
+        ## gaseste cum sa iei nr de clase direct din jsonul dataset
+        #num_classes = plans_manager.get_label_manager(dataset_json).num_segmentation_heads
+        # self.kappa = torch.Tensor(np.zeros(14)).cuda(torch.device('cuda'))
+        # self.lamda = 32
 
         ### Dealing with labels/regions
         self.label_manager = self.plans_manager.get_label_manager(dataset_json)
@@ -167,6 +178,7 @@ class nnUNetTrainer(object):
 
         ### initializing stuff for remembering things and such
         self._best_ema = None
+        self._best_val_loss = None
 
         ### inference things
         self.inference_allowed_mirroring_axes = None  # this variable is set in
@@ -208,6 +220,7 @@ class nnUNetTrainer(object):
 
             self.loss = self._build_loss()
             self.was_initialized = True
+            #self.print_to_log_file(summary(self.network, input_size=(4, 1, 64, 192, 160)))
         else:
             raise RuntimeError("You have called self.initialize even though the trainer was already initialized. "
                                "That should not happen.")
@@ -446,14 +459,12 @@ class nnUNetTrainer(object):
             self.print_to_log_file('These are the global plan.json settings:\n', dct, '\n', add_timestamp=False)
 
     def configure_optimizers(self):
-        # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-        #                           momentum=0.99, nesterov=True)
-        optimizer = torch.optim.AdamW(self.network.parameters(),
-                                      lr=self.initial_lr,
-                                      weight_decay=self.weight_decay,
-                                      amsgrad=True)
-        mlflow.log_param("optimizer", "AdamW")
+        # optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,                         momentum=0.9, nesterov=True)
+        optimizer = torch.optim.AdamW(self.network.parameters(), self.initial_lr,
+                                     weight_decay=self.weight_decay,
+                                     amsgrad=True)
         lr_scheduler = PolyLRScheduler(optimizer, self.initial_lr, self.num_epochs)
+        #lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=6000, eta_min=1e-5)
         return optimizer, lr_scheduler
 
     def plot_network_architecture(self):
@@ -516,6 +527,7 @@ class nnUNetTrainer(object):
                 self.print_to_log_file("Creating new 5-fold cross-validation split...")
                 splits = []
                 all_keys_sorted = np.sort(list(dataset.keys()))
+                np.random.seed(12345)
                 kfold = KFold(n_splits=5, shuffle=True, random_state=12345)
                 for i, (train_idx, test_idx) in enumerate(kfold.split(all_keys_sorted)):
                     train_keys = np.array(all_keys_sorted)[train_idx]
@@ -523,6 +535,9 @@ class nnUNetTrainer(object):
                     splits.append({})
                     splits[-1]['train'] = list(train_keys)
                     splits[-1]['val'] = list(test_keys)
+                # for _ in range(5):
+                #     train_keys, test_keys = train_test_split(all_keys_sorted, test_size=12, train_size=18)
+                #     splits.append({'train': list(train_keys), 'val': list(test_keys)})
                 save_json(splits, splits_file)
 
             else:
@@ -600,6 +615,7 @@ class nnUNetTrainer(object):
 
         dl_tr, dl_val = self.get_plain_dataloaders(initial_patch_size, dim)
 
+
         allowed_num_processes = get_allowed_n_proc_DA()
         if allowed_num_processes == 0:
             mt_gen_train = SingleThreadedAugmenter(dl_tr, tr_transforms)
@@ -612,6 +628,7 @@ class nnUNetTrainer(object):
                                            transform=val_transforms, num_processes=max(1, allowed_num_processes // 2),
                                            num_cached=3, seeds=None, pin_memory=self.device.type == 'cuda',
                                            wait_time=0.02)
+
         return mt_gen_train, mt_gen_val
 
     def get_plain_dataloaders(self, initial_patch_size: Tuple[int, ...], dim: int):
@@ -779,6 +796,8 @@ class nnUNetTrainer(object):
         if not self.was_initialized:
             self.initialize()
 
+        self.print_to_log_file('MODEL ARCHITECTURE: ', self.network)
+
         maybe_mkdir_p(self.output_folder)
 
         # make sure deep supervision is on in the network
@@ -827,7 +846,6 @@ class nnUNetTrainer(object):
 
     def on_train_epoch_start(self):
         self.network.train()
-        self.lr_scheduler.step(self.current_epoch)
         self.print_to_log_file('')
         self.print_to_log_file(f'Epoch {self.current_epoch}')
         self.print_to_log_file(
@@ -870,6 +888,7 @@ class nnUNetTrainer(object):
             torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
             self.optimizer.step()
 
+        self.lr_scheduler.step(self.current_epoch)
         return {'loss': l.detach().cpu().numpy()}
 
     def on_train_epoch_end(self, train_outputs: List[dict]):
@@ -883,6 +902,9 @@ class nnUNetTrainer(object):
             loss_here = np.mean(outputs['loss'])
 
         self.logger.log('train_losses', loss_here, self.current_epoch)
+
+    def adjust_kappa(self, dice_score):
+        return torch.Tensor(dice_score * self.lamda).cuda(torch.device('cuda'))
 
     def on_validation_epoch_start(self):
         self.network.eval()
@@ -978,10 +1000,14 @@ class nnUNetTrainer(object):
             loss_here = np.mean(outputs_collated['loss'])
 
         global_dc_per_class = [2 * i / (2 * i + j + k) if (2 * i + j + k) != 0 else 0 for i, j, k in zip(tp, fp, fn)]
+        #self.kappa = self.adjust_kappa(global_dc_per_class)
         mean_fg_dice = np.nanmean(global_dc_per_class)
+        mlflow.log_metric("Mean foreground Dice", mean_fg_dice, step=self.current_epoch)
         self.logger.log('mean_fg_dice', mean_fg_dice, self.current_epoch)
         self.logger.log('dice_per_class_or_region', global_dc_per_class, self.current_epoch)
         self.logger.log('val_losses', loss_here, self.current_epoch)
+
+        mlflow.log_metric('mean foreground dice', mean_fg_dice, step=self.current_epoch)
 
     def on_epoch_start(self):
         self.logger.log('epoch_start_timestamps', time(), self.current_epoch)
@@ -1013,6 +1039,11 @@ class nnUNetTrainer(object):
         if (current_epoch + 1) % self.save_every == 0 and current_epoch != (self.num_epochs - 1):
             self.save_checkpoint(join(self.output_folder, 'checkpoint_latest.pth'))
 
+        if self._best_val_loss is None or self.logger.my_fantastic_logging['val_losses'][-1] < self._best_val_loss:
+            self._best_val_loss = self.logger.my_fantastic_logging['val_losses'][-1]
+            self.print_to_log_file(f"New best validations loss: {np.round(self._best_val_loss, decimals=4)}")
+            self.save_checkpoint(join(self.output_folder, 'checkpoint_best_val_loss.pth'))
+
         # handle 'best' checkpointing. ema_fg_dice is computed by the logger and can be accessed like this
         mlflow.log_metric('EMA pseudo Dice', self.logger.my_fantastic_logging['ema_fg_dice'][-1], step=self.current_epoch)
         if self._best_ema is None or self.logger.my_fantastic_logging['ema_fg_dice'][-1] > self._best_ema:
@@ -1034,6 +1065,7 @@ class nnUNetTrainer(object):
                     'grad_scaler_state': self.grad_scaler.state_dict() if self.grad_scaler is not None else None,
                     'logging': self.logger.get_checkpoint(),
                     '_best_ema': self._best_ema,
+                    '_best_val_loss': self._best_val_loss,
                     'current_epoch': self.current_epoch + 1,
                     'init_args': self.my_init_kwargs,
                     'trainer_name': self.__class__.__name__,
@@ -1062,6 +1094,7 @@ class nnUNetTrainer(object):
         self.current_epoch = checkpoint['current_epoch']
         self.logger.load_checkpoint(checkpoint['logging'])
         self._best_ema = checkpoint['_best_ema']
+        self._best_val_loss = checkpoint['_best_val_loss']
         self.inference_allowed_mirroring_axes = checkpoint[
             'inference_allowed_mirroring_axes'] if 'inference_allowed_mirroring_axes' in checkpoint.keys() else self.inference_allowed_mirroring_axes
 
@@ -1078,15 +1111,25 @@ class nnUNetTrainer(object):
         self.set_deep_supervision_enabled(False)
         self.network.eval()
 
-        num_seg_heads = self.label_manager.num_segmentation_heads
+        if self.is_ddp and self.batch_size == 1 and self.enable_deep_supervision and self._do_i_compile():
+            self.print_to_log_file("WARNING! batch size is 1 during training and torch.compile is enabled. If you "
+                                   "encounter crashes in validation then this is because torch.compile forgets "
+                                   "to trigger a recompilation of the model with deep supervision disabled. "
+                                   "This causes torch.flip to complain about getting a tuple as input. Just rerun the "
+                                   "validation with --val (exactly the same as before) and then it will work. "
+                                   "Why? Because --val triggers nnU-Net to ONLY run validation meaning that the first "
+                                   "forward pass (where compile is triggered) already has deep supervision disabled. "
+                                   "This is exactly what we need in perform_actual_validation")
 
-        inference_gaussian = torch.from_numpy(
-            compute_gaussian(self.configuration_manager.patch_size, sigma_scale=1. / 8))
-        # spawn allows the use of GPU in the background process in case somebody wants to do this. Not recommended. Trust me.
-        # segmentation_export_pool = multiprocessing.get_context('spawn').Pool(default_num_processes)
-        # let's not use this until someone really needs it!
-        # segmentation_export_pool = multiprocessing.Pool(default_num_processes)
+        predictor = nnUNetPredictor(tile_step_size=0.5, use_gaussian=True, use_mirroring=True,
+                                    perform_everything_on_device=True, device=self.device, verbose=False,
+                                    verbose_preprocessing=False, allow_tqdm=True)
+        predictor.manual_initialization(self.network, self.plans_manager, self.configuration_manager, None,
+                                        self.dataset_json, 'nnUNetTrainer_NexToU_BTI_Synapse',
+                                        self.inference_allowed_mirroring_axes)
+
         with multiprocessing.get_context("spawn").Pool(default_num_processes) as segmentation_export_pool:
+            worker_list = [i for i in segmentation_export_pool._pool]
             validation_output_folder = join(self.output_folder, 'validation')
             maybe_mkdir_p(validation_output_folder)
 
@@ -1094,7 +1137,11 @@ class nnUNetTrainer(object):
             # the validation keys across the workers.
             _, val_keys = self.do_split()
             if self.is_ddp:
+                last_barrier_at_idx = len(val_keys) // dist.get_world_size() - 1
+
                 val_keys = val_keys[self.local_rank:: dist.get_world_size()]
+                # we cannot just have barriers all over the place because the number of keys each GPU receives can be
+                # different
 
             dataset_val = nnUNetDataset(self.preprocessed_dataset_folder, val_keys,
                                         folder_with_segs_from_previous_stage=self.folder_with_segs_from_previous_stage,
@@ -1106,13 +1153,14 @@ class nnUNetTrainer(object):
                 _ = [maybe_mkdir_p(join(self.output_folder_base, 'predicted_next_stage', n)) for n in next_stages]
 
             results = []
-            for k in dataset_val.keys():
-                proceed = not check_workers_busy(segmentation_export_pool, results,
-                                                 allowed_num_queued=len(segmentation_export_pool._pool))
+
+            for i, k in enumerate(dataset_val.keys()):
+                proceed = not check_workers_alive_and_busy(segmentation_export_pool, worker_list, results,
+                                                           allowed_num_queued=2)
                 while not proceed:
-                    sleep(1)
-                    proceed = not check_workers_busy(segmentation_export_pool, results,
-                                                     allowed_num_queued=len(segmentation_export_pool._pool))
+                    sleep(0.1)
+                    proceed = not check_workers_alive_and_busy(segmentation_export_pool, worker_list, results,
+                                                               allowed_num_queued=2)
 
                 self.print_to_log_file(f"predicting {k}")
                 data, seg, properties = dataset_val.load_case(k)
@@ -1120,41 +1168,22 @@ class nnUNetTrainer(object):
                 if self.is_cascaded:
                     data = np.vstack((data, convert_labelmap_to_one_hot(seg[-1], self.label_manager.foreground_labels,
                                                                         output_dtype=data.dtype)))
+                with warnings.catch_warnings():
+                    # ignore 'The given NumPy array is not writable' warning
+                    warnings.simplefilter("ignore")
+                    data = torch.from_numpy(data)
 
+                self.print_to_log_file(f'{k}, shape {data.shape}, rank {self.local_rank}')
                 output_filename_truncated = join(validation_output_folder, k)
 
-                try:
-                    prediction = predict_sliding_window_return_logits(self.network, data, num_seg_heads,
-                                                                      tile_size=self.configuration_manager.patch_size,
-                                                                      mirror_axes=self.inference_allowed_mirroring_axes,
-                                                                      tile_step_size=0.5,
-                                                                      use_gaussian=True,
-                                                                      precomputed_gaussian=inference_gaussian,
-                                                                      perform_everything_on_gpu=True,
-                                                                      verbose=False,
-                                                                      device=self.device).cpu().numpy()
-                except RuntimeError:
-                    prediction = predict_sliding_window_return_logits(self.network, data, num_seg_heads,
-                                                                      tile_size=self.configuration_manager.patch_size,
-                                                                      mirror_axes=self.inference_allowed_mirroring_axes,
-                                                                      tile_step_size=0.5,
-                                                                      use_gaussian=True,
-                                                                      precomputed_gaussian=inference_gaussian,
-                                                                      perform_everything_on_gpu=False,
-                                                                      verbose=False,
-                                                                      device=self.device).cpu().numpy()
-
-                if should_i_save_to_file(prediction, results, segmentation_export_pool):
-                    np.save(output_filename_truncated + '.npy', prediction)
-                    prediction_for_export = output_filename_truncated + '.npy'
-                else:
-                    prediction_for_export = prediction
+                prediction = predictor.predict_sliding_window_return_logits(data)
+                prediction = prediction.cpu()
 
                 # this needs to go into background processes
                 results.append(
                     segmentation_export_pool.starmap_async(
-                        export_prediction_from_softmax, (
-                            (prediction_for_export, properties, self.configuration_manager, self.plans_manager,
+                        export_prediction_from_logits, (
+                            (prediction, properties, self.configuration_manager, self.plans_manager,
                              self.dataset_json, output_filename_truncated, save_probabilities),
                         )
                     )
@@ -1185,21 +1214,19 @@ class nnUNetTrainer(object):
                         output_folder = join(self.output_folder_base, 'predicted_next_stage', n)
                         output_file = join(output_folder, k + '.npz')
 
-                        if should_i_save_to_file(prediction, results, segmentation_export_pool):
-                            np.save(output_file[:-4] + '.npy', prediction)
-                            prediction_for_export = output_file[:-4] + '.npy'
-                        else:
-                            prediction_for_export = prediction
-                        # resample_and_save(prediction, target_shape, output_file, self.plans, self.configuration, properties,
-                        #                   self.dataset_json, n)
+                        # resample_and_save(prediction, target_shape, output_file, self.plans_manager, self.configuration_manager, properties,
+                        #                   self.dataset_json)
                         results.append(segmentation_export_pool.starmap_async(
                             resample_and_save, (
-                                (prediction_for_export, target_shape, output_file, self.plans_manager,
+                                (prediction, target_shape, output_file, self.plans_manager,
                                  self.configuration_manager,
                                  properties,
-                                 self.dataset_json, n),
+                                 self.dataset_json),
                             )
                         ))
+                # if we don't barrier from time to time we will get nccl timeouts for large datasets. Yuck.
+                if self.is_ddp and i < last_barrier_at_idx and (i + 1) % 20 == 0:
+                    dist.barrier()
 
             _ = [r.get() for r in results]
 
@@ -1214,14 +1241,18 @@ class nnUNetTrainer(object):
                                                 self.dataset_json["file_ending"],
                                                 self.label_manager.foreground_regions if self.label_manager.has_regions else
                                                 self.label_manager.foreground_labels,
-                                                self.label_manager.ignore_label, chill=True)
+                                                self.label_manager.ignore_label, chill=True,
+                                                num_processes=default_num_processes * dist.get_world_size() if
+                                                self.is_ddp else 8) # default_num_processes in loc de 8
             self.print_to_log_file("Validation complete", also_print_to_console=True)
             self.print_to_log_file("Mean Validation Dice: ", (metrics['foreground_mean']["Dice"]),
                                    also_print_to_console=True)
 
         self.set_deep_supervision_enabled(True)
+        compute_gaussian.cache_clear()
 
     def run_training(self):
+        mlflow.end_run()
         with mlflow.start_run():
             self.on_train_start()
 

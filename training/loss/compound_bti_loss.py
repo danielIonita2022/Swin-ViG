@@ -4,6 +4,7 @@ from nnunetv2.training.loss.robust_ce_loss import RobustCrossEntropyLoss
 from nnunetv2.training.loss.bti_loss import BTI_Loss
 from nnunetv2.utilities.helpers import softmax_helper_dim1
 from torch import nn
+from nnunetv2.training.loss.tvmf_dice_loss import Adaptive_tvMF_DiceLoss
 
 class DC_and_CE_and_BTI_Loss(nn.Module):
     def __init__(self, soft_dice_kwargs, ce_kwargs, ti_kwargs, weight_ce=1, weight_dice=1, weight_ti=1e-6, ignore_label=None,
@@ -50,7 +51,8 @@ class DC_and_CE_and_BTI_Loss(nn.Module):
             target_dice = target
             mask = None
 
-        dc_loss = self.dc(net_output, target_dice, loss_mask=mask) \
+        ## KAPPA PENTRU TVMF DICE, SCOATE-L PT ORICE ALTCEVA
+        dc_loss = self.dc(net_output, target_dice) \
             if self.weight_dice != 0 else 0
         ce_loss = self.ce(net_output, target[:, 0].long()) \
             if self.weight_ce != 0 and (self.ignore_label is None or num_fg > 0) else 0

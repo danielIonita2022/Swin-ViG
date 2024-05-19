@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/3bd1f01ed9354bf28c3b412be523901f/artifacts
+deleted_time: 1710250438953
+end_time: 1709924980910
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 3bd1f01ed9354bf28c3b412be523901f
+run_name: bemused-lamb-159
+run_uuid: 3bd1f01ed9354bf28c3b412be523901f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709924637656
+status: 4
+tags: []
+user_id: danielionita

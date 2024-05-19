@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/8b7ac3f323404e0dba4e87b73cc13161/artifacts
+end_time: 1716128522732
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8b7ac3f323404e0dba4e87b73cc13161
+run_name: adaptable-hog-858
+run_uuid: 8b7ac3f323404e0dba4e87b73cc13161
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716128505787
+status: 3
+tags: []
+user_id: danielionita

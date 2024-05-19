@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/6d9cedd8f82f4ee2890b74a64cb26742/artifacts
+deleted_time: 1715448828921
+end_time: 1715439777232
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 6d9cedd8f82f4ee2890b74a64cb26742
+run_name: lyrical-worm-49
+run_uuid: 6d9cedd8f82f4ee2890b74a64cb26742
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715439773453
+status: 3
+tags: []
+user_id: danielionita

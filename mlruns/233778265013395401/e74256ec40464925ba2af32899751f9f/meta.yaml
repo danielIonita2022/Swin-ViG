@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/e74256ec40464925ba2af32899751f9f/artifacts
+end_time: 1706999591380
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: e74256ec40464925ba2af32899751f9f
+run_name: casual-koi-917
+run_uuid: e74256ec40464925ba2af32899751f9f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706999539279
+status: 4
+tags: []
+user_id: danielionita

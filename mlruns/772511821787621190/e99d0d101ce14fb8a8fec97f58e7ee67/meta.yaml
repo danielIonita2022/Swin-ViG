@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/772511821787621190/e99d0d101ce14fb8a8fec97f58e7ee67/artifacts
+end_time: 1712616169864
+entry_point_name: ''
+experiment_id: '772511821787621190'
+lifecycle_stage: active
+run_id: e99d0d101ce14fb8a8fec97f58e7ee67
+run_name: capricious-stoat-424
+run_uuid: e99d0d101ce14fb8a8fec97f58e7ee67
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712612116378
+status: 3
+tags: []
+user_id: danielionita

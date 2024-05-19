@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/050b3d5edc5f4529a8c2f2a8f1ece68a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 050b3d5edc5f4529a8c2f2a8f1ece68a
+run_name: big-shark-405
+run_uuid: 050b3d5edc5f4529a8c2f2a8f1ece68a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712656136143
+status: 1
+tags: []
+user_id: danielionita

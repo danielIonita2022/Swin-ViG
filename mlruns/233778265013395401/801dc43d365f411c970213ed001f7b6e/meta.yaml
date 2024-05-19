@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/801dc43d365f411c970213ed001f7b6e/artifacts
+end_time: 1707014272242
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 801dc43d365f411c970213ed001f7b6e
+run_name: sassy-ram-83
+run_uuid: 801dc43d365f411c970213ed001f7b6e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707000313013
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/236aba14c71b4a8fbed99214ef0f1d82/artifacts
+deleted_time: 1712129867214
+end_time: 1712127078428
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 236aba14c71b4a8fbed99214ef0f1d82
+run_name: loud-dove-924
+run_uuid: 236aba14c71b4a8fbed99214ef0f1d82
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712126978636
+status: 4
+tags: []
+user_id: danielionita

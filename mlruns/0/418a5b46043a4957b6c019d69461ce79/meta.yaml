@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/418a5b46043a4957b6c019d69461ce79/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 418a5b46043a4957b6c019d69461ce79
+run_name: fearless-hound-264
+run_uuid: 418a5b46043a4957b6c019d69461ce79
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712121678795
+status: 1
+tags: []
+user_id: danielionita

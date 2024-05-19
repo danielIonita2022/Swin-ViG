@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/b2d835768c4d4975ba6c24ae9933a8bf/artifacts
+deleted_time: 1710250438950
+end_time: 1710250305556
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: b2d835768c4d4975ba6c24ae9933a8bf
+run_name: resilient-smelt-997
+run_uuid: b2d835768c4d4975ba6c24ae9933a8bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710076615395
+status: 4
+tags: []
+user_id: danielionita

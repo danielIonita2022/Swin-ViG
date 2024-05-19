@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/713969e5b55147b2bfa92a6dcd1dd684/artifacts
+deleted_time: 1712058183508
+end_time: 1712054044468
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 713969e5b55147b2bfa92a6dcd1dd684
+run_name: gifted-grouse-140
+run_uuid: 713969e5b55147b2bfa92a6dcd1dd684
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712054044430
+status: 4
+tags: []
+user_id: danielionita

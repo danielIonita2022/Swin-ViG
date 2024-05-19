@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/af925cffb44944189b2ef0215fb113ec/artifacts
+end_time: 1706998383934
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: af925cffb44944189b2ef0215fb113ec
+run_name: magnificent-bird-546
+run_uuid: af925cffb44944189b2ef0215fb113ec
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706998382084
+status: 4
+tags: []
+user_id: danielionita

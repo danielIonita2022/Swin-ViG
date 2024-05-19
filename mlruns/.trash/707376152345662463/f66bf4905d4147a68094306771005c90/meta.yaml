@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/707376152345662463/f66bf4905d4147a68094306771005c90/artifacts
+deleted_time: 1712246651539
+end_time: 1712243110096
+entry_point_name: ''
+experiment_id: '707376152345662463'
+lifecycle_stage: deleted
+run_id: f66bf4905d4147a68094306771005c90
+run_name: stately-cod-127
+run_uuid: f66bf4905d4147a68094306771005c90
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712243110031
+status: 4
+tags: []
+user_id: danielionita

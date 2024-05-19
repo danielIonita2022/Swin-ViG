@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/c2726cb43c6542468dc42737e1c01915/artifacts
+end_time: 1707575164926
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: c2726cb43c6542468dc42737e1c01915
+run_name: resilient-bee-635
+run_uuid: c2726cb43c6542468dc42737e1c01915
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707565975458
+status: 3
+tags: []
+user_id: danielionita

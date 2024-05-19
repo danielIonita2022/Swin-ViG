@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/8b63373dfc3a49d4be00c51cf7c147d2/artifacts
+deleted_time: 1711582523908
+end_time: 1711579738582
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 8b63373dfc3a49d4be00c51cf7c147d2
+run_name: redolent-kit-477
+run_uuid: 8b63373dfc3a49d4be00c51cf7c147d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711579647020
+status: 4
+tags: []
+user_id: danielionita

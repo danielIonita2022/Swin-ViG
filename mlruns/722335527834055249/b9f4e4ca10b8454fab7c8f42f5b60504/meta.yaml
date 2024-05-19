@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/b9f4e4ca10b8454fab7c8f42f5b60504/artifacts
+deleted_time: 1714201897598
+end_time: 1714168653283
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: b9f4e4ca10b8454fab7c8f42f5b60504
+run_name: caring-penguin-169
+run_uuid: b9f4e4ca10b8454fab7c8f42f5b60504
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714168612072
+status: 4
+tags: []
+user_id: danielionita

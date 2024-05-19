@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/ccf990d55ad44deb998f1fc082d26ff2/artifacts
+deleted_time: 1711545164004
+end_time: 1711542707433
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: ccf990d55ad44deb998f1fc082d26ff2
+run_name: mysterious-zebra-127
+run_uuid: ccf990d55ad44deb998f1fc082d26ff2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711527188347
+status: 4
+tags: []
+user_id: danielionita

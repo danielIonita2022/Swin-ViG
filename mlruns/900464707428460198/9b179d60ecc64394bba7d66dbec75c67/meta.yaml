@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/9b179d60ecc64394bba7d66dbec75c67/artifacts
+deleted_time: 1710866918957
+end_time: 1710864889726
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 9b179d60ecc64394bba7d66dbec75c67
+run_name: delicate-crane-695
+run_uuid: 9b179d60ecc64394bba7d66dbec75c67
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710864889648
+status: 4
+tags: []
+user_id: danielionita

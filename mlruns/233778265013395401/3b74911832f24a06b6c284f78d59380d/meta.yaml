@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/3b74911832f24a06b6c284f78d59380d/artifacts
+end_time: 1706884493110
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 3b74911832f24a06b6c284f78d59380d
+run_name: bedecked-carp-134
+run_uuid: 3b74911832f24a06b6c284f78d59380d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706884338332
+status: 3
+tags: []
+user_id: danielionita

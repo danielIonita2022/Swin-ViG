@@ -1,0 +1,5 @@
+# SwinViG 2 head concatenated GATv2
+## Other changes from previous runs:
+- Dropout from 0.2 -> 0.3
+- Patch size from (64,196,160) -> (64,160,160)
+- For GATv2 Conv set share_weights to False

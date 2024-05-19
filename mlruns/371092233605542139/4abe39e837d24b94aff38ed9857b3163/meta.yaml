@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/4abe39e837d24b94aff38ed9857b3163/artifacts
+deleted_time: 1711632676612
+end_time: 1711632338272
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 4abe39e837d24b94aff38ed9857b3163
+run_name: painted-smelt-705
+run_uuid: 4abe39e837d24b94aff38ed9857b3163
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711632102428
+status: 4
+tags: []
+user_id: danielionita

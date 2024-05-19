@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/681297957449357217/c3a8ae8b8f384071bcc53c9a01c75a23/artifacts
+deleted_time: 1712246674246
+end_time: 1712244261914
+entry_point_name: ''
+experiment_id: '681297957449357217'
+lifecycle_stage: deleted
+run_id: c3a8ae8b8f384071bcc53c9a01c75a23
+run_name: painted-hen-674
+run_uuid: c3a8ae8b8f384071bcc53c9a01c75a23
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712243825899
+status: 4
+tags: []
+user_id: danielionita

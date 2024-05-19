@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/cbbd7f0d5bad4ac18e5bb32a51a70dbe/artifacts
+deleted_time: 1714376019380
+end_time: 1714334118564
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: cbbd7f0d5bad4ac18e5bb32a51a70dbe
+run_name: invincible-cow-516
+run_uuid: cbbd7f0d5bad4ac18e5bb32a51a70dbe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714334115203
+status: 3
+tags: []
+user_id: danielionita

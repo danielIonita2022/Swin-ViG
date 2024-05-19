@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/7a410888adfc47f9a89b8046353dd124/artifacts
+deleted_time: 1714201897503
+end_time: 1714172390944
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 7a410888adfc47f9a89b8046353dd124
+run_name: rumbling-bat-352
+run_uuid: 7a410888adfc47f9a89b8046353dd124
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714172387425
+status: 3
+tags: []
+user_id: danielionita

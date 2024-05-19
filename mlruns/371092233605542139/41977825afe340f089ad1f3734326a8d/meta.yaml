@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/41977825afe340f089ad1f3734326a8d/artifacts
+deleted_time: 1711811115068
+end_time: 1711808210362
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 41977825afe340f089ad1f3734326a8d
+run_name: luxuriant-sloth-77
+run_uuid: 41977825afe340f089ad1f3734326a8d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711808196898
+status: 4
+tags: []
+user_id: danielionita

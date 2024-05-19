@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/eeb46570749a4012abf2fddc6b0e815e/artifacts
+deleted_time: 1710250438983
+end_time: 1709890374915
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: eeb46570749a4012abf2fddc6b0e815e
+run_name: gifted-colt-827
+run_uuid: eeb46570749a4012abf2fddc6b0e815e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890364489
+status: 4
+tags: []
+user_id: danielionita

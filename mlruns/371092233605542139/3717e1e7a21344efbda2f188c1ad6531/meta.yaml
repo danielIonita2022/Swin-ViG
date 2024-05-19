@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/3717e1e7a21344efbda2f188c1ad6531/artifacts
+end_time: 1712179095604
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: 3717e1e7a21344efbda2f188c1ad6531
+run_name: able-skunk-855
+run_uuid: 3717e1e7a21344efbda2f188c1ad6531
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712129454208
+status: 3
+tags: []
+user_id: danielionita

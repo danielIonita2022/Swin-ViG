@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/829743cc831649e3a60db2163a993c6e/artifacts
+deleted_time: 1710250438970
+end_time: null
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 829743cc831649e3a60db2163a993c6e
+run_name: abrasive-squirrel-12
+run_uuid: 829743cc831649e3a60db2163a993c6e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915029847
+status: 1
+tags: []
+user_id: danielionita

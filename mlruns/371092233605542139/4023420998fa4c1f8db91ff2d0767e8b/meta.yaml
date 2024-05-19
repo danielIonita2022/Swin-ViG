@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/4023420998fa4c1f8db91ff2d0767e8b/artifacts
+deleted_time: 1711582523925
+end_time: 1711581192014
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 4023420998fa4c1f8db91ff2d0767e8b
+run_name: treasured-shrike-916
+run_uuid: 4023420998fa4c1f8db91ff2d0767e8b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711581080102
+status: 4
+tags: []
+user_id: danielionita

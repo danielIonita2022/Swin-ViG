@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/069817120b5243cc883f95fe2837f046/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: 069817120b5243cc883f95fe2837f046
+run_name: powerful-mare-480
+run_uuid: 069817120b5243cc883f95fe2837f046
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708599456434
+status: 1
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/70b9f2e0fdb34f6198ef98db3aad0ea0/artifacts
+deleted_time: 1714201897509
+end_time: 1714172378433
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 70b9f2e0fdb34f6198ef98db3aad0ea0
+run_name: mercurial-frog-161
+run_uuid: 70b9f2e0fdb34f6198ef98db3aad0ea0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714172318224
+status: 4
+tags: []
+user_id: danielionita

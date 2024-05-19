@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/5f64ae1a8ff343f881728c460219b5a5/artifacts
+end_time: 1708925383168
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: 5f64ae1a8ff343f881728c460219b5a5
+run_name: luxuriant-foal-35
+run_uuid: 5f64ae1a8ff343f881728c460219b5a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708899795513
+status: 3
+tags: []
+user_id: danielionita

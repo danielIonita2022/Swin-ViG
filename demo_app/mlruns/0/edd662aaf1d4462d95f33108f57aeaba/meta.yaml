@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/edd662aaf1d4462d95f33108f57aeaba/artifacts
+end_time: 1713728284603
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: edd662aaf1d4462d95f33108f57aeaba
+run_name: unique-croc-388
+run_uuid: edd662aaf1d4462d95f33108f57aeaba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713727962547
+status: 3
+tags: []
+user_id: danielionita

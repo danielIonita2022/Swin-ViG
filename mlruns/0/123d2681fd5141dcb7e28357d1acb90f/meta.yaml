@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/123d2681fd5141dcb7e28357d1acb90f/artifacts
+end_time: 1712691140258
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 123d2681fd5141dcb7e28357d1acb90f
+run_name: calm-deer-481
+run_uuid: 123d2681fd5141dcb7e28357d1acb90f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712691137826
+status: 3
+tags: []
+user_id: danielionita

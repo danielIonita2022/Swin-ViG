@@ -64,7 +64,7 @@ if __name__ == '__main__':
     #                        "You need to specify the folder with the imagesTr, imagesVal, labelsTr etc subfolders here!")
     #parser.add_argument('-d', required=False, type=int, default=218, help='nnU-Net Dataset ID, default: 218')
     #args = parser.parse_args()
-    amos_base = "/mnt/hdd1/home/danielionita/data/amos22/amos22"
-    convert_amos_task1(amos_base, 217)
+    amos_base = "/mnt/hdd2/home/danielionita/data/amos22/amos22"
+    convert_amos_task1(amos_base, 218)
 
 

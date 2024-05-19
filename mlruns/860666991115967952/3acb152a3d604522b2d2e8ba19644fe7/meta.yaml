@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/860666991115967952/3acb152a3d604522b2d2e8ba19644fe7/artifacts
+deleted_time: 1711482082051
+end_time: 1711481668506
+entry_point_name: ''
+experiment_id: '860666991115967952'
+lifecycle_stage: deleted
+run_id: 3acb152a3d604522b2d2e8ba19644fe7
+run_name: indecisive-ram-416
+run_uuid: 3acb152a3d604522b2d2e8ba19644fe7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711481571249
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/d04509fc5b2943319f5ee99d0092637b/artifacts
+end_time: 1708459319674
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: d04509fc5b2943319f5ee99d0092637b
+run_name: carefree-wren-307
+run_uuid: d04509fc5b2943319f5ee99d0092637b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708459283444
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/43e1be2bb3f24b5192f79f04f535b644/artifacts
+deleted_time: 1714201898633
+end_time: 1714166065816
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 43e1be2bb3f24b5192f79f04f535b644
+run_name: worried-crow-269
+run_uuid: 43e1be2bb3f24b5192f79f04f535b644
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714166062815
+status: 3
+tags: []
+user_id: danielionita

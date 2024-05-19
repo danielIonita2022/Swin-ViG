@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/30c6b747f7d541fa83312cbbcce0830f/artifacts
+deleted_time: 1710250438962
+end_time: 1709916042338
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 30c6b747f7d541fa83312cbbcce0830f
+run_name: big-rook-771
+run_uuid: 30c6b747f7d541fa83312cbbcce0830f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709916011321
+status: 4
+tags: []
+user_id: danielionita

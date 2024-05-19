@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ab794fd21cd64b229446fcb6a51ba140/artifacts
+end_time: 1715411441215
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: active
+run_id: ab794fd21cd64b229446fcb6a51ba140
+run_name: SwinViG-XL-MR+SAGE-3
+run_uuid: ab794fd21cd64b229446fcb6a51ba140
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715281162640
+status: 3
+tags: []
+user_id: danielionita

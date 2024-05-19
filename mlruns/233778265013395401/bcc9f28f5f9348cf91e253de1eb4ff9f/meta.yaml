@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/bcc9f28f5f9348cf91e253de1eb4ff9f/artifacts
+end_time: 1706887770798
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: bcc9f28f5f9348cf91e253de1eb4ff9f
+run_name: efficient-ox-973
+run_uuid: bcc9f28f5f9348cf91e253de1eb4ff9f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706885125439
+status: 4
+tags: []
+user_id: danielionita

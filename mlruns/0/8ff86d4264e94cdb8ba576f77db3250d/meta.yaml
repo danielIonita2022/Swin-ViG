@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/8ff86d4264e94cdb8ba576f77db3250d/artifacts
+end_time: 1712122127304
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8ff86d4264e94cdb8ba576f77db3250d
+run_name: melodic-steed-677
+run_uuid: 8ff86d4264e94cdb8ba576f77db3250d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712122124232
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/340a6176f8464622a71634afd21fb480/artifacts
+end_time: 1706989529772
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 340a6176f8464622a71634afd21fb480
+run_name: redolent-whale-724
+run_uuid: 340a6176f8464622a71634afd21fb480
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706975525368
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/ecae651ec7784078acea645608950225/artifacts
+deleted_time: 1715281166556
+end_time: 1715177538400
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: ecae651ec7784078acea645608950225
+run_name: gaudy-loon-26
+run_uuid: ecae651ec7784078acea645608950225
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715177521730
+status: 3
+tags: []
+user_id: danielionita

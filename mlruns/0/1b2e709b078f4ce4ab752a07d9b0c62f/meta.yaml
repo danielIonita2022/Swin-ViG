@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/1b2e709b078f4ce4ab752a07d9b0c62f/artifacts
+end_time: 1712233476506
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1b2e709b078f4ce4ab752a07d9b0c62f
+run_name: capable-chimp-116
+run_uuid: 1b2e709b078f4ce4ab752a07d9b0c62f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712233471557
+status: 3
+tags: []
+user_id: danielionita

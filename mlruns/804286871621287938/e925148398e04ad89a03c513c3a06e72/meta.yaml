@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/804286871621287938/e925148398e04ad89a03c513c3a06e72/artifacts
+end_time: 1711374856843
+entry_point_name: ''
+experiment_id: '804286871621287938'
+lifecycle_stage: active
+run_id: e925148398e04ad89a03c513c3a06e72
+run_name: righteous-sponge-202
+run_uuid: e925148398e04ad89a03c513c3a06e72
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711353566050
+status: 4
+tags: []
+user_id: danielionita

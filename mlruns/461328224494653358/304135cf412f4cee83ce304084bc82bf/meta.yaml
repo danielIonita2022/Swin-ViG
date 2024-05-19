@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/304135cf412f4cee83ce304084bc82bf/artifacts
+end_time: 1713648596800
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: 304135cf412f4cee83ce304084bc82bf
+run_name: intrigued-stag-696
+run_uuid: 304135cf412f4cee83ce304084bc82bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713648589208
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/b7e924d7ca7940dfa28fc445d2173c60/artifacts
+deleted_time: 1714201898633
+end_time: 1714165904530
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: b7e924d7ca7940dfa28fc445d2173c60
+run_name: upbeat-hog-672
+run_uuid: b7e924d7ca7940dfa28fc445d2173c60
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714165855854
+status: 4
+tags: []
+user_id: danielionita

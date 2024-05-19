@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/3ee1b6109e8449ee936ccd12d571fe7e/artifacts
+deleted_time: 1710250438954
+end_time: 1709924130885
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 3ee1b6109e8449ee936ccd12d571fe7e
+run_name: resilient-boar-615
+run_uuid: 3ee1b6109e8449ee936ccd12d571fe7e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709923100848
+status: 4
+tags: []
+user_id: danielionita

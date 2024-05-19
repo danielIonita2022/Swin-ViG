@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/c2df6d574f2948d3b589fd05e0377321/artifacts
+end_time: 1711578706214
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: c2df6d574f2948d3b589fd05e0377321
+run_name: ViGLite_fold_0
+run_uuid: c2df6d574f2948d3b589fd05e0377321
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711543187293
+status: 3
+tags: []
+user_id: danielionita

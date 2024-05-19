@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/2513b31cde6d428cadcda99d5d7b2c54/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2513b31cde6d428cadcda99d5d7b2c54
+run_name: debonair-cat-112
+run_uuid: 2513b31cde6d428cadcda99d5d7b2c54
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712655924058
+status: 1
+tags: []
+user_id: danielionita

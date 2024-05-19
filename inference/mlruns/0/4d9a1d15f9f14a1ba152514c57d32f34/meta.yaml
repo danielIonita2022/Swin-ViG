@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/nextou/nnUNet-2.0/nnunetv2/inference/mlruns/0/4d9a1d15f9f14a1ba152514c57d32f34/artifacts
+end_time: 1710925906528
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4d9a1d15f9f14a1ba152514c57d32f34
+run_name: incongruous-roo-829
+run_uuid: 4d9a1d15f9f14a1ba152514c57d32f34
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710925497691
+status: 3
+tags: []
+user_id: danielionita

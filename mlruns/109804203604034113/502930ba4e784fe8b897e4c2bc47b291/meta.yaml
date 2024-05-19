@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/109804203604034113/502930ba4e784fe8b897e4c2bc47b291/artifacts
+end_time: 1708013581975
+entry_point_name: ''
+experiment_id: '109804203604034113'
+lifecycle_stage: active
+run_id: 502930ba4e784fe8b897e4c2bc47b291
+run_name: masked-whale-988
+run_uuid: 502930ba4e784fe8b897e4c2bc47b291
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708009621901
+status: 4
+tags: []
+user_id: danielionita

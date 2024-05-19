@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/7a6c4583f3994936adc7cb15fd9dbe7a/artifacts
+deleted_time: 1710250438965
+end_time: 1709915835100
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 7a6c4583f3994936adc7cb15fd9dbe7a
+run_name: receptive-wolf-475
+run_uuid: 7a6c4583f3994936adc7cb15fd9dbe7a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709915834684
+status: 4
+tags: []
+user_id: danielionita

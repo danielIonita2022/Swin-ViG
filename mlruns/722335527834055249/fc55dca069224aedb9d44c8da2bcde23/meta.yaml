@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/fc55dca069224aedb9d44c8da2bcde23/artifacts
+deleted_time: 1716101712749
+end_time: 1716047622041
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: fc55dca069224aedb9d44c8da2bcde23
+run_name: secretive-fish-188
+run_uuid: fc55dca069224aedb9d44c8da2bcde23
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716037654282
+status: 3
+tags: []
+user_id: danielionita

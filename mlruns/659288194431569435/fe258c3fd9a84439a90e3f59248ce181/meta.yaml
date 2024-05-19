@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/fe258c3fd9a84439a90e3f59248ce181/artifacts
+deleted_time: 1710250438980
+end_time: 1709890864083
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: fe258c3fd9a84439a90e3f59248ce181
+run_name: big-mule-243
+run_uuid: fe258c3fd9a84439a90e3f59248ce181
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890849649
+status: 4
+tags: []
+user_id: danielionita

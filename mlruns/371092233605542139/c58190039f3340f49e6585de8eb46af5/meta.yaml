@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/c58190039f3340f49e6585de8eb46af5/artifacts
+deleted_time: 1711880151653
+end_time: null
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: c58190039f3340f49e6585de8eb46af5
+run_name: colorful-hawk-252
+run_uuid: c58190039f3340f49e6585de8eb46af5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711879931432
+status: 1
+tags: []
+user_id: danielionita

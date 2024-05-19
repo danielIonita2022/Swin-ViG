@@ -1,0 +1,5 @@
+# SwinGNNBlock:
+- SwinGrapher with MRConv
+- FFN
+- SwinGrapher with GraphSAGE
+- FFN

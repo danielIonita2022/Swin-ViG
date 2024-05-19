@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/71b96e566c8b4d309fa73067e8b7d3d5/artifacts
+deleted_time: 1714201897546
+end_time: 1714171003702
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 71b96e566c8b4d309fa73067e8b7d3d5
+run_name: invincible-shad-549
+run_uuid: 71b96e566c8b4d309fa73067e8b7d3d5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714170963246
+status: 4
+tags: []
+user_id: danielionita

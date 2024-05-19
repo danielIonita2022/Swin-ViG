@@ -42,7 +42,7 @@ def convert_btcv(btcv_base_dir: str, nnunet_dataset_id: int = 200):
         if match:
             number = match.group()
             shutil.copy(join(test_folder, 'img', 'img' + number + '.nii.gz'), join(imagests, f'{number}_0000.nii.gz'))
-            shutil.copy(join(test_folder, 'label', 'label' + number + '.nii.gz'), join(labelsts, f'{number}.nii.gz'))
+            #shutil.copy(join(test_folder, 'label', 'label' + number + '.nii.gz'), join(labelsts, f'{number}.nii.gz'))
 
     generate_dataset_json(out_base, {0: "CT"}, labels=
     {
@@ -73,5 +73,5 @@ if __name__ == '__main__':
     #                        "You need to specify the folder with the imagesTr, imagesVal, labelsTr etc subfolders here!")
     # parser.add_argument('-d', required=False, type=int, default=218, help='nnU-Net Dataset ID, default: 218')
     # args = parser.parse_args()
-    base_dir = "/mnt/hdd1/home/danielionita/data/Abdomen/RawData"
+    base_dir = "/mnt/hdd2/home/danielionita/data/Abdomen/RawData"
     convert_btcv(base_dir, 200)

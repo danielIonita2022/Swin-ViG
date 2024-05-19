@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/51c45cd9b4d440f4bdc782824f2675c1/artifacts
+deleted_time: 1710250438983
+end_time: 1709890574746
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: 51c45cd9b4d440f4bdc782824f2675c1
+run_name: powerful-lynx-595
+run_uuid: 51c45cd9b4d440f4bdc782824f2675c1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709890561323
+status: 4
+tags: []
+user_id: danielionita

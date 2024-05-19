@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/c129cc3c51304d84acaa02369444d8d0/artifacts
+deleted_time: 1714376019145
+end_time: 1714336410060
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: c129cc3c51304d84acaa02369444d8d0
+run_name: loud-fowl-345
+run_uuid: c129cc3c51304d84acaa02369444d8d0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714336406856
+status: 3
+tags: []
+user_id: danielionita

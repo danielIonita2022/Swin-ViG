@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/109804203604034113/db32a23075b04d5abcb3f81bd8d5cdcf/artifacts
+end_time: 1708032544015
+entry_point_name: ''
+experiment_id: '109804203604034113'
+lifecycle_stage: active
+run_id: db32a23075b04d5abcb3f81bd8d5cdcf
+run_name: auspicious-pug-255
+run_uuid: db32a23075b04d5abcb3f81bd8d5cdcf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708013689833
+status: 3
+tags: []
+user_id: danielionita

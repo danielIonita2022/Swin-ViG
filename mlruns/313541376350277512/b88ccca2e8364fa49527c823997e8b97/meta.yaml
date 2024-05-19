@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/b88ccca2e8364fa49527c823997e8b97/artifacts
+end_time: 1708459793772
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: b88ccca2e8364fa49527c823997e8b97
+run_name: likeable-ox-275
+run_uuid: b88ccca2e8364fa49527c823997e8b97
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708459792263
+status: 4
+tags: []
+user_id: danielionita

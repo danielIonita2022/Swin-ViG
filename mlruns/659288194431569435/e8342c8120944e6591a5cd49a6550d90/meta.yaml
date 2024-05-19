@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/659288194431569435/e8342c8120944e6591a5cd49a6550d90/artifacts
+deleted_time: 1710250438972
+end_time: null
+entry_point_name: ''
+experiment_id: '659288194431569435'
+lifecycle_stage: deleted
+run_id: e8342c8120944e6591a5cd49a6550d90
+run_name: legendary-turtle-341
+run_uuid: e8342c8120944e6591a5cd49a6550d90
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709914823932
+status: 1
+tags: []
+user_id: danielionita

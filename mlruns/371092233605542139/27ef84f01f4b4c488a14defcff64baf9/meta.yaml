@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/27ef84f01f4b4c488a14defcff64baf9/artifacts
+end_time: 1711626413829
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: active
+run_id: 27ef84f01f4b4c488a14defcff64baf9
+run_name: GATv2ConvLite-2heads-fold_0
+run_uuid: 27ef84f01f4b4c488a14defcff64baf9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711582254628
+status: 3
+tags: []
+user_id: danielionita

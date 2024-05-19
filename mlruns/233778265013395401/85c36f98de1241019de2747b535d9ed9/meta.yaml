@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/85c36f98de1241019de2747b535d9ed9/artifacts
+end_time: 1707057267356
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: active
+run_id: 85c36f98de1241019de2747b535d9ed9
+run_name: adventurous-hog-886
+run_uuid: 85c36f98de1241019de2747b535d9ed9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707036314403
+status: 3
+tags: []
+user_id: danielionita

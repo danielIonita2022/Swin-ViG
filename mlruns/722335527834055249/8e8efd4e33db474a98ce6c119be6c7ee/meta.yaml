@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/8e8efd4e33db474a98ce6c119be6c7ee/artifacts
+deleted_time: 1714201898894
+end_time: 1714162791853
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 8e8efd4e33db474a98ce6c119be6c7ee
+run_name: bouncy-deer-723
+run_uuid: 8e8efd4e33db474a98ce6c119be6c7ee
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714162773020
+status: 3
+tags: []
+user_id: danielionita

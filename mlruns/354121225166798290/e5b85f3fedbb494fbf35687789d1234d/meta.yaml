@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/354121225166798290/e5b85f3fedbb494fbf35687789d1234d/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '354121225166798290'
+lifecycle_stage: active
+run_id: e5b85f3fedbb494fbf35687789d1234d
+run_name: stylish-vole-344
+run_uuid: e5b85f3fedbb494fbf35687789d1234d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708765621723
+status: 1
+tags: []
+user_id: danielionita

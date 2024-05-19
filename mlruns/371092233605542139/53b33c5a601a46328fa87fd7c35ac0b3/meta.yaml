@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/371092233605542139/53b33c5a601a46328fa87fd7c35ac0b3/artifacts
+deleted_time: 1711836250825
+end_time: 1711835512164
+entry_point_name: ''
+experiment_id: '371092233605542139'
+lifecycle_stage: deleted
+run_id: 53b33c5a601a46328fa87fd7c35ac0b3
+run_name: invincible-grub-939
+run_uuid: 53b33c5a601a46328fa87fd7c35ac0b3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711835492401
+status: 4
+tags: []
+user_id: danielionita

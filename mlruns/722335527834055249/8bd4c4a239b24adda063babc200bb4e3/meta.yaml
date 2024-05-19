@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/8bd4c4a239b24adda063babc200bb4e3/artifacts
+deleted_time: 1714201898069
+end_time: 1714167059041
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 8bd4c4a239b24adda063babc200bb4e3
+run_name: rogue-seal-839
+run_uuid: 8bd4c4a239b24adda063babc200bb4e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714167056047
+status: 3
+tags: []
+user_id: danielionita

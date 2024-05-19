@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/313541376350277512/c56f27c02610459db4ba4a0e5872934a/artifacts
+end_time: 1707754731972
+entry_point_name: ''
+experiment_id: '313541376350277512'
+lifecycle_stage: active
+run_id: c56f27c02610459db4ba4a0e5872934a
+run_name: fun-cow-387
+run_uuid: c56f27c02610459db4ba4a0e5872934a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707745850475
+status: 3
+tags: []
+user_id: danielionita

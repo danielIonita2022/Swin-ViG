@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/d8f8301a7585421aa5c2cf18ba1683b7/artifacts
+deleted_time: 1714201897647
+end_time: 1714167877868
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: d8f8301a7585421aa5c2cf18ba1683b7
+run_name: intelligent-kite-45
+run_uuid: d8f8301a7585421aa5c2cf18ba1683b7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714167874953
+status: 3
+tags: []
+user_id: danielionita

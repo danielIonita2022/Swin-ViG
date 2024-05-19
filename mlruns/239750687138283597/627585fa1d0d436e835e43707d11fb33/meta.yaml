@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239750687138283597/627585fa1d0d436e835e43707d11fb33/artifacts
+end_time: 1708940624428
+entry_point_name: ''
+experiment_id: '239750687138283597'
+lifecycle_stage: active
+run_id: 627585fa1d0d436e835e43707d11fb33
+run_name: bemused-bear-623
+run_uuid: 627585fa1d0d436e835e43707d11fb33
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708940553351
+status: 4
+tags: []
+user_id: danielionita

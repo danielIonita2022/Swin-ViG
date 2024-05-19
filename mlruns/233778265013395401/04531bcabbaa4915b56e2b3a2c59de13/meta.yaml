@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/233778265013395401/04531bcabbaa4915b56e2b3a2c59de13/artifacts
+deleted_time: 1706825115094
+end_time: 1706823583424
+entry_point_name: ''
+experiment_id: '233778265013395401'
+lifecycle_stage: deleted
+run_id: 04531bcabbaa4915b56e2b3a2c59de13
+run_name: tasteful-swan-317
+run_uuid: 04531bcabbaa4915b56e2b3a2c59de13
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706823576194
+status: 4
+tags: []
+user_id: danielionita

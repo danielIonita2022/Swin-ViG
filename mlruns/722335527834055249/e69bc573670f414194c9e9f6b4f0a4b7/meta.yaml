@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/e69bc573670f414194c9e9f6b4f0a4b7/artifacts
+deleted_time: 1715448828952
+end_time: 1715439181015
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: e69bc573670f414194c9e9f6b4f0a4b7
+run_name: whimsical-shrike-284
+run_uuid: e69bc573670f414194c9e9f6b4f0a4b7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715439176699
+status: 3
+tags: []
+user_id: danielionita

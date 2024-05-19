@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/f777a155a3f54eae8a16ae6e115da194/artifacts
+deleted_time: 1714729921781
+end_time: 1714680239089
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: f777a155a3f54eae8a16ae6e115da194
+run_name: hilarious-crane-110
+run_uuid: f777a155a3f54eae8a16ae6e115da194
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714680236884
+status: 3
+tags: []
+user_id: danielionita

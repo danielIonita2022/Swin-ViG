@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/900464707428460198/29333baecb214cb8a3ec8d7e71323501/artifacts
+deleted_time: 1711219552607
+end_time: null
+entry_point_name: ''
+experiment_id: '900464707428460198'
+lifecycle_stage: deleted
+run_id: 29333baecb214cb8a3ec8d7e71323501
+run_name: casual-dog-881
+run_uuid: 29333baecb214cb8a3ec8d7e71323501
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711219191835
+status: 1
+tags: []
+user_id: danielionita
