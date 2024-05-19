@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/c7d5175ffaea4861b837563b05d9b714/artifacts
+deleted_time: 1715435715517
+end_time: 1715435069677
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: c7d5175ffaea4861b837563b05d9b714
+run_name: aged-squirrel-797
+run_uuid: c7d5175ffaea4861b837563b05d9b714
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715432583044
+status: 4
+tags: []
+user_id: danielionita

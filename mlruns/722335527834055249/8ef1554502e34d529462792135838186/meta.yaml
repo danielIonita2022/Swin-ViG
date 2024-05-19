@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/8ef1554502e34d529462792135838186/artifacts
+deleted_time: 1715448829637
+end_time: 1715436589880
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 8ef1554502e34d529462792135838186
+run_name: painted-deer-843
+run_uuid: 8ef1554502e34d529462792135838186
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715436387001
+status: 3
+tags: []
+user_id: danielionita

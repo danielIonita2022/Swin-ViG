@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/a3ef5cefd95843438f92c9218717c55b/artifacts
+end_time: 1716128401685
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a3ef5cefd95843438f92c9218717c55b
+run_name: fortunate-sow-539
+run_uuid: a3ef5cefd95843438f92c9218717c55b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716128384864
+status: 3
+tags: []
+user_id: danielionita

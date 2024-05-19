@@ -25,4 +25,4 @@ def create_validation_folders(dataset_name):
 
 
 if __name__ == '__main__':
-    create_validation_folders('Dataset218_AMOS2022_postChallenge_task1')
+    create_validation_folders('Dataset027_ACDC')

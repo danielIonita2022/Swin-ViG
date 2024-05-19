@@ -885,8 +885,8 @@ def predict_entry_point():
 
 def make_prediction_app(input_file_path, trained_model_path, fold):
 
-    #output_file_path = join(trained_model_path, f'fold_{fold}', 'demo_app')
-    output_file_path = join(trained_model_path, f'fold_{fold}', 'val2')
+    output_file_path = join(trained_model_path, f'fold_{fold}', 'demo_app')
+    #output_file_path = join(trained_model_path, f'fold_{fold}', 'val2')
 
 
     predictor = nnUNetPredictor(
@@ -906,21 +906,21 @@ def make_prediction_app(input_file_path, trained_model_path, fold):
     )
     predictor.predict_from_files(input_file_path,
                                  output_file_path,
-                                 save_probabilities=False, overwrite=False,
+                                 save_probabilities=False, overwrite=True,
                                  num_processes_preprocessing=8, num_processes_segmentation_export=8,
                                  folder_with_segs_from_prev_stage=None, num_parts=1, part_id=0)
-    # predicted_seg = None
-    # for file in os.listdir(output_file_path):
-    #     if file.endswith(".nii.gz"):
-    #         predicted_seg = join(output_file_path, file)
-    # return predicted_seg
+    predicted_seg = None
+    for file in os.listdir(output_file_path):
+        if file.endswith(".nii.gz"):
+            predicted_seg = join(output_file_path, file)
+    return predicted_seg
 
 
 if __name__ == '__main__':
     # predict a bunch of files
-    input_file_path = join(nnUNet_raw, "Dataset218_AMOS2022_postChallenge_task1/imagesVal_fold_0")
-    trained_model_path = join(nnUNet_results, 'Dataset218_AMOS2022_postChallenge_task1'
-                                              '/nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres')
+    input_file_path = join(nnUNet_raw, "Dataset027_ACDC/imagesVal_fold_0")
+    trained_model_path = join(nnUNet_results, 'Dataset027_ACDC'
+                                              '/nnUNetTrainer_NexToU_TI__nnUNetPlans__3d_fullres')
     make_prediction_app(input_file_path, trained_model_path, 0)
 
 

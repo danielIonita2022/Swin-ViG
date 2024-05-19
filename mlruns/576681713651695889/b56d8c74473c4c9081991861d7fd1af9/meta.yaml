@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/b56d8c74473c4c9081991861d7fd1af9/artifacts
+end_time: 1716126337510
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: b56d8c74473c4c9081991861d7fd1af9
+run_name: welcoming-ram-209
+run_uuid: b56d8c74473c4c9081991861d7fd1af9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716126330209
+status: 3
+tags: []
+user_id: danielionita

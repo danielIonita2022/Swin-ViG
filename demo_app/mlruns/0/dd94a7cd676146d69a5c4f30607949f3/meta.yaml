@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/hdd2/home/danielionita/vig_nnunet/nnunetv2/demo_app/mlruns/0/dd94a7cd676146d69a5c4f30607949f3/artifacts
+end_time: 1715231066328
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dd94a7cd676146d69a5c4f30607949f3
+run_name: gaudy-fowl-782
+run_uuid: dd94a7cd676146d69a5c4f30607949f3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715230953309
+status: 3
+tags: []
+user_id: danielionita

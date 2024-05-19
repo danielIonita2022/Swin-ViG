@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/576681713651695889
+creation_time: 1716106005198
+experiment_id: '576681713651695889'
+last_update_time: 1716106005198
+lifecycle_stage: active
+name: ACDC_nnUNetSwinGNN

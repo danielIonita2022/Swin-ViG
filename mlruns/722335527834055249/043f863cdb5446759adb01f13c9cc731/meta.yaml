@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/043f863cdb5446759adb01f13c9cc731/artifacts
+deleted_time: 1715772214021
+end_time: 1715721355695
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 043f863cdb5446759adb01f13c9cc731
+run_name: agreeable-ram-997
+run_uuid: 043f863cdb5446759adb01f13c9cc731
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715705599831
+status: 3
+tags: []
+user_id: danielionita

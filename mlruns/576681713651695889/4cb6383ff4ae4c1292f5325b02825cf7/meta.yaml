@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/4cb6383ff4ae4c1292f5325b02825cf7/artifacts
+end_time: 1716129679265
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 4cb6383ff4ae4c1292f5325b02825cf7
+run_name: victorious-gnat-313
+run_uuid: 4cb6383ff4ae4c1292f5325b02825cf7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716129662454
+status: 3
+tags: []
+user_id: danielionita

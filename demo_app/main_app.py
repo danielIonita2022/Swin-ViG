@@ -18,12 +18,14 @@ from pyngrok import ngrok
 
 
 def make_inference(input_file_path, fold=0):
-    trained_model_path = join(nnUNet_results, 'Dataset200_BTCV', 'nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres')
+    trained_model_path = join(nnUNet_results, 'Dataset200_BTCV',
+                              'nnUNetTrainer_NexToU_BTI_Synapse__nnUNetPlans__3d_fullres')
     # prediction_folder_path = join(trained_model_path, "demo_app")
     # if not os.path.exists(prediction_folder_path):
     #     os.makedirs(prediction_folder_path)
     # shutil.move(input_file_path, prediction_folder_path)
     return inference.predict_from_raw_data.make_prediction_app(input_file_path, trained_model_path, fold)
+
 
 def display_images(nifti_image1, nifti_image2, slice_indices):
     # Assume nifti_image1 and nifti_image2 are loaded and are instances of nibabel.Nifti1Image
@@ -94,7 +96,6 @@ def main():
         except Exception as e:
             print(e)
 
-
     if not os.path.exists(join(temp_dir, 'predict')):
         os.mkdir(join(temp_dir, 'predict'))
     original_file_folder = join(temp_dir, 'predict')
@@ -127,7 +128,8 @@ def main():
                 put_image(image_data).show()
 
         image1_data = display_images(gt_nifti_image, predicted_image, slice_indices)
-        put_text("CT segmentation visualizer").style('text-align: center; margin-bottom: 5px; padding: 10px; font-size: 24px; font-weight: bold;')
+        put_text("CT segmentation visualizer").style(
+            'text-align: center; margin-bottom: 5px; padding: 10px; font-size: 24px; font-weight: bold;')
         with use_scope('image_display'):
             put_image(image1_data).show()
 
@@ -136,9 +138,12 @@ def main():
         # Display the sliders inside a yellow box
 
         with use_scope('sliders', clear=True):
-            pin.put_slider(name="axial", label="Axial Slice", min_value=0, max_value=max_slices[2] - 1, step=1, value=slice_indices[2])
-            pin.put_slider(name="coronal", label="Coronal Slice", min_value=0, max_value=max_slices[1] - 1, step=1, value=slice_indices[1])
-            pin.put_slider(name="sagittal", label="Sagittal Slice", min_value=0, max_value=max_slices[0] - 1, step=1, value=slice_indices[0])
+            pin.put_slider(name="axial", label="Axial Slice", min_value=0, max_value=max_slices[2] - 1, step=1,
+                           value=slice_indices[2])
+            pin.put_slider(name="coronal", label="Coronal Slice", min_value=0, max_value=max_slices[1] - 1, step=1,
+                           value=slice_indices[1])
+            pin.put_slider(name="sagittal", label="Sagittal Slice", min_value=0, max_value=max_slices[0] - 1, step=1,
+                           value=slice_indices[0])
 
         pin.pin_on_change(name="axial", clear=True, onchange=lambda value: update_images(value, 2))
         pin.pin_on_change(name="coronal", clear=True, onchange=lambda value: update_images(value, 1))
@@ -146,6 +151,7 @@ def main():
 
     except Exception as e:
         put_text("Failed to load or display NIfTI file:", str(e))
+
 
 # Run the app
 if __name__ == "__main__":
