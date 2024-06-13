@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/2bbde962060d4fa085d5ebcab7b75f80/artifacts
+deleted_time: 1716713304996
+end_time: 1716639387991
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 2bbde962060d4fa085d5ebcab7b75f80
+run_name: adorable-shrew-581
+run_uuid: 2bbde962060d4fa085d5ebcab7b75f80
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716639370835
+status: 3
+tags: []
+user_id: danielionita

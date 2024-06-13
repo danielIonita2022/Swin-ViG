@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/386299a12ed84e14abb92080a62d3170/artifacts
+deleted_time: 1716639289376
+end_time: 1716574849361
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 386299a12ed84e14abb92080a62d3170
+run_name: marvelous-bird-938
+run_uuid: 386299a12ed84e14abb92080a62d3170
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716574832541
+status: 4
+tags: []
+user_id: danielionita

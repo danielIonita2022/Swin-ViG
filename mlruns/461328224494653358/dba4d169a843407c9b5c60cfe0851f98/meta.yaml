@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/dba4d169a843407c9b5c60cfe0851f98/artifacts
+end_time: 1717779493498
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: dba4d169a843407c9b5c60cfe0851f98
+run_name: Swin-ViG Attention 2HeadConcat
+run_uuid: dba4d169a843407c9b5c60cfe0851f98
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717769559244
+status: 3
+tags: []
+user_id: danielionita

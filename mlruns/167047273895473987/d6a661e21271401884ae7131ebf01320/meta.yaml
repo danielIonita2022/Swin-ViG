@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/167047273895473987/d6a661e21271401884ae7131ebf01320/artifacts
+end_time: 1716134051756
+entry_point_name: ''
+experiment_id: '167047273895473987'
+lifecycle_stage: active
+run_id: d6a661e21271401884ae7131ebf01320
+run_name: welcoming-tern-468
+run_uuid: d6a661e21271401884ae7131ebf01320
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716134038489
+status: 4
+tags: []
+user_id: danielionita

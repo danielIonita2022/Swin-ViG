@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/be89cb9c50974fb597617955bc5f9af9/artifacts
+deleted_time: 1716802218098
+end_time: 1716801372866
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: be89cb9c50974fb597617955bc5f9af9
+run_name: capricious-foal-983
+run_uuid: be89cb9c50974fb597617955bc5f9af9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716801312410
+status: 4
+tags: []
+user_id: danielionita

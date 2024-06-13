@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/93e6ad9e2fcd471a898cf00cb89d5a73/artifacts
+end_time: 1716598775764
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 93e6ad9e2fcd471a898cf00cb89d5a73
+run_name: bustling-croc-312
+run_uuid: 93e6ad9e2fcd471a898cf00cb89d5a73
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581926440
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/545f11af764c4a84a447c29d04ded2e2/artifacts
+deleted_time: 1716818407945
+end_time: 1716817743700
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 545f11af764c4a84a447c29d04ded2e2
+run_name: luminous-gull-147
+run_uuid: 545f11af764c4a84a447c29d04ded2e2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716817741499
+status: 3
+tags: []
+user_id: danielionita

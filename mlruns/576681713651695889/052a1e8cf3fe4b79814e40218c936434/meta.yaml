@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/052a1e8cf3fe4b79814e40218c936434/artifacts
+deleted_time: 1716802218080
+end_time: 1716754817292
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 052a1e8cf3fe4b79814e40218c936434
+run_name: salty-shrimp-105
+run_uuid: 052a1e8cf3fe4b79814e40218c936434
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716754811654
+status: 3
+tags: []
+user_id: danielionita

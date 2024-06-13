@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/1ff748e74840432f81de80c98739773e/artifacts
+deleted_time: 1716802218086
+end_time: 1716801260011
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 1ff748e74840432f81de80c98739773e
+run_name: victorious-crow-854
+run_uuid: 1ff748e74840432f81de80c98739773e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716800779009
+status: 4
+tags: []
+user_id: danielionita

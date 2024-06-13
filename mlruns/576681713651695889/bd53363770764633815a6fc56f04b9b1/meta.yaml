@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/bd53363770764633815a6fc56f04b9b1/artifacts
+deleted_time: 1717753255349
+end_time: 1717743533937
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: bd53363770764633815a6fc56f04b9b1
+run_name: ambitious-bass-275
+run_uuid: bd53363770764633815a6fc56f04b9b1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717743519182
+status: 4
+tags: []
+user_id: danielionita

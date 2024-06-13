@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/7e090653129e4229be0948fb5db6dd3d/artifacts
+deleted_time: 1716819982221
+end_time: 1716818648591
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 7e090653129e4229be0948fb5db6dd3d
+run_name: upset-panda-670
+run_uuid: 7e090653129e4229be0948fb5db6dd3d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716818646654
+status: 3
+tags: []
+user_id: danielionita

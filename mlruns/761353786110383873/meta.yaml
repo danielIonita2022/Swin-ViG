@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/761353786110383873
+creation_time: 1716413747055
+experiment_id: '761353786110383873'
+last_update_time: 1716413747055
+lifecycle_stage: active
+name: KiTS0223_nnUNetSwinGNN

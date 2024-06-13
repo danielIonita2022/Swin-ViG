@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/5b669a8aa17a4d7492fd31db87b4dd48/artifacts
+deleted_time: 1716713305005
+end_time: 1716707453490
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 5b669a8aa17a4d7492fd31db87b4dd48
+run_name: likeable-finch-826
+run_uuid: 5b669a8aa17a4d7492fd31db87b4dd48
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716707447817
+status: 3
+tags: []
+user_id: danielionita

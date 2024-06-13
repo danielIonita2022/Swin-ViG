@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/d7fa9ca7dc39421882ea3c6fe5628dac/artifacts
+deleted_time: 1716639289385
+end_time: 1716321087669
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: d7fa9ca7dc39421882ea3c6fe5628dac
+run_name: brawny-koi-442
+run_uuid: d7fa9ca7dc39421882ea3c6fe5628dac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716321070572
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/c4a4c142842244f3b97bed1f3cd44260/artifacts
+deleted_time: 1716845430878
+end_time: 1716836322028
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: c4a4c142842244f3b97bed1f3cd44260
+run_name: angry-snipe-686
+run_uuid: c4a4c142842244f3b97bed1f3cd44260
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716836320106
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,813 @@
+# acelasi ca celalalt model de mai jos cu acelasi nume dar are in plus acel stochastic depth cu valoare de 0.1
+# 92,48 DICE validare
+
+ENCODER NexToU_Encoder(
+  (stages): Sequential(
+    (0): Sequential(
+      (0): StackedConvBlocks(
+        (convs): Sequential(
+          (0): ConvDropoutNormReLU(
+            (conv): Conv3d(1, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+            (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(1, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+              (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+          (1): ConvDropoutNormReLU(
+            (conv): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+            (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+              (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvBlocks(
+        (convs): Sequential(
+          (0): ConvDropoutNormReLU(
+            (conv): Conv3d(24, 48, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(24, 48, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+              (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+          (1): ConvDropoutNormReLU(
+            (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+              (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(48, 96, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+              (norm): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(48, 96, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+        (1): SwinGNNBlocks(
+          (blocks): Sequential(
+            (0): Sequential(
+              (0): SwinGrapher(
+                (fc1): Sequential(
+                  (0): Conv3d(96, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (graph_conv): DyGraphConv(
+                  (gconv): GraphSAGE(
+                    (gconv): SAGEConv(96, 192, aggr=max)
+                    (norm): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+                    (act): SiLU()
+                  )
+                  (dilated_knn_graph): DenseDilatedKnnGraph(
+                    (_dilated): DenseDilated()
+                  )
+                  (dropout_op): Dropout3d(p=0.3, inplace=False)
+                )
+                (fc2): Sequential(
+                  (0): Conv3d(192, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): Identity()
+              )
+              (1): FFN(
+                (fc1): Sequential(
+                  (0): Conv3d(96, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                (fc2): Sequential(
+                  (0): Conv3d(384, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): Identity()
+              )
+            )
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(96, 192, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+              (norm): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(96, 192, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+        (1): SwinGNNBlocks(
+          (blocks): Sequential(
+            (0): Sequential(
+              (0): SwinGrapher(
+                (fc1): Sequential(
+                  (0): Conv3d(192, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (graph_conv): DyGraphConv(
+                  (gconv): GraphSAGE(
+                    (gconv): SAGEConv(192, 384, aggr=max)
+                    (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+                    (act): SiLU()
+                  )
+                  (dilated_knn_graph): DenseDilatedKnnGraph(
+                    (_dilated): DenseDilated()
+                  )
+                  (dropout_op): Dropout3d(p=0.3, inplace=False)
+                )
+                (fc2): Sequential(
+                  (0): Conv3d(384, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.020)
+              )
+              (1): FFN(
+                (fc1): Sequential(
+                  (0): Conv3d(192, 768, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                (fc2): Sequential(
+                  (0): Conv3d(768, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.020)
+              )
+            )
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(192, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+              (norm): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(192, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+        (1): SwinGNNBlocks(
+          (blocks): Sequential(
+            (0): Sequential(
+              (0): SwinGrapher(
+                (fc1): Sequential(
+                  (0): Conv3d(384, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (graph_conv): DyGraphConv(
+                  (gconv): GraphSAGE(
+                    (gconv): SAGEConv(384, 768, aggr=max)
+                    (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                    (act): SiLU()
+                  )
+                  (dilated_knn_graph): DenseDilatedKnnGraph(
+                    (_dilated): DenseDilated()
+                  )
+                  (dropout_op): Dropout3d(p=0.3, inplace=False)
+                )
+                (fc2): Sequential(
+                  (0): Conv3d(768, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.040)
+              )
+              (1): FFN(
+                (fc1): Sequential(
+                  (0): Conv3d(384, 1536, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                (fc2): Sequential(
+                  (0): Conv3d(1536, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.040)
+              )
+            )
+          )
+        )
+      )
+    )
+    (5): Sequential(
+      (0): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+              (norm): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+        (1): SwinGNNBlocks(
+          (blocks): Sequential(
+            (0): Sequential(
+              (0): SwinGrapher(
+                (fc1): Sequential(
+                  (0): Conv3d(384, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (graph_conv): DyGraphConv(
+                  (gconv): GraphSAGE(
+                    (gconv): SAGEConv(384, 768, aggr=max)
+                    (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                    (act): SiLU()
+                  )
+                  (dilated_knn_graph): DenseDilatedKnnGraph(
+                    (_dilated): DenseDilated()
+                  )
+                  (dropout_op): Dropout3d(p=0.3, inplace=False)
+                )
+                (fc2): Sequential(
+                  (0): Conv3d(768, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.060)
+              )
+              (1): FFN(
+                (fc1): Sequential(
+                  (0): Conv3d(384, 1536, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                (fc2): Sequential(
+                  (0): Conv3d(1536, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+                (drop_path): DropPath(drop_prob=0.060)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+DECODER NexToU_Decoder(
+  (encoder): NexToU_Encoder(
+    (stages): Sequential(
+      (0): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(1, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+              (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(1, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+                (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+            (1): ConvDropoutNormReLU(
+              (conv): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+              (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+                (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+      )
+      (1): Sequential(
+        (0): StackedConvBlocks(
+          (convs): Sequential(
+            (0): ConvDropoutNormReLU(
+              (conv): Conv3d(24, 48, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+              (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(24, 48, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+            (1): ConvDropoutNormReLU(
+              (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+              (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+              (all_modules): Sequential(
+                (0): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+                (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (2): LeakyReLU(negative_slope=0.01, inplace=True)
+              )
+            )
+          )
+        )
+      )
+      (2): Sequential(
+        (0): Sequential(
+          (0): StackedConvBlocks(
+            (convs): Sequential(
+              (0): ConvDropoutNormReLU(
+                (conv): Conv3d(48, 96, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                (norm): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+                (all_modules): Sequential(
+                  (0): Conv3d(48, 96, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                  (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (2): LeakyReLU(negative_slope=0.01, inplace=True)
+                )
+              )
+            )
+          )
+          (1): SwinGNNBlocks(
+            (blocks): Sequential(
+              (0): Sequential(
+                (0): SwinGrapher(
+                  (fc1): Sequential(
+                    (0): Conv3d(96, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (graph_conv): DyGraphConv(
+                    (gconv): GraphSAGE(
+                      (gconv): SAGEConv(96, 192, aggr=max)
+                      (norm): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+                      (act): SiLU()
+                    )
+                    (dilated_knn_graph): DenseDilatedKnnGraph(
+                      (_dilated): DenseDilated()
+                    )
+                    (dropout_op): Dropout3d(p=0.3, inplace=False)
+                  )
+                  (fc2): Sequential(
+                    (0): Conv3d(192, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): Identity()
+                )
+                (1): FFN(
+                  (fc1): Sequential(
+                    (0): Conv3d(96, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                  (fc2): Sequential(
+                    (0): Conv3d(384, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): Identity()
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): Sequential(
+        (0): Sequential(
+          (0): StackedConvBlocks(
+            (convs): Sequential(
+              (0): ConvDropoutNormReLU(
+                (conv): Conv3d(96, 192, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                (norm): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+                (all_modules): Sequential(
+                  (0): Conv3d(96, 192, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+                  (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (2): LeakyReLU(negative_slope=0.01, inplace=True)
+                )
+              )
+            )
+          )
+          (1): SwinGNNBlocks(
+            (blocks): Sequential(
+              (0): Sequential(
+                (0): SwinGrapher(
+                  (fc1): Sequential(
+                    (0): Conv3d(192, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (graph_conv): DyGraphConv(
+                    (gconv): GraphSAGE(
+                      (gconv): SAGEConv(192, 384, aggr=max)
+                      (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+                      (act): SiLU()
+                    )
+                    (dilated_knn_graph): DenseDilatedKnnGraph(
+                      (_dilated): DenseDilated()
+                    )
+                    (dropout_op): Dropout3d(p=0.3, inplace=False)
+                  )
+                  (fc2): Sequential(
+                    (0): Conv3d(384, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.020)
+                )
+                (1): FFN(
+                  (fc1): Sequential(
+                    (0): Conv3d(192, 768, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                  (fc2): Sequential(
+                    (0): Conv3d(768, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.020)
+                )
+              )
+            )
+          )
+        )
+      )
+      (4): Sequential(
+        (0): Sequential(
+          (0): StackedConvBlocks(
+            (convs): Sequential(
+              (0): ConvDropoutNormReLU(
+                (conv): Conv3d(192, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                (norm): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+                (all_modules): Sequential(
+                  (0): Conv3d(192, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (2): LeakyReLU(negative_slope=0.01, inplace=True)
+                )
+              )
+            )
+          )
+          (1): SwinGNNBlocks(
+            (blocks): Sequential(
+              (0): Sequential(
+                (0): SwinGrapher(
+                  (fc1): Sequential(
+                    (0): Conv3d(384, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (graph_conv): DyGraphConv(
+                    (gconv): GraphSAGE(
+                      (gconv): SAGEConv(384, 768, aggr=max)
+                      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                      (act): SiLU()
+                    )
+                    (dilated_knn_graph): DenseDilatedKnnGraph(
+                      (_dilated): DenseDilated()
+                    )
+                    (dropout_op): Dropout3d(p=0.3, inplace=False)
+                  )
+                  (fc2): Sequential(
+                    (0): Conv3d(768, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.040)
+                )
+                (1): FFN(
+                  (fc1): Sequential(
+                    (0): Conv3d(384, 1536, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                  (fc2): Sequential(
+                    (0): Conv3d(1536, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.040)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): Sequential(
+        (0): Sequential(
+          (0): StackedConvBlocks(
+            (convs): Sequential(
+              (0): ConvDropoutNormReLU(
+                (conv): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                (norm): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+                (all_modules): Sequential(
+                  (0): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+                  (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (2): LeakyReLU(negative_slope=0.01, inplace=True)
+                )
+              )
+            )
+          )
+          (1): SwinGNNBlocks(
+            (blocks): Sequential(
+              (0): Sequential(
+                (0): SwinGrapher(
+                  (fc1): Sequential(
+                    (0): Conv3d(384, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (graph_conv): DyGraphConv(
+                    (gconv): GraphSAGE(
+                      (gconv): SAGEConv(384, 768, aggr=max)
+                      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                      (act): SiLU()
+                    )
+                    (dilated_knn_graph): DenseDilatedKnnGraph(
+                      (_dilated): DenseDilated()
+                    )
+                    (dropout_op): Dropout3d(p=0.3, inplace=False)
+                  )
+                  (fc2): Sequential(
+                    (0): Conv3d(768, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.060)
+                )
+                (1): FFN(
+                  (fc1): Sequential(
+                    (0): Conv3d(384, 1536, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (act): LeakyReLU(negative_slope=0.01, inplace=True)
+                  (fc2): Sequential(
+                    (0): Conv3d(1536, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                    (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  )
+                  (drop_path): DropPath(drop_prob=0.060)
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  (stages): ModuleList(
+    (0): Sequential(
+      (0): StackedConvBlocks(
+        (convs): Sequential(
+          (0): ConvDropoutNormReLU(
+            (conv): Conv3d(768, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (norm): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(768, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+              (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+        )
+      )
+      (1): SwinGNNBlocks(
+        (blocks): Sequential(
+          (0): Sequential(
+            (0): SwinGrapher(
+              (fc1): Sequential(
+                (0): Conv3d(384, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (graph_conv): DyGraphConv(
+                (gconv): GraphSAGE(
+                  (gconv): SAGEConv(384, 768, aggr=max)
+                  (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (act): SiLU()
+                )
+                (dilated_knn_graph): DenseDilatedKnnGraph(
+                  (_dilated): DenseDilated()
+                )
+                (dropout_op): Dropout3d(p=0.3, inplace=False)
+              )
+              (fc2): Sequential(
+                (0): Conv3d(768, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+            (1): FFN(
+              (fc1): Sequential(
+                (0): Conv3d(384, 1536, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (act): LeakyReLU(negative_slope=0.01, inplace=True)
+              (fc2): Sequential(
+                (0): Conv3d(1536, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvBlocks(
+        (convs): Sequential(
+          (0): ConvDropoutNormReLU(
+            (conv): Conv3d(384, 192, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (norm): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(384, 192, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+              (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+        )
+      )
+      (1): SwinGNNBlocks(
+        (blocks): Sequential(
+          (0): Sequential(
+            (0): SwinGrapher(
+              (fc1): Sequential(
+                (0): Conv3d(192, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (graph_conv): DyGraphConv(
+                (gconv): GraphSAGE(
+                  (gconv): SAGEConv(192, 384, aggr=max)
+                  (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+                  (act): SiLU()
+                )
+                (dilated_knn_graph): DenseDilatedKnnGraph(
+                  (_dilated): DenseDilated()
+                )
+                (dropout_op): Dropout3d(p=0.3, inplace=False)
+              )
+              (fc2): Sequential(
+                (0): Conv3d(384, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+            (1): FFN(
+              (fc1): Sequential(
+                (0): Conv3d(192, 768, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (act): LeakyReLU(negative_slope=0.01, inplace=True)
+              (fc2): Sequential(
+                (0): Conv3d(768, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvBlocks(
+        (convs): Sequential(
+          (0): ConvDropoutNormReLU(
+            (conv): Conv3d(192, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (norm): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+            (all_modules): Sequential(
+              (0): Conv3d(192, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+              (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): LeakyReLU(negative_slope=0.01, inplace=True)
+            )
+          )
+        )
+      )
+      (1): SwinGNNBlocks(
+        (blocks): Sequential(
+          (0): Sequential(
+            (0): SwinGrapher(
+              (fc1): Sequential(
+                (0): Conv3d(96, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (graph_conv): DyGraphConv(
+                (gconv): GraphSAGE(
+                  (gconv): SAGEConv(96, 192, aggr=max)
+                  (norm): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+                  (act): SiLU()
+                )
+                (dilated_knn_graph): DenseDilatedKnnGraph(
+                  (_dilated): DenseDilated()
+                )
+                (dropout_op): Dropout3d(p=0.3, inplace=False)
+              )
+              (fc2): Sequential(
+                (0): Conv3d(192, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+            (1): FFN(
+              (fc1): Sequential(
+                (0): Conv3d(96, 384, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (act): LeakyReLU(negative_slope=0.01, inplace=True)
+              (fc2): Sequential(
+                (0): Conv3d(384, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+                (1): BatchNorm3d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (drop_path): Identity()
+            )
+          )
+        )
+      )
+    )
+    (3): StackedConvBlocks(
+      (convs): Sequential(
+        (0): ConvDropoutNormReLU(
+          (conv): Conv3d(96, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+          (all_modules): Sequential(
+            (0): Conv3d(96, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+        (1): ConvDropoutNormReLU(
+          (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (norm): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+          (all_modules): Sequential(
+            (0): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (1): BatchNorm3d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): StackedConvBlocks(
+      (convs): Sequential(
+        (0): ConvDropoutNormReLU(
+          (conv): Conv3d(48, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+          (all_modules): Sequential(
+            (0): Conv3d(48, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+            (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+        (1): ConvDropoutNormReLU(
+          (conv): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (norm): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (nonlin): LeakyReLU(negative_slope=0.01, inplace=True)
+          (all_modules): Sequential(
+            (0): Conv3d(24, 24, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+            (1): BatchNorm3d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (transpconvs): ModuleList(
+    (0): ConvTranspose3d(384, 384, kernel_size=(1, 2, 2), stride=(1, 2, 2))
+    (1): ConvTranspose3d(384, 192, kernel_size=(1, 2, 2), stride=(1, 2, 2))
+    (2): ConvTranspose3d(192, 96, kernel_size=(2, 2, 2), stride=(2, 2, 2))
+    (3): ConvTranspose3d(96, 48, kernel_size=(2, 2, 2), stride=(2, 2, 2))
+    (4): ConvTranspose3d(48, 24, kernel_size=(1, 2, 2), stride=(1, 2, 2))
+  )
+  (seg_layers): ModuleList(
+    (0): Conv3d(384, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+    (1): Conv3d(192, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+    (2): Conv3d(96, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+    (3): Conv3d(48, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+    (4): Conv3d(24, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  )
+)

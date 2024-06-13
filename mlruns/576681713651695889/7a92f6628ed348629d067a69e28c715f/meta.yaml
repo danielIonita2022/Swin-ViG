@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/7a92f6628ed348629d067a69e28c715f/artifacts
+end_time: 1716166869974
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 7a92f6628ed348629d067a69e28c715f
+run_name: unleashed-shark-947
+run_uuid: 7a92f6628ed348629d067a69e28c715f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716151471379
+status: 3
+tags: []
+user_id: danielionita

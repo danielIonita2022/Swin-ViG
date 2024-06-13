@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/576681713651695889/4cb6383ff4ae4c1292f5325b02825cf7/artifacts
+deleted_time: 1716185460091
 end_time: 1716129679265
 entry_point_name: ''
 experiment_id: '576681713651695889'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 4cb6383ff4ae4c1292f5325b02825cf7
 run_name: victorious-gnat-313
 run_uuid: 4cb6383ff4ae4c1292f5325b02825cf7

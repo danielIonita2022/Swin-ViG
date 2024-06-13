@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/8553da9e6de840a39cad1f66d64aaa7d/artifacts
+deleted_time: 1716414382350
+end_time: 1716414291442
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: deleted
+run_id: 8553da9e6de840a39cad1f66d64aaa7d
+run_name: sedate-fowl-202
+run_uuid: 8553da9e6de840a39cad1f66d64aaa7d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716414086599
+status: 4
+tags: []
+user_id: danielionita

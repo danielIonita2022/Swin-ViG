@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/6a71521c6d3e444fbf7a37e193c6bd5c/artifacts
+deleted_time: 1716639289378
+end_time: 1716272642907
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 6a71521c6d3e444fbf7a37e193c6bd5c
+run_name: clumsy-grouse-943
+run_uuid: 6a71521c6d3e444fbf7a37e193c6bd5c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716272625928
+status: 3
+tags: []
+user_id: danielionita

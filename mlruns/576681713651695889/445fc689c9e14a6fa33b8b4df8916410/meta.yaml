@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/445fc689c9e14a6fa33b8b4df8916410/artifacts
+deleted_time: 1716639289351
+end_time: 1716581316489
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 445fc689c9e14a6fa33b8b4df8916410
+run_name: debonair-tern-532
+run_uuid: 445fc689c9e14a6fa33b8b4df8916410
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581314394
+status: 3
+tags: []
+user_id: danielionita

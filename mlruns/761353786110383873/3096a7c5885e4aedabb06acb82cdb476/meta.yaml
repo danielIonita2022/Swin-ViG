@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/3096a7c5885e4aedabb06acb82cdb476/artifacts
+end_time: 1716448636710
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: active
+run_id: 3096a7c5885e4aedabb06acb82cdb476
+run_name: colorful-foal-406
+run_uuid: 3096a7c5885e4aedabb06acb82cdb476
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716448152550
+status: 4
+tags: []
+user_id: danielionita

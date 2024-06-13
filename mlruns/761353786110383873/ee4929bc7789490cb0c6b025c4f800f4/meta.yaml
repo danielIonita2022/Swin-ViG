@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/ee4929bc7789490cb0c6b025c4f800f4/artifacts
+deleted_time: 1716414224989
+end_time: 1716413751015
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: deleted
+run_id: ee4929bc7789490cb0c6b025c4f800f4
+run_name: amusing-newt-560
+run_uuid: ee4929bc7789490cb0c6b025c4f800f4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716413748920
+status: 3
+tags: []
+user_id: danielionita

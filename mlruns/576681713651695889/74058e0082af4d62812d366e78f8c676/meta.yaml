@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/74058e0082af4d62812d366e78f8c676/artifacts
+deleted_time: 1716639289361
+end_time: 1716580705060
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 74058e0082af4d62812d366e78f8c676
+run_name: stylish-skunk-594
+run_uuid: 74058e0082af4d62812d366e78f8c676
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716579640506
+status: 4
+tags: []
+user_id: danielionita

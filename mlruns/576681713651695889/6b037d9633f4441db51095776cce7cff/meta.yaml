@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/6b037d9633f4441db51095776cce7cff/artifacts
+end_time: 1716336578866
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 6b037d9633f4441db51095776cce7cff
+run_name: resilient-lamb-577
+run_uuid: 6b037d9633f4441db51095776cce7cff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716321087686
+status: 3
+tags: []
+user_id: danielionita

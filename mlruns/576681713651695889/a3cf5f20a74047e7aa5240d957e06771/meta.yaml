@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/576681713651695889/a3cf5f20a74047e7aa5240d957e06771/artifacts
+deleted_time: 1716185460106
 end_time: 1716129696155
 entry_point_name: ''
 experiment_id: '576681713651695889'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: a3cf5f20a74047e7aa5240d957e06771
 run_name: persistent-shrew-53
 run_uuid: a3cf5f20a74047e7aa5240d957e06771

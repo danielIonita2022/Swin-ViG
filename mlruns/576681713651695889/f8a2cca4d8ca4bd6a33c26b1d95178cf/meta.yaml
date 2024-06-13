@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/f8a2cca4d8ca4bd6a33c26b1d95178cf/artifacts
+end_time: 1716638309478
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: f8a2cca4d8ca4bd6a33c26b1d95178cf
+run_name: beautiful-bass-768
+run_uuid: f8a2cca4d8ca4bd6a33c26b1d95178cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716621723193
+status: 3
+tags: []
+user_id: danielionita

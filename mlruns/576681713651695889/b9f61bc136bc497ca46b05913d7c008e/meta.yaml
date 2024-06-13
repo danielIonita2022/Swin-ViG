@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/b9f61bc136bc497ca46b05913d7c008e/artifacts
+end_time: 1716149958380
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: b9f61bc136bc497ca46b05913d7c008e
+run_name: casual-boar-949
+run_uuid: b9f61bc136bc497ca46b05913d7c008e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716134496481
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/5e9ebbbc5fc845cb9212385e568af292/artifacts
+deleted_time: 1716802218073
+end_time: 1716800778970
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 5e9ebbbc5fc845cb9212385e568af292
+run_name: beautiful-flea-155
+run_uuid: 5e9ebbbc5fc845cb9212385e568af292
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716799872525
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/8e07a06830f74a9ab919f9f2c8b712f0/artifacts
+end_time: 1716287788946
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 8e07a06830f74a9ab919f9f2c8b712f0
+run_name: puzzled-carp-469
+run_uuid: 8e07a06830f74a9ab919f9f2c8b712f0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716272642935
+status: 3
+tags: []
+user_id: danielionita

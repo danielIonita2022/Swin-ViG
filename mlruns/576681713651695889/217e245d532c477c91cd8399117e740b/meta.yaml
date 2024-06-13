@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/217e245d532c477c91cd8399117e740b/artifacts
+end_time: 1716215462691
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 217e245d532c477c91cd8399117e740b
+run_name: inquisitive-stoat-69
+run_uuid: 217e245d532c477c91cd8399117e740b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716200102026
+status: 3
+tags: []
+user_id: danielionita

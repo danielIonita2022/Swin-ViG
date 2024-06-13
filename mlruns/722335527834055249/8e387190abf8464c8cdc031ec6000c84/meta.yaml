@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/8e387190abf8464c8cdc031ec6000c84/artifacts
+deleted_time: 1717235896476
+end_time: 1717189486029
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 8e387190abf8464c8cdc031ec6000c84
+run_name: melodic-rat-262
+run_uuid: 8e387190abf8464c8cdc031ec6000c84
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717179815655
+status: 3
+tags: []
+user_id: danielionita

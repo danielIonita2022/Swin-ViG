@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/576681713651695889/cb4db2a57bb44949868f309f9ba7f3be/artifacts
+deleted_time: 1716185460071
 end_time: 1716123575580
 entry_point_name: ''
 experiment_id: '576681713651695889'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: cb4db2a57bb44949868f309f9ba7f3be
 run_name: big-dove-301
 run_uuid: cb4db2a57bb44949868f309f9ba7f3be

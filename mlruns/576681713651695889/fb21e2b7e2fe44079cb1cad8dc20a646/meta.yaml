@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/fb21e2b7e2fe44079cb1cad8dc20a646/artifacts
+deleted_time: 1716639289374
+end_time: 1716574832526
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: fb21e2b7e2fe44079cb1cad8dc20a646
+run_name: dapper-lynx-249
+run_uuid: fb21e2b7e2fe44079cb1cad8dc20a646
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716574830434
+status: 3
+tags: []
+user_id: danielionita

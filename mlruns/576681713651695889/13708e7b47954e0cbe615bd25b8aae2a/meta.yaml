@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/13708e7b47954e0cbe615bd25b8aae2a/artifacts
+deleted_time: 1716802218086
+end_time: 1716731329006
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 13708e7b47954e0cbe615bd25b8aae2a
+run_name: upset-tern-734
+run_uuid: 13708e7b47954e0cbe615bd25b8aae2a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716731323264
+status: 3
+tags: []
+user_id: danielionita

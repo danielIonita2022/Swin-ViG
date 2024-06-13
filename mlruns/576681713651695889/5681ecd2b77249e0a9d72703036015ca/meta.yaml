@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/5681ecd2b77249e0a9d72703036015ca/artifacts
+end_time: 1716684132547
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 5681ecd2b77249e0a9d72703036015ca
+run_name: silent-bee-244
+run_uuid: 5681ecd2b77249e0a9d72703036015ca
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716665995239
+status: 3
+tags: []
+user_id: danielionita

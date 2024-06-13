@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/ddae9b6fcf8d413ca5241f59b7f87d85/artifacts
+end_time: 1716199864298
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: ddae9b6fcf8d413ca5241f59b7f87d85
+run_name: rare-quail-997
+run_uuid: ddae9b6fcf8d413ca5241f59b7f87d85
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716184545828
+status: 3
+tags: []
+user_id: danielionita

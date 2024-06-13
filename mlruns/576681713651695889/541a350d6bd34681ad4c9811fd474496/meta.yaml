@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/541a350d6bd34681ad4c9811fd474496/artifacts
+deleted_time: 1716639289363
+end_time: 1716579640457
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 541a350d6bd34681ad4c9811fd474496
+run_name: honorable-jay-98
+run_uuid: 541a350d6bd34681ad4c9811fd474496
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716579565860
+status: 3
+tags: []
+user_id: danielionita

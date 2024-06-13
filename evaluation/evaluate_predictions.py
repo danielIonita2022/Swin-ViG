@@ -5,6 +5,7 @@ from multiprocessing import Pool
 from typing import Tuple, List, Union, Optional
 
 import numpy as np
+import torch
 from batchgenerators.utilities.file_and_folder_operations import subfiles, join, save_json, load_json, \
     isfile
 from nnunetv2.configuration import default_num_processes
@@ -15,6 +16,7 @@ from nnunetv2.imageio.simpleitk_reader_writer import SimpleITKIO
 # the Evaluator class of the previous nnU-Net was great and all but man was it overengineered. Keep it simple
 from nnunetv2.utilities.json_export import recursive_fix_for_json_export
 from nnunetv2.utilities.plans_handling.plans_handler import PlansManager
+from surface_distance.metrics import compute_surface_dice_at_tolerance, compute_robust_hausdorff, compute_surface_distances
 
 
 def label_or_region_to_key(label_or_region: Union[int, Tuple[int]]):
@@ -92,7 +94,7 @@ def compute_metrics(reference_file: str, prediction_file: str, image_reader_writ
     # load images
     seg_ref, seg_ref_dict = image_reader_writer.read_seg(reference_file)
     seg_pred, seg_pred_dict = image_reader_writer.read_seg(prediction_file)
-    # spacing = seg_ref_dict['spacing']
+    spacing = seg_ref_dict['spacing']
 
     ignore_mask = seg_ref == ignore_label if ignore_label is not None else None
 
@@ -104,6 +106,14 @@ def compute_metrics(reference_file: str, prediction_file: str, image_reader_writ
         results['metrics'][r] = {}
         mask_ref = region_or_label_to_mask(seg_ref, r)
         mask_pred = region_or_label_to_mask(seg_pred, r)
+
+        # computation for surface distances
+        mask_ref = np.squeeze(mask_ref)
+        mask_pred = np.squeeze(mask_pred)
+        surface_distances = compute_surface_distances(mask_ref, mask_pred, spacing)
+        results['metrics'][r]['NSD'] = compute_surface_dice_at_tolerance(surface_distances, 2)
+        results['metrics'][r]['HD'] = compute_robust_hausdorff(surface_distances, 95)
+
         tp, fp, fn, tn = compute_tp_fp_fn_tn(mask_ref, mask_pred, ignore_mask)
         if tp + fp + fn == 0:
             results['metrics'][r]['Dice'] = np.nan

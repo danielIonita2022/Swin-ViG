@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/4bf6c77743554b50927337db54eb00dd/artifacts
+end_time: 1716302986009
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 4bf6c77743554b50927337db54eb00dd
+run_name: lyrical-skunk-828
+run_uuid: 4bf6c77743554b50927337db54eb00dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716287924043
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/1b88edbfe50d4d65bc3897c6411f6504/artifacts
+deleted_time: 1716639289333
+end_time: 1716581771396
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 1b88edbfe50d4d65bc3897c6411f6504
+run_name: legendary-squid-667
+run_uuid: 1b88edbfe50d4d65bc3897c6411f6504
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581698984
+status: 4
+tags: []
+user_id: danielionita

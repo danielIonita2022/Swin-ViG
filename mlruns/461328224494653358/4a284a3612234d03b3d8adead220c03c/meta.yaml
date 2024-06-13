@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/4a284a3612234d03b3d8adead220c03c/artifacts
+deleted_time: 1717770189862
+end_time: 1717769470037
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: deleted
+run_id: 4a284a3612234d03b3d8adead220c03c
+run_name: honorable-stag-843
+run_uuid: 4a284a3612234d03b3d8adead220c03c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717769441805
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/32ebcd855bd64d86bfe90e75572f531c/artifacts
+deleted_time: 1716898897211
+end_time: 1716886437367
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 32ebcd855bd64d86bfe90e75572f531c
+run_name: big-mink-804
+run_uuid: 32ebcd855bd64d86bfe90e75572f531c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716886419789
+status: 3
+tags: []
+user_id: danielionita

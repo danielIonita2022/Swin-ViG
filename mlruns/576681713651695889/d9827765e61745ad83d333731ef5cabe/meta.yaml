@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/d9827765e61745ad83d333731ef5cabe/artifacts
+end_time: 1716730003292
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: d9827765e61745ad83d333731ef5cabe
+run_name: SwinViG-EdgeConv
+run_uuid: d9827765e61745ad83d333731ef5cabe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716707453511
+status: 3
+tags: []
+user_id: danielionita

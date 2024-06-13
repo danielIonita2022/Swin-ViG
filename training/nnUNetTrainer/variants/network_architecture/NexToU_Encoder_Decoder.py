@@ -111,7 +111,10 @@ class NexToU_Encoder(nn.Module):
         self.window_shape_list = img_shape_list[1 + conv_layer_d_num:] + [img_shape_list[-1]]
         #self.window_shape_list = self.window_shape_list[::-1]
 
-        opt = OptInit(pool_op_kernel_sizes_len=len(strides))
+        #self.window_shape_list = [img_shape_list[-1]] * len(img_shape_list)
+        print("SELF.WINDOW_SHAPE_LIST: ", self.window_shape_list)
+
+        opt = OptInit(drop_path_rate=0.1, pool_op_kernel_sizes_len=len(strides))
         self.opt = opt
         self.opt.window_shape_list = self.window_shape_list
         self.conv_layer_d_num = conv_layer_d_num
@@ -461,20 +464,56 @@ class GraphSAGE(nn.Module):
     GraphSAGE Graph Convolution (Paper: https://arxiv.org/abs/1706.02216) for dense data type
     """
 
-    def __init__(self, in_channels, out_channels, act='relu', norm=None, bias=True, conv_op=nn.Conv3d, dropout_op=nn.Dropout3d):
+    def __init__(self, in_channels, out_channels, act='relu', norm=None, bias=True, conv_op=nn.Conv3d,
+                 dropout_op=nn.Dropout3d):
         super(GraphSAGE, self).__init__()
-        self.nn1 = BasicConv([in_channels, in_channels], act, norm, bias)
-        self.nn2 = BasicConv([in_channels*2, out_channels], act, norm, bias)
+        #self.nn1 = BasicConv([in_channels, in_channels], act, norm, bias)
+        #self.nn2 = BasicConv([in_channels * 2, out_channels], act, norm, bias)
         self.conv_op = conv_op
         # self.conv_op = conv_op
         # self.conv1 = conv_op(in_channels, out_channels, 1)
         # self.conv2 = conv_op(in_channels * 2, out_channels, 1)
-        # #self.gconv = SAGEConv(in_channels, out_channels)
-        # self.norm (out_channels)
-        # self.act = nn.LeakyReLU()
-        # self.dropout = dropout_op
+        self.gconv = SAGEConv(in_channels, out_channels, aggr='max', normalize=True)
+        self.norm = nn.LayerNorm(out_channels)
+        self.act = nn.LeakyReLU()
 
     def forward(self, x, edge_index, y=None):
+        # if y is not None:
+        #     x_j = batched_index_select(y, edge_index[0])
+        # else:
+        #     x_j = batched_index_select(x, edge_index[0])
+        # if self.conv_op == nn.Conv2d:
+        #     pass
+        # elif self.conv_op == nn.Conv3d:
+        #     x_j = torch.unsqueeze(x_j, dim=4)
+        #     x = torch.unsqueeze(x, dim=4)
+        # else:
+        #     raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
+        # x_j = self.nn1(x_j)
+        # x_j, _ = torch.max(x_j, -2, keepdim=True)
+        # return self.nn2(torch.cat([x, x_j], dim=1))
+        x = x.squeeze(3)
+        B, C, N = x.shape
+        x = x.view(B, C, -1).permute(0, 2, 1).contiguous().view(-1, C)
+        edge_index = torch.reshape(edge_index, (2, -1))
+        x = self.gconv(x, edge_index)
+        x = self.norm(x)
+        x = self.act(x)
+        return x
+
+
+class EdgeConv(nn.Module):
+    """
+    Edge convolution layer (with activation, batch normalization) for dense data type
+    """
+
+    def __init__(self, in_channels, out_channels, act='relu', norm=None, bias=True, conv_op=nn.Conv3d):
+        super(EdgeConv, self).__init__()
+        self.nn = BasicConv([in_channels * 2, out_channels], act, norm, bias)
+        self.conv_op = conv_op
+
+    def forward(self, x, edge_index, y=None):
+        x_i = batched_index_select(x, edge_index[1])
         if y is not None:
             x_j = batched_index_select(y, edge_index[0])
         else:
@@ -483,12 +522,9 @@ class GraphSAGE(nn.Module):
             pass
         elif self.conv_op == nn.Conv3d:
             x_j = torch.unsqueeze(x_j, dim=4)
-            x = torch.unsqueeze(x, dim=4)
-        else:
-            raise NotImplementedError('conv operation [%s] is not found' % self.conv_op)
-        x_j = self.nn1(x_j)
-        x_j, _ = torch.max(x_j, -2, keepdim=True)
-        return self.nn2(torch.cat([x, x_j], dim=1))
+            x_i = torch.unsqueeze(x_i, dim=4)
+        max_value, _ = torch.max(self.nn(torch.cat([x_i, x_j - x_i], dim=1)), -1, keepdim=True)
+        return max_value
 
 
 class GraphConv(nn.Module):
@@ -505,6 +541,8 @@ class GraphConv(nn.Module):
             self.gconv = GraphAttentionConv2d(in_channels, out_channels, act, norm, bias, conv_op, dropout_op)
         elif conv == 'sage':
             self.gconv = GraphSAGE(in_channels, out_channels, act, norm, bias, conv_op, dropout_op)
+        elif conv == 'edge':
+            self.gconv = EdgeConv(in_channels, out_channels, act, norm, bias)
         else:
             raise NotImplementedError('conv:{} is not supported'.format(conv))
 
@@ -524,11 +562,11 @@ class DyGraphConv(GraphConv):
         self.d = dilation
         self.r = r
         self.conv = conv
-        neighbors = 9
-        mlflow.log_param("k", neighbors)
-        self.dilated_knn_graph = DenseDilatedKnnGraph(neighbors, dilation, stochastic, epsilon)
+        self.neighbors = 9 # era 9
+        mlflow.log_param("k", self.neighbors)
+        self.dilated_knn_graph = DenseDilatedKnnGraph(self.neighbors, dilation, stochastic, epsilon)
         self.conv_op = conv_op
-        self.dropout_op = nn.Dropout3d(0.3)
+        self.dropout_op = nn.Dropout3d(0.2)
         if self.conv_op == nn.Conv2d:
             self.avg_pool = F.avg_pool2d
         elif self.conv_op == nn.Conv3d:
@@ -742,20 +780,24 @@ class SwinGrapher(nn.Module):
             norm_op(in_channels, **norm_op_kwargs),
         )
         norm = 'batch'
-        if conv == 'gat':
-            self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
-                                          act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
-            self.fc2 = nn.Sequential(
-                conv_op(in_channels * 4, in_channels, 1, stride=1, padding=0),
-                norm_op(in_channels),
-            )
-        else:
+        if conv == 'mr' or conv == 'sage':
             self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
                                           act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
             self.fc2 = nn.Sequential(
                 conv_op(in_channels * 2, in_channels, 1, stride=1, padding=0),
                 norm_op(in_channels),
             )
+        else:
+            self.graph_conv = DyGraphConv(in_channels, in_channels * 2, kernel_size, dilation, conv,
+                                          act, norm, bias, stochastic, epsilon, r, conv_op, dropout_op)
+            self.fc2 = nn.Sequential(
+                conv_op(in_channels * 4, in_channels, 1, stride=1, padding=0),
+                norm_op(in_channels),
+            )
+            # self.fc3 = nn.Sequential(
+            #     conv_op(in_channels * 10, in_channels, 1, stride=1, padding=0),
+            #     norm_op(in_channels),
+            # )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
         n = 1
@@ -845,6 +887,7 @@ class SwinGrapher(nn.Module):
 
         x = self.graph_conv(x, relative_pos)
         gnn_windows = self.fc2(x)
+        #windows = self.fc3(gnn_windows)
 
         shifted_x = window_reverse(gnn_windows, self.window_size, size_tuple)
 
@@ -939,7 +982,7 @@ class SwinGNNBlocks(nn.Module):
                 raise NotImplementedError('conv operation [%s] is not found' % conv_op)
 
             blocks.append(nn.Sequential(
-                SwinGrapher(channels, img_shape, k_list[i], min(idx // 4 + 1, max_dilation), 'sage', act, norm,
+                SwinGrapher(channels, img_shape, k_list[i], min(idx // 4 + 1, max_dilation), 'gat', act, norm,
                             bias, stochastic, epsilon, 1, n=window_size_n, drop_path=dpr[idx],
                             relative_pos=True, conv_op=conv_op, norm_op=norm_op, norm_op_kwargs=norm_op_kwargs,
                             dropout_op=dropout_op,

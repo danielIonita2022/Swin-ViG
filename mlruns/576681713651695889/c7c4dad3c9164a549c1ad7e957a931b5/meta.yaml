@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/576681713651695889/c7c4dad3c9164a549c1ad7e957a931b5/artifacts
+deleted_time: 1716185460088
 end_time: 1716128625097
 entry_point_name: ''
 experiment_id: '576681713651695889'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: c7c4dad3c9164a549c1ad7e957a931b5
 run_name: aged-whale-159
 run_uuid: c7c4dad3c9164a549c1ad7e957a931b5

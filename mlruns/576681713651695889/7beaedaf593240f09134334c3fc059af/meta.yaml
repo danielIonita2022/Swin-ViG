@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/7beaedaf593240f09134334c3fc059af/artifacts
+deleted_time: 1716802218066
+end_time: 1716801459207
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 7beaedaf593240f09134334c3fc059af
+run_name: adventurous-wasp-804
+run_uuid: 7beaedaf593240f09134334c3fc059af
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716801457191
+status: 3
+tags: []
+user_id: danielionita

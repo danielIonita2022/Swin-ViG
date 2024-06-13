@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/461328224494653358/ab3c4b6091c44052846b2318b603a036/artifacts
+deleted_time: 1717770236604
 end_time: 1713648313209
 entry_point_name: ''
 experiment_id: '461328224494653358'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: ab3c4b6091c44052846b2318b603a036
 run_name: nervous-moose-738
 run_uuid: ab3c4b6091c44052846b2318b603a036

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/ff5948433bee44b8b4a9d9f10e1b9810/artifacts
+end_time: 1716754076203
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: ff5948433bee44b8b4a9d9f10e1b9810
+run_name: ambitious-hen-886
+run_uuid: ff5948433bee44b8b4a9d9f10e1b9810
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716731329021
+status: 3
+tags: []
+user_id: danielionita

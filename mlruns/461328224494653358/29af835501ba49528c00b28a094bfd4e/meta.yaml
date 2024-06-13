@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/29af835501ba49528c00b28a094bfd4e/artifacts
+deleted_time: 1717834017672
+end_time: 1717832032142
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: deleted
+run_id: 29af835501ba49528c00b28a094bfd4e
+run_name: youthful-pug-852
+run_uuid: 29af835501ba49528c00b28a094bfd4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717832011738
+status: 3
+tags: []
+user_id: danielionita

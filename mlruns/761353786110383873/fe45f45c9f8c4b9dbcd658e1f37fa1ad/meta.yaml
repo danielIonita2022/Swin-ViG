@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/fe45f45c9f8c4b9dbcd658e1f37fa1ad/artifacts
+end_time: 1716573855754
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: active
+run_id: fe45f45c9f8c4b9dbcd658e1f37fa1ad
+run_name: fortunate-dove-492
+run_uuid: fe45f45c9f8c4b9dbcd658e1f37fa1ad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716448723048
+status: 4
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/13dc81462a6b49fe9ab10ad383ce0463/artifacts
+deleted_time: 1717770189876
+end_time: 1717769394357
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: deleted
+run_id: 13dc81462a6b49fe9ab10ad383ce0463
+run_name: treasured-grub-470
+run_uuid: 13dc81462a6b49fe9ab10ad383ce0463
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717769373885
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/5202aaa8f7ba4d0c87204d3c4383a513/artifacts
+deleted_time: 1716639289384
+end_time: 1716303219370
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 5202aaa8f7ba4d0c87204d3c4383a513
+run_name: serious-bass-634
+run_uuid: 5202aaa8f7ba4d0c87204d3c4383a513
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716303202407
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/de86138b3f9b4748bcba9f3a6bc9b32b/artifacts
+end_time: 1716318564318
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: de86138b3f9b4748bcba9f3a6bc9b32b
+run_name: sneaky-bee-630
+run_uuid: de86138b3f9b4748bcba9f3a6bc9b32b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716303219391
+status: 3
+tags: []
+user_id: danielionita

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/e4447034b87d4a1ea0f6b0b6e4ee50dc/artifacts
+end_time: 1716851914337
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: e4447034b87d4a1ea0f6b0b6e4ee50dc
+run_name: unique-koi-563
+run_uuid: e4447034b87d4a1ea0f6b0b6e4ee50dc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716836322042
+status: 3
+tags: []
+user_id: danielionita

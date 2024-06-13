@@ -62,6 +62,7 @@ from torch.cuda.amp import GradScaler
 from torch.nn.parallel import DistributedDataParallel as DDP
 import mlflow
 from ranger21 import Ranger21
+from surface_distance.metrics import compute_robust_hausdorff, compute_surface_dice_at_tolerance
 
 from utilities.file_path_utilities import check_workers_alive_and_busy
 
@@ -139,11 +140,11 @@ class nnUNetTrainer(object):
                 if self.is_cascaded else None
 
         ### Some hyperparameters for you to fiddle with
-        self.initial_lr = 0.002 # original 0.002
+        self.initial_lr = 0.0015 # original 0.002, 0.0015 pt Pancreas
         self.weight_decay = 5e-4
         self.oversample_foreground_percent = 0.33
-        self.num_iterations_per_epoch = 16 # modificat de la 4
-        self.num_val_iterations_per_epoch = 4 # era 1
+        self.num_iterations_per_epoch = 56 # 20 cu batch size 8 ACDC, 5  BTCV, 56 Pancreas
+        self.num_val_iterations_per_epoch = 15 # 5 cu b. size 8 ACDC, 3 BTCV, 15 pancreas
         self.num_epochs = 1000
         self.current_epoch = 0
 
@@ -221,6 +222,8 @@ class nnUNetTrainer(object):
             self.loss = self._build_loss()
             self.was_initialized = True
             #self.print_to_log_file(summary(self.network, input_size=(4, 1, 64, 192, 160)))
+            pytorch_total_params = sum(p.numel() for p in self.network.parameters())
+            self.print_to_log_file(f"Number of params: {pytorch_total_params}")
         else:
             raise RuntimeError("You have called self.initialize even though the trainer was already initialized. "
                                "That should not happen.")

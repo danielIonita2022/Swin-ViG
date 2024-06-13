@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/fcb3858368cb4e689d9f0038c604a2eb/artifacts
+deleted_time: 1716819147456
+end_time: 1716818635718
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: fcb3858368cb4e689d9f0038c604a2eb
+run_name: luxuriant-cow-100
+run_uuid: fcb3858368cb4e689d9f0038c604a2eb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716817789337
+status: 4
+tags: []
+user_id: danielionita

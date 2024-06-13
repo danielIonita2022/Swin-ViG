@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/fdcdfd6c2a384d50851889761090c4d6/artifacts
+deleted_time: 1716217298503
+end_time: 1716216338199
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: fdcdfd6c2a384d50851889761090c4d6
+run_name: learned-seal-975
+run_uuid: fdcdfd6c2a384d50851889761090c4d6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716216321165
+status: 3
+tags: []
+user_id: danielionita

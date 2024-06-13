@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/504bb2c71e284c20944ff0909eef72d0/artifacts
+deleted_time: 1716818407944
+end_time: 1716817754709
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 504bb2c71e284c20944ff0909eef72d0
+run_name: rogue-worm-32
+run_uuid: 504bb2c71e284c20944ff0909eef72d0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716817743714
+status: 4
+tags: []
+user_id: danielionita

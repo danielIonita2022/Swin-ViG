@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/2aae36f5c0634e0a82e4e72851ce33bf/artifacts
+end_time: 1716414463365
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: active
+run_id: 2aae36f5c0634e0a82e4e72851ce33bf
+run_name: intrigued-wasp-166
+run_uuid: 2aae36f5c0634e0a82e4e72851ce33bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716414461466
+status: 3
+tags: []
+user_id: danielionita

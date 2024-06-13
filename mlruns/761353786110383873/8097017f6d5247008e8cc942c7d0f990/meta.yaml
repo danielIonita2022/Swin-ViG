@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/761353786110383873/8097017f6d5247008e8cc942c7d0f990/artifacts
+deleted_time: 1716414224941
+end_time: 1716414086588
+entry_point_name: ''
+experiment_id: '761353786110383873'
+lifecycle_stage: deleted
+run_id: 8097017f6d5247008e8cc942c7d0f990
+run_name: clumsy-horse-726
+run_uuid: 8097017f6d5247008e8cc942c7d0f990
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716414084659
+status: 3
+tags: []
+user_id: danielionita

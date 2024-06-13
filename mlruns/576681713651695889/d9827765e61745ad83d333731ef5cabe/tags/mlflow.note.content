@@ -1,0 +1,5 @@
+# SwinGNN block:
+
+- SwinGrapher with k = 10 neighbors
+- 1x1 conv from 20 * input_channels to 10 * input_channels
+- 1x1 conv from 10 * input_channels to input_channels

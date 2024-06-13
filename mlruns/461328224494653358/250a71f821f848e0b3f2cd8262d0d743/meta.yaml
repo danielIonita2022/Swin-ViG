@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/461328224494653358/250a71f821f848e0b3f2cd8262d0d743/artifacts
+deleted_time: 1717770236600
 end_time: 1713648577921
 entry_point_name: ''
 experiment_id: '461328224494653358'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 250a71f821f848e0b3f2cd8262d0d743
 run_name: beautiful-auk-79
 run_uuid: 250a71f821f848e0b3f2cd8262d0d743

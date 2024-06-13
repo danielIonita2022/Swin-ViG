@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/528668e9e732491aa860830449fc0e44/artifacts
+end_time: 1718006330758
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: active
+run_id: 528668e9e732491aa860830449fc0e44
+run_name: calm-robin-834
+run_uuid: 528668e9e732491aa860830449fc0e44
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718005695057
+status: 3
+tags: []
+user_id: danielionita

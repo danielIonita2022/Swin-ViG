@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/caae957e1c53400c8b7285019dc90319/artifacts
+deleted_time: 1716639289361
+end_time: 1716581083744
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: caae957e1c53400c8b7285019dc90319
+run_name: wise-grub-760
+run_uuid: caae957e1c53400c8b7285019dc90319
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581043133
+status: 4
+tags: []
+user_id: danielionita

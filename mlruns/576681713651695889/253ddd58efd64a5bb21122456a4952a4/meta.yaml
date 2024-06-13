@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/253ddd58efd64a5bb21122456a4952a4/artifacts
+deleted_time: 1717753255361
+end_time: 1717694921794
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 253ddd58efd64a5bb21122456a4952a4
+run_name: enchanting-snail-451
+run_uuid: 253ddd58efd64a5bb21122456a4952a4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717694904828
+status: 3
+tags: []
+user_id: danielionita

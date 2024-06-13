@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/0fd3f3dfbbf94914bd8162a80e7febdb/artifacts
+deleted_time: 1716639289347
+end_time: 1716581559002
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 0fd3f3dfbbf94914bd8162a80e7febdb
+run_name: skillful-bear-528
+run_uuid: 0fd3f3dfbbf94914bd8162a80e7febdb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581556726
+status: 3
+tags: []
+user_id: danielionita

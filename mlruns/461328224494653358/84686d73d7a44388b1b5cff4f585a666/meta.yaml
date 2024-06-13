@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/461328224494653358/84686d73d7a44388b1b5cff4f585a666/artifacts
+deleted_time: 1717770236604
 end_time: 1713622003946
 entry_point_name: ''
 experiment_id: '461328224494653358'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 84686d73d7a44388b1b5cff4f585a666
 run_name: valuable-hound-684
 run_uuid: 84686d73d7a44388b1b5cff4f585a666

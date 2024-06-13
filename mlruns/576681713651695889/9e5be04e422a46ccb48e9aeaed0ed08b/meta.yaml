@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/9e5be04e422a46ccb48e9aeaed0ed08b/artifacts
+deleted_time: 1716185460117
+end_time: 1716184545810
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 9e5be04e422a46ccb48e9aeaed0ed08b
+run_name: rogue-crane-168
+run_uuid: 9e5be04e422a46ccb48e9aeaed0ed08b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716184528848
+status: 3
+tags: []
+user_id: danielionita

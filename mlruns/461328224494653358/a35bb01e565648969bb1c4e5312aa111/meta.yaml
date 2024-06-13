@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/461328224494653358/a35bb01e565648969bb1c4e5312aa111/artifacts
+deleted_time: 1717834017670
+end_time: 1717832073623
+entry_point_name: ''
+experiment_id: '461328224494653358'
+lifecycle_stage: deleted
+run_id: a35bb01e565648969bb1c4e5312aa111
+run_name: amusing-whale-968
+run_uuid: a35bb01e565648969bb1c4e5312aa111
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717832070741
+status: 3
+tags: []
+user_id: danielionita

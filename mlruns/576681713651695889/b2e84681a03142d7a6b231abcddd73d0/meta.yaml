@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/b2e84681a03142d7a6b231abcddd73d0/artifacts
+deleted_time: 1717753255347
+end_time: 1717743598418
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: b2e84681a03142d7a6b231abcddd73d0
+run_name: welcoming-wren-189
+run_uuid: b2e84681a03142d7a6b231abcddd73d0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717743596195
+status: 3
+tags: []
+user_id: danielionita

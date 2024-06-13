@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/90af8d3353a141e1be7c4f32f66a9c18/artifacts
+deleted_time: 1717417008975
+end_time: 1717406729642
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: deleted
+run_id: 90af8d3353a141e1be7c4f32f66a9c18
+run_name: sassy-swan-503
+run_uuid: 90af8d3353a141e1be7c4f32f66a9c18
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717406575265
+status: 4
+tags: []
+user_id: danielionita

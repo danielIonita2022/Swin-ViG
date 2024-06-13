@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/6f1303c99cd044f295782232bc833ce0/artifacts
+end_time: 1717677006135
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: active
+run_id: 6f1303c99cd044f295782232bc833ce0
+run_name: Swin-ViG-SAGE-FINAL(PyG)
+run_uuid: 6f1303c99cd044f295782232bc833ce0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717661105130
+status: 3
+tags: []
+user_id: danielionita

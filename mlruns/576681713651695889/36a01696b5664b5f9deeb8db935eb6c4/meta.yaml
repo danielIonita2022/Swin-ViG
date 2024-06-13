@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/36a01696b5664b5f9deeb8db935eb6c4/artifacts
+deleted_time: 1716639289363
+end_time: 1716581043093
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 36a01696b5664b5f9deeb8db935eb6c4
+run_name: enchanting-stoat-609
+run_uuid: 36a01696b5664b5f9deeb8db935eb6c4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716581030318
+status: 3
+tags: []
+user_id: danielionita

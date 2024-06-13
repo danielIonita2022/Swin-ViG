@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/576681713651695889/436e41b668d844c28bcd9dbc0ab0a3fb/artifacts
+deleted_time: 1716217298503
+end_time: 1716200102009
+entry_point_name: ''
+experiment_id: '576681713651695889'
+lifecycle_stage: deleted
+run_id: 436e41b668d844c28bcd9dbc0ab0a3fb
+run_name: merciful-sloth-332
+run_uuid: 436e41b668d844c28bcd9dbc0ab0a3fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716200085061
+status: 3
+tags: []
+user_id: danielionita

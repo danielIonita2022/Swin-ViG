@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/722335527834055249/46f8614025d547ef88e6f9d5d8f61119/artifacts
+end_time: 1717151417254
+entry_point_name: ''
+experiment_id: '722335527834055249'
+lifecycle_stage: active
+run_id: 46f8614025d547ef88e6f9d5d8f61119
+run_name: enthused-grub-232
+run_uuid: 46f8614025d547ef88e6f9d5d8f61119
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716886437389
+status: 3
+tags: []
+user_id: danielionita
